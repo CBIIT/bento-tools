@@ -1,6 +1,6 @@
 export { default as Header } from './components/headers';
 export { default as Footer } from './components/footer';
-export { default as Datatable } from './components/datatables/MUIDataTable';
+export { default as CustomDataTable } from './components/datatables/MUIDataTable';
 export { default as Popover } from './components/datatables/components/Popover';
 export { default as TableBodyCell } from './components/datatables/components/TableBodyCell';
 export { default as TableBody } from './components/datatables/components/TableBody';

@@ -30,7 +30,7 @@ export default ICDCFooter
 ```react
 DataTable
 For now we customized moving select cell to right
-import { Datatable } from 'bento-components';
+import { CustomDataTable } from 'bento-components';
 
 const columns = ["Name", "Company", "City", "State"];
 
