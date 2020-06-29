@@ -31,5 +31,15 @@ module.exports = {
     "jsx-a11y/no-static-element-interactions":"off",
     "jsx-a11y/click-events-have-key-events":"off",
     "react/jsx-props-no-spreading":"off",
+    "no-console": "off",
+    "semi": 2,
+    "no-undef": 2,
+    "no-undef-init": 2,
+    "no-tabs": 2,
+    "react/self-closing-comp": 2,
+    "react/no-typos": 2,
+    "react/jsx-no-duplicate-props": "off",
+    "react-hooks/rules-of-hooks": "off", // Checks rules of Hooks
+    "react-hooks/exhaustive-deps": "off" // Checks effect dependencies
   },
 };

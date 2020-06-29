@@ -1,6 +1,21 @@
-import Header from './components/headers';
-import Footer from './components/footer';
-
-export {
- Footer, Header
-};
+export { default as Header } from './components/headers';
+export { default as Footer } from './components/footer';
+export { default as Datatable } from './components/datatables/MUIDataTable';
+export { default as Popover } from './components/datatables/components/Popover';
+export { default as TableBodyCell } from './components/datatables/components/TableBodyCell';
+export { default as TableBody } from './components/datatables/components/TableBody';
+export { default as TableBodyRow } from './components/datatables/components/TableBodyRow';
+export { default as TableFilter } from './components/datatables/components/TableFilter';
+export { default as TableFilterList } from './components/datatables/components/TableFilterList';
+export { default as TableFooter } from './components/datatables/components/TableFooter';
+export { default as TableHeadCell } from './components/datatables/components/TableHeadCell';
+export { default as TableHead } from './components/datatables/components/TableHead';
+export { default as TableHeadRow } from './components/datatables/components/TableHeadRow';
+export { default as TablePagination } from './components/datatables/components/TablePagination';
+export { default as TableResize } from './components/datatables/components/TableResize';
+export { default as TableSearch } from './components/datatables/components/TableSearch';
+export { default as TableSelectCell } from './components/datatables/components/TableSelectCell';
+export { default as TableToolbar } from './components/datatables//components/TableToolbar';
+export { default as TableToolbarSelect } from './components/datatables/components/TableToolbarSelect';
+export { default as TableViewCol } from './components/datatables/components/TableViewCol';
+export { debounceSearchRender, DebounceTableSearch } from './components/datatables/plug-ins/DebounceSearchRender';
