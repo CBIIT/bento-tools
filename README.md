@@ -13,12 +13,39 @@ npm install bento-components
 ## Usage
 
 ```react
+//Header
 import { Header } from 'bento-components';
 
 const ICDCHeader = () => <><Header /></>;
 export default ICDCHeader;
 ```
+```react
+//Footer
+import { Footer } from 'bento-components';
+import FooterData from './footer.json'; //path to the json file Sample can be found in Stubs
 
+const ICDCFooter = () => <><Footer data={FooterData} /></>;
+export default ICDCFooter
+```
+```react
+DataTable
+For now we customized moving select cell to right
+import { Datatable } from 'bento-components';
+
+const columns = ["Name", "Company", "City", "State"];
+
+const data = [
+ ["Joe James", "Test Corp", "Yonkers", "NY"],
+ ["John Walsh", "Test Corp", "Hartford", "CT"],
+ ["Bob Herm", "Test Corp", "Tampa", "FL"],
+ ["James Houston", "Test Corp", "Dallas", "TX"],
+];
+
+const options = {
+  selectCellPostion: 'right', // If not specified it defaults to left
+};
+<MUIDatatable columns={columns} data={data} options={options} selectCellPostion="right" />
+```
 ## Scripts Available
 
 ```

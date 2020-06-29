@@ -1,44 +1,45 @@
-// src/stories/index.js
-/* eslint-disable */
-
+/* eslint-disbale */
 import React from 'react';
+
 import { storiesOf } from '@storybook/react';
-import Button from '../components/Button';
-import StyledButton from '../components/StyledButton';
+import MUIDatatable from '../components/datatables/MUIDataTable';
+import users from '../stubs/users.json';
+import footerData from '../stubs/footer.json';
 import Header from '../components/headers';
 import Footer from '../components/footer';
-import FooterData from './mockdata/footer.json';
 
 import nihLogo from './icdc_nih_logo.svg';
 import easter2000 from './Canine2000.png';
 
-storiesOf('Button', module)
-  .add('with text', () => (
-    <Button label="Test" />
-  ))
-  .add('with continue', () => (
-    <Button label="Continue" />
-  ));
+const columns = [
+  {
+    name: 'firstName',
+    label: 'First Name',
+  },
+  {
+    name: 'lastName',
+    label: 'Last Name',
+  },
+  {
+    name: 'age',
+    label: 'Age',
+  },
+];
 
-storiesOf('StyledButton', module).add('with noprops', () => (
-  <StyledButton children="Continue" />
-));
+const options = {
+  selectCellPostion: 'right',
+};
+
+const title = 'Awesome list';
+
+const data = users;
 
 storiesOf('Header', module)
-  .add('Header default', () => (
-    <Header />
-  ))
-  .add('Header with custom Logo', () => (
-    <Header logo={nihLogo} />
-  ))
-  .add('Easter Header with custom easter', () => (
-    <Header easter={easter2000} />
-  ))
-  .add('Easter Header with custom logo and eas', () => (
-    <Header logo={nihLogo} easter={easter2000} />
-  ));
+  .add('Header default', () => <Header />)
+  .add('Header with custom Logo', () => <Header logo={nihLogo} />)
+  .add('Easter Header with custom easter', () => <Header easter={easter2000} />)
+  .add('Easter Header with custom logo and eas', () => <Header logo={nihLogo} easter={easter2000} />);
 
-storiesOf('Footer', module)
-  .add('with default props', () => (
-    <Footer data={FooterData} />
-  ));
+storiesOf('Footer', module).add('Footer', () => <Footer data={footerData} />);
+storiesOf('MUIDatatable', module).add('left Selectable', () => <MUIDatatable columns={columns} data={data} title={title} selectCellPostion="right" />);
+storiesOf('MUIDatatable', module).add('right Selectable', () => <MUIDatatable columns={columns} data={data} options={options} title={title} selectCellPostion="right" />);
