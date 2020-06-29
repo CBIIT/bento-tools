@@ -212,7 +212,7 @@ class TableBody extends React.Component {
 
   render() {
     const {
-      classes, columns, toggleExpandRow, options,
+      classes, columns, toggleExpandRow, options, selectCellPostion,
     } = this.props;
     const tableRows = this.buildRows();
     const visibleColCnt = columns.filter((c) => c.display === 'true').length;
@@ -250,7 +250,7 @@ class TableBody extends React.Component {
                   data-testid={`MUIDataTableBodyRow-${dataIndex}`}
                   id={`MUIDataTableBodyRow-${dataIndex}`}
                 >
-                  <TableSelectCell
+                  {options.selectCellPostion === 'left' && <TableSelectCell
                     onChange={this.handleRowSelect.bind(null, {
                       index: this.getRowIndex(rowIndex),
                       dataIndex,
@@ -271,7 +271,7 @@ class TableBody extends React.Component {
                     isRowExpanded={this.isRowExpanded(dataIndex)}
                     isRowSelectable={isRowSelectable}
                     id={`MUIDataTableSelectCell-${dataIndex}`}
-                  />
+                  />}
                   {row.map(
                     (column, columnIndex) => columns[columnIndex].display === 'true' && (
                     <TableBodyCell
@@ -291,6 +291,28 @@ class TableBody extends React.Component {
                     </TableBodyCell>
                     ),
                   )}
+                  {options.selectCellPostion === 'right' && <TableSelectCell
+                    onChange={this.handleRowSelect.bind(null, {
+                      index: this.getRowIndex(rowIndex),
+                      dataIndex,
+                    })}
+                    onExpand={toggleExpandRow.bind(null, {
+                      index: this.getRowIndex(rowIndex),
+                      dataIndex,
+                    })}
+                    fixedHeader={options.fixedHeader}
+                    fixedSelectColumn={options.fixedSelectColumn}
+                    checked={isRowSelected}
+                    expandableOn={options.expandableRows}
+                    // When rows are expandable, but this particular row isn't expandable, set this to true.
+                    // This will add a new class to the toggle button, MUIDataTableSelectCell-expandDisabled.
+                    hideExpandButton={!this.isRowExpandable(dataIndex) && options.expandableRows}
+                    selectableOn={options.selectableRows}
+                    selectableRowsHideCheckboxes={options.selectableRowsHideCheckboxes}
+                    isRowExpanded={this.isRowExpanded(dataIndex)}
+                    isRowSelectable={isRowSelectable}
+                    id={`MUIDataTableSelectCell-${dataIndex}`}
+                  />}
                 </TableBodyRow>
                 {this.isRowExpanded(dataIndex) && options.renderExpandableRow(row, { rowIndex, dataIndex })}
               </React.Fragment>

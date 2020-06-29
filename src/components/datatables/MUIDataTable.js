@@ -373,6 +373,7 @@ class MUIDataTable extends React.Component {
     filterType: 'dropdown',
     fixedHeader: true,
     fixedSelectColumn: true,
+    selectCellPostion: 'left',
     pagination: true,
     print: true,
     resizableColumns: false,

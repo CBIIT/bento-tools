@@ -85,7 +85,7 @@ class TableHead extends React.Component {
         })}
       >
         <TableHeadRow>
-          <TableSelectCell
+          {options.selectCellPostion === 'left' && <TableSelectCell
             ref={(el) => setCellRef(0, findDOMNode(el))}
             onChange={this.handleRowSelect.bind(null)}
             indeterminate={isIndeterminate}
@@ -100,7 +100,7 @@ class TableHead extends React.Component {
             selectableRowsHeader={options.selectableRowsHeader}
             onExpand={this.props.toggleAllExpandableRows}
             isRowSelectable
-          />
+          />}
           {columns.map(
             (column, index) => column.display === 'true'
               && (column.customHeadRender ? (
@@ -127,6 +127,22 @@ class TableHead extends React.Component {
                 </TableHeadCell>
               )),
           )}
+          {options.selectCellPostion === 'right' && <TableSelectCell
+            ref={(el) => setCellRef(0, findDOMNode(el))}
+            onChange={this.handleRowSelect.bind(null)}
+            indeterminate={isIndeterminate}
+            checked={isChecked}
+            isHeaderCell
+            expandedRows={expandedRows}
+            expandableRowsHeader={options.expandableRowsHeader}
+            expandableOn={options.expandableRows}
+            selectableOn={options.selectableRows}
+            fixedHeader={options.fixedHeader}
+            fixedSelectColumn={options.fixedSelectColumn}
+            selectableRowsHeader={options.selectableRowsHeader}
+            onExpand={this.props.toggleAllExpandableRows}
+            isRowSelectable
+          />}
         </TableHeadRow>
       </MuiTableHead>
     );
