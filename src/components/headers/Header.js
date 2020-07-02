@@ -1,5 +1,6 @@
 import React from 'react';
 import injectSheet from 'react-jss';
+import { HashRouter, Link } from 'react-router-dom';
 import nihLogo from '../assets/header/CTDC_Logo.svg';
 
 const styles = {
@@ -45,24 +46,32 @@ const styles = {
   },
 };
 
-const Header = ({ classes, logo }) => (
-  <div id="header" className={classes.headerBar}>
-    <div className={classes.nihLogoContainer}>
-      <img
-        className={classes.nihLogoImg}
-        src={logo}
-        alt="NCI CTDC Logo - Clinical Trials Data Commons"
-      />
-
+const Header = ({ classes, ...props }) => {
+  const { logo, alt, homeLink } = props;
+  return (
+    <div id="header" className={classes.headerBar}>
+      <div className={classes.nihLogoContainer}>
+        <HashRouter>
+          <Link to={homeLink}>
+            <img
+              className={classes.nihLogoImg}
+              src={logo}
+              alt={alt}
+            />
+          </Link>
+        </HashRouter>
+      </div>
+      <div className={classes.icdcLogoContainer}>
+        <div className={classes.grow} />
+      </div>
     </div>
-    <div className={classes.icdcLogoContainer}>
-      <div className={classes.grow} />
-    </div>
-  </div>
-);
+  );
+};
 
 Header.defaultProps = {
   logo: nihLogo,
+  alt: 'NCI CTDC Logo - Clinical Trials Data Commons',
+  homeLink: '/',
 };
 
 const StyledHeader = injectSheet(styles)(Header);
