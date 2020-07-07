@@ -28,7 +28,7 @@
 				},
 				{
 					"link": "https://www.linkedin.com/",
-					"icon": "https://raw.githubusercontent.com/CBIIT/bento-tools/master/src/assets/footer/linkedInIcon.svg"
+					"icon": "https://raw.githubusercontent.com/CBIIT/bento-tools/master/src/components/assets/footer/linkedInIcon.svg"
 				}
 			]
 		}
