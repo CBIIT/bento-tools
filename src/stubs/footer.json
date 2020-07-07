@@ -27,7 +27,6 @@
 					"link": "/contact"
 				},
 				{
-					"text": "Linked In",
 					"link": "https://www.linkedin.com/",
 					"icon": "https://raw.githubusercontent.com/CBIIT/bento-frontend/footer/src/assets/footer/LinkedIn_icon.svg"
 				}
@@ -51,6 +50,4 @@
       "text": "USA.gov",
       "link": "https://www.usa.gov"
     }
-  ],
-	"version": "mvp_1.1.1"
-}
+  ]}

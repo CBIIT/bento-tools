@@ -44,11 +44,14 @@ const styles = {
     fontSize: '14px',
     fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"',
   },
+  footerRoot: {
+    background: '#23355B',
+  },
   footerComponent: {
     lineHeight: '1.42857143',
-    margin: '0',
+    maxWidth: '1800px',
+    margin: '35px auto',
     '-webkit-font-smoothing': 'antialiased',
-    background: '#23355B',
     color: 'white',
     padding: '24px 35px 64px 35px',
     '& ul': {
@@ -167,8 +170,9 @@ const styles = {
 };
 
 const Footer = ({ classes, data }) => (
-  <footer className={classes.footerComponent}>
-    <div className={classes.footerRow}>
+  <div className={classes.footerRoot}>
+    <div className={classes.footerComponent}>
+      <div className={classes.footerRow}>
       <div className={
             cn(classes.footerRowSection, classes.footerNciColumn, classes.marginRight40)
   }
@@ -215,10 +219,10 @@ const Footer = ({ classes, data }) => (
         </div>
       ))}
     </div>
-    <div>
+      <div>
       <div className={classes.horizontalLine} />
     </div>
-    <div className={cn(classes.footerRow, classes.contentJustifyCenter)}>
+      <div className={cn(classes.footerRow, classes.contentJustifyCenter)}>
       <div className={cn(classes.nciLinks, classes.contentJustifyCenter)}>
         {data.nci_links.map((nciLink) => (
           <div>
@@ -230,7 +234,7 @@ const Footer = ({ classes, data }) => (
         ))}
       </div>
     </div>
-    <div className={cn(classes.footerRow, classes.contentJustifyCenter)}>
+      <div className={cn(classes.footerRow, classes.contentJustifyCenter)}>
       <div
         className={cn(
           classes.extraPadding,
@@ -246,8 +250,8 @@ const Footer = ({ classes, data }) => (
         </div>
       </div>
     </div>
-    {/* Quick and dirty for adding version number in footer */}
-    <div className={cn(classes.footerRow, classes.contentJustifyLeft)}>
+      {/* Quick and dirty for adding version number in footer */}
+      <div className={cn(classes.footerRow, classes.contentJustifyLeft)}>
       <div
         className={cn(
           classes.extraPadding,
@@ -263,8 +267,9 @@ const Footer = ({ classes, data }) => (
         </div>
       </div>
     </div>
-    {/* End of Quick and dirty for adding version number in footer */}
-  </footer>
+      {/* End of Quick and dirty for adding version number in footer */}
+    </div>
+  </div>
 );
 
 Footer.defaultProps = {
