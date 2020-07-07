@@ -1,7 +1,7 @@
 import React from 'react';
 import injectSheet from 'react-jss';
 import cn from '../helpers/classNameConcat';
-import nciLogo from '../assets/footer/NCI-footer.logo.svg';
+import RouteLinks from '../helpers/routeLinks';
 
 const styles = {
   ext: {
@@ -48,7 +48,7 @@ const styles = {
     lineHeight: '1.42857143',
     margin: '0',
     '-webkit-font-smoothing': 'antialiased',
-    background: '#325068',
+    background: '#23355B',
     color: 'white',
     padding: '24px 35px 64px 35px',
     '& ul': {
@@ -108,6 +108,11 @@ const styles = {
     color: 'white',
     textDecoration: 'none',
   },
+  socialIcon: {
+    width: '20px',
+    height: '20px',
+    marginLeft: 16,
+  },
   footerNciColumn: {
     display: 'flex',
     flexDirection: 'row',
@@ -149,7 +154,7 @@ const styles = {
   horizontalLine: {
     width: '100%',
     margin: '32px auto 16px auto',
-    borderTop: '1px solid #1E394D',
+    borderTop: '1px solid #2E5573',
   },
   marginRight40: {
     marginRight: '40px',
@@ -169,8 +174,8 @@ const Footer = ({ classes, data }) => (
   }
       >
         <img
-          src={nciLogo}
-          alt="nciLogo"
+          src={data.footerLogoImage}
+          alt={data.footerLogoAltText}
           className={classes.nciLogo}
         />
       </div>
@@ -186,9 +191,24 @@ const Footer = ({ classes, data }) => (
             </li>
             {linkSection.items.map((footerRowSectionItem) => (
               <li>
-                <div className={classes.footerText}>
-                  {footerRowSectionItem.text}
-                </div>
+                {footerRowSectionItem.text
+                && (
+                  <RouteLinks to={footerRowSectionItem.link}>
+                    <div className={classes.footerText}>
+                      {footerRowSectionItem.text}
+                    </div>
+                  </RouteLinks>
+                )}
+                {footerRowSectionItem.icon
+                && (
+                  <RouteLinks to={footerRowSectionItem.link}>
+                    <img
+                      src={footerRowSectionItem.icon}
+                      alt={data.footerLogoAltText}
+                      className={classes.socialIcon}
+                    />
+                  </RouteLinks>
+                )}
               </li>
             ))}
           </ul>
@@ -202,9 +222,9 @@ const Footer = ({ classes, data }) => (
       <div className={cn(classes.nciLinks, classes.contentJustifyCenter)}>
         {data.nci_links.map((nciLink) => (
           <div>
-            <a target="icdc-external" href={nciLink.href}>
+            <RouteLinks to={nciLink.link}>
               {nciLink.text}
-            </a>
+            </RouteLinks>
             <span className={classes.ext}>&nbsp;|&nbsp;</span>
           </div>
         ))}
