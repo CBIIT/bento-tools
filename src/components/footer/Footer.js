@@ -50,7 +50,7 @@ const styles = {
   footerComponent: {
     lineHeight: '1.42857143',
     maxWidth: '1800px',
-    margin: '35px auto',
+    margin: '0 auto',
     '-webkit-font-smoothing': 'antialiased',
     color: 'white',
     padding: '24px 35px 64px 35px',
