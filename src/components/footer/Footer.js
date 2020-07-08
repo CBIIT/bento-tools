@@ -173,29 +173,29 @@ const Footer = ({ classes, data }) => (
   <div className={classes.footerRoot}>
     <div className={classes.footerComponent}>
       <div className={classes.footerRow}>
-      <div className={
+        <div className={
             cn(classes.footerRowSection, classes.footerNciColumn, classes.marginRight40)
   }
-      >
-        <img
-          src={data.footerLogoImage}
-          alt={data.footerLogoAltText}
-          className={classes.nciLogo}
-        />
-      </div>
-      { data.link_sections.map((linkSection) => (
-        <div className={classes.footerRowSection}>
-          <ul>
-            <li>
-              <div
-                className={cn(classes.footerText, classes.listHeader)}
-              >
-                { linkSection.title }
-              </div>
-            </li>
-            {linkSection.items.map((footerRowSectionItem) => (
+        >
+          <img
+            src={data.footerLogoImage}
+            alt={data.footerLogoAltText}
+            className={classes.nciLogo}
+          />
+        </div>
+        { data.link_sections.map((linkSection) => (
+          <div className={classes.footerRowSection}>
+            <ul>
               <li>
-                {footerRowSectionItem.text
+                <div
+                  className={cn(classes.footerText, classes.listHeader)}
+                >
+                  { linkSection.title }
+                </div>
+              </li>
+              {linkSection.items.map((footerRowSectionItem) => (
+                <li>
+                  {footerRowSectionItem.text
                 && (
                   <RouteLinks to={footerRowSectionItem.link}>
                     <div className={classes.footerText}>
@@ -203,7 +203,7 @@ const Footer = ({ classes, data }) => (
                     </div>
                   </RouteLinks>
                 )}
-                {footerRowSectionItem.icon
+                  {footerRowSectionItem.icon
                 && (
                   <RouteLinks to={footerRowSectionItem.link}>
                     <img
@@ -213,60 +213,59 @@ const Footer = ({ classes, data }) => (
                     />
                   </RouteLinks>
                 )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
-    </div>
-      <div>
-      <div className={classes.horizontalLine} />
-    </div>
-      <div className={cn(classes.footerRow, classes.contentJustifyCenter)}>
-      <div className={cn(classes.nciLinks, classes.contentJustifyCenter)}>
-        {data.nci_links.map((nciLink) => (
-          <div>
-            <RouteLinks to={nciLink.link}>
-              {nciLink.text}
-            </RouteLinks>
-            <span className={classes.ext}>&nbsp;|&nbsp;</span>
+                </li>
+              ))}
+            </ul>
           </div>
         ))}
       </div>
-    </div>
+      <div>
+        <div className={classes.horizontalLine} />
+      </div>
       <div className={cn(classes.footerRow, classes.contentJustifyCenter)}>
-      <div
-        className={cn(
-          classes.extraPadding,
-          classes.nciLinks,
-          classes.contentJustifyCenter,
-        )}
-      >
-        <div>
-          <span className={classes.turningNIH}>
-            NIH … Turning Discovery Into Health
-            <sup>®</sup>
-          </span>
+        <div className={cn(classes.nciLinks, classes.contentJustifyCenter)}>
+          {data.nci_links.map((nciLink) => (
+            <div>
+              <RouteLinks to={nciLink.link}>
+                {nciLink.text}
+              </RouteLinks>
+              <span className={classes.ext}>&nbsp;|&nbsp;</span>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
+      <div className={cn(classes.footerRow, classes.contentJustifyCenter)}>
+        <div
+          className={cn(
+            classes.extraPadding,
+            classes.nciLinks,
+            classes.contentJustifyCenter,
+          )}
+        >
+          <div>
+            <span className={classes.turningNIH}>
+              {data.footerStaticText}
+            </span>
+          </div>
+        </div>
+      </div>
       {/* Quick and dirty for adding version number in footer */}
       <div className={cn(classes.footerRow, classes.contentJustifyLeft)}>
-      <div
-        className={cn(
-          classes.extraPadding,
-          classes.nciLinks,
-          classes.contentJustifyCenter,
-        )}
-      >
-        <div>
-          <span className={classes.footorVersiontext}>
-            Version:&nbsp;
-            {data.version}
-          </span>
+        <div
+          className={cn(
+            classes.extraPadding,
+            classes.nciLinks,
+            classes.contentJustifyCenter,
+          )}
+        >
+          <div>
+            <span className={classes.footorVersiontext}>
+              Version:&nbsp;
+              {data.version}
+            </span>
+          </div>
         </div>
       </div>
-    </div>
       {/* End of Quick and dirty for adding version number in footer */}
     </div>
   </div>
