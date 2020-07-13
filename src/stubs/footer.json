@@ -28,6 +28,10 @@
 					"link": "/contact"
 				},
 				{
+					"text": "contact@nih.com",
+					"link": "contact@nih.com"
+				},
+				{
 					"link": "https://www.linkedin.com/",
 					"icon": "https://raw.githubusercontent.com/CBIIT/bento-tools/master/src/components/assets/footer/linkedInIcon.svg"
 				}

@@ -35,8 +35,8 @@ const title = 'Awesome list';
 const data = users;
 
 storiesOf('Header', module)
-  .add('Header default', () => <Header alt="hello" />)
-  .add('Header with custom Logo', () => <Header logo={nihLogo} />)
+  .add('Header default', () => <Header alt="hello" homeLink="https://www.google.com" />)
+  .add('Header with custom Logo', () => <Header logo={nihLogo} homeLink="https://www.google.com" />)
   .add('Easter Header with custom easter', () => <Header easter={easter2000} />)
   .add('Easter Header with custom logo and eas', () => <Header logo={nihLogo} easter={easter2000} />);
 

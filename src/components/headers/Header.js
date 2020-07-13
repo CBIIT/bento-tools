@@ -1,6 +1,6 @@
 import React from 'react';
 import injectSheet from 'react-jss';
-import { HashRouter, Link } from 'react-router-dom';
+import RouteLinks from '../helpers/routeLinks';
 import nihLogo from '../assets/header/CTDC_Logo.svg';
 
 const styles = {
@@ -51,15 +51,13 @@ const Header = ({ classes, ...props }) => {
   return (
     <div id="header" className={classes.headerBar}>
       <div className={classes.nihLogoContainer}>
-        <HashRouter>
-          <Link to={homeLink}>
-            <img
-              className={classes.nihLogoImg}
-              src={logo}
-              alt={alt}
-            />
-          </Link>
-        </HashRouter>
+        <RouteLinks to={homeLink}>
+          <img
+            className={classes.nihLogoImg}
+            src={logo}
+            alt={alt}
+          />
+        </RouteLinks>
       </div>
       <div className={classes.icdcLogoContainer}>
         <div className={classes.grow} />
