@@ -36,14 +36,14 @@ const styles = {
     },
   },
   nihLogoImg: {
-    width: '463px',
+    minWidth: '200px',
+    minHeight: '60px',
+    maxHeight: '80px',
+    maxWidth: '460px',
     cursor: 'pointer',
+    marginLeft: '22px',
   },
-  icdcLogoImg: {
-    margin: '22px 35px auto',
-    height: '39px',
-    cursor: 'pointer',
-  },
+
 };
 
 const Header = ({ classes, ...props }) => {
