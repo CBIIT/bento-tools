@@ -193,7 +193,7 @@ const Footer = ({ classes, data }) => (
                   { linkSection.title }
                 </div>
               </li>
-              {linkSection.items.map((footerRowSectionItem) => (
+              {data.link_sections.length < 5 ? linkSection.items.map((footerRowSectionItem) => (
                 <li>
                   {footerRowSectionItem.text
                 && (
@@ -214,7 +214,7 @@ const Footer = ({ classes, data }) => (
                   </RouteLinks>
                 )}
                 </li>
-              ))}
+              )) : 'The maximum value of Footer Subsection Links is 4'}
             </ul>
           </div>
         )) : 'The maximum Footer Subsections is 3'}
