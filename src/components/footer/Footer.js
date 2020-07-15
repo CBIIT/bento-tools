@@ -183,7 +183,7 @@ const Footer = ({ classes, data }) => (
             className={classes.nciLogo}
           />
         </div>
-        { data.link_sections.map((linkSection) => (
+        { data.link_sections.length < 4 ? data.link_sections.map((linkSection) => (
           <div className={classes.footerRowSection}>
             <ul>
               <li>
@@ -217,21 +217,21 @@ const Footer = ({ classes, data }) => (
               ))}
             </ul>
           </div>
-        ))}
+        )) : 'The maximum Footer Subsections is 3'}
       </div>
       <div>
         <div className={classes.horizontalLine} />
       </div>
       <div className={cn(classes.footerRow, classes.contentJustifyCenter)}>
         <div className={cn(classes.nciLinks, classes.contentJustifyCenter)}>
-          {data.nci_links.map((nciLink) => (
+          {data.nci_links.length < 5 ? data.nci_links.map((nciLink) => (
             <div>
               <RouteLinks to={nciLink.link}>
                 {nciLink.text}
               </RouteLinks>
               <span className={classes.ext}>&nbsp;|&nbsp;</span>
             </div>
-          ))}
+          )) : 'The maximum value of Number of Footer Anchor Links is 4'}
         </div>
       </div>
       <div className={cn(classes.footerRow, classes.contentJustifyCenter)}>
