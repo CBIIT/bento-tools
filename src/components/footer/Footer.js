@@ -193,7 +193,7 @@ const Footer = ({ classes, data }) => (
                   { linkSection.title }
                 </div>
               </li>
-              {data.link_sections.length < 5 ? linkSection.items.map((footerRowSectionItem) => (
+              { linkSection.items.length < 5 ? linkSection.items.map((footerRowSectionItem) => (
                 <li>
                   {footerRowSectionItem.text
                 && (
