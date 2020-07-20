@@ -25,11 +25,7 @@
 			"items": [
 				{
 					"text": "Contact Us",
-					"link": "/contact"
-				},
-				{
-					"text": "contact@nih.com",
-					"link": "contact@nih.com"
+					"link": "bento-help@nih.gov"
 				},
 				{
 					"link": "https://www.linkedin.com/",
