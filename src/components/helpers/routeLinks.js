@@ -4,16 +4,10 @@ import PropTypes from 'prop-types';
 import { HashRouter, Link } from 'react-router-dom';
 
 function linkIsInternal(linkElement) {
-  console.log('linkIsInternal');
-  console.log(linkElement);
-  console.log(linkElement.substring(0, 1));
   return (linkElement.substring(0, 1) === '/');
 }
 
 function linkIsEmail(linkElement) {
-  console.log('linkIsEmail');
-  console.log(linkElement);
-  console.log(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(linkElement));
   return (/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(linkElement));
 }
 

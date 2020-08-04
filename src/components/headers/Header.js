@@ -41,7 +41,7 @@ const styles = {
     maxHeight: '80px',
     maxWidth: '460px',
     cursor: 'pointer',
-    marginLeft: '22px',
+    marginLeft: '45px',
   },
 
 };

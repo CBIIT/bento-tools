@@ -53,7 +53,7 @@ const styles = {
     margin: '0 auto',
     '-webkit-font-smoothing': 'antialiased',
     color: 'white',
-    padding: '24px 35px 64px 35px',
+    padding: '24px 45px 64px 45px',
     '& ul': {
       listStyle: 'none',
       margin: '0',
@@ -183,7 +183,7 @@ const Footer = ({ classes, data }) => (
             className={classes.nciLogo}
           />
         </div>
-        { data.link_sections.length < 4 ? data.link_sections.map((linkSection) => (
+        { data.link_sections.slice(0, data.maxSubsections).map((linkSection) => (
           <div className={classes.footerRowSection}>
             <ul>
               <li>
@@ -193,7 +193,7 @@ const Footer = ({ classes, data }) => (
                   { linkSection.title }
                 </div>
               </li>
-              { linkSection.items.length < 5 ? linkSection.items.map((footerRowSectionItem) => (
+              { linkSection.items.slice(0, data.maxSubsectionsLinks).map((footerRowSectionItem) => (
                 <li>
                   {footerRowSectionItem.text
                 && (
@@ -214,24 +214,24 @@ const Footer = ({ classes, data }) => (
                   </RouteLinks>
                 )}
                 </li>
-              )) : 'The maximum value of Footer Subsection Links is 4'}
+              ))}
             </ul>
           </div>
-        )) : 'The maximum Footer Subsections is 3'}
+        ))}
       </div>
       <div>
         <div className={classes.horizontalLine} />
       </div>
       <div className={cn(classes.footerRow, classes.contentJustifyCenter)}>
         <div className={cn(classes.nciLinks, classes.contentJustifyCenter)}>
-          {data.nci_links.length < 5 ? data.nci_links.map((nciLink) => (
+          {data.nci_links.slice(0, data.maxAnchorLinks).map((nciLink) => (
             <div>
               <RouteLinks to={nciLink.link}>
                 {nciLink.text}
               </RouteLinks>
               <span className={classes.ext}>&nbsp;|&nbsp;</span>
             </div>
-          )) : 'The maximum value of Number of Footer Anchor Links is 4'}
+          ))}
         </div>
       </div>
       <div className={cn(classes.footerRow, classes.contentJustifyCenter)}>
