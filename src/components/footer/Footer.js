@@ -183,7 +183,7 @@ const Footer = ({ classes, data }) => (
             className={classes.nciLogo}
           />
         </div>
-        { data.link_sections.slice(0, data.maxSubsections).map((linkSection) => (
+        { data.link_sections.slice(0, 3).map((linkSection) => (
           <div className={classes.footerRowSection}>
             <ul>
               <li>
@@ -193,7 +193,7 @@ const Footer = ({ classes, data }) => (
                   { linkSection.title }
                 </div>
               </li>
-              { linkSection.items.slice(0, data.maxSubsectionsLinks).map((footerRowSectionItem) => (
+              { linkSection.items.slice(0, 4).map((footerRowSectionItem) => (
                 <li>
                   {footerRowSectionItem.text
                 && (
@@ -224,7 +224,7 @@ const Footer = ({ classes, data }) => (
       </div>
       <div className={cn(classes.footerRow, classes.contentJustifyCenter)}>
         <div className={cn(classes.nciLinks, classes.contentJustifyCenter)}>
-          {data.nci_links.slice(0, data.maxAnchorLinks).map((nciLink) => (
+          {data.nci_links.slice(0, 4).map((nciLink) => (
             <div>
               <RouteLinks to={nciLink.link}>
                 {nciLink.text}
