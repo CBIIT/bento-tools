@@ -53,7 +53,7 @@ const styles = {
     margin: '0 auto',
     '-webkit-font-smoothing': 'antialiased',
     color: 'white',
-    padding: '24px 45px 64px 45px',
+    padding: '24px 45px 45px 45px',
     '& ul': {
       listStyle: 'none',
       margin: '0',
