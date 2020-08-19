@@ -224,7 +224,7 @@ const Footer = ({ classes, data }) => (
       </div>
       <div className={cn(classes.footerRow, classes.contentJustifyCenter)}>
         <div className={cn(classes.nciLinks, classes.contentJustifyCenter)}>
-          {data.nci_links.slice(0, 4).map((nciLink) => (
+          {data.global_footer_links.slice(0, 4).map((nciLink) => (
             <div>
               <RouteLinks to={nciLink.link}>
                 {nciLink.text}
