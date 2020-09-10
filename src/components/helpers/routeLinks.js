@@ -13,7 +13,7 @@ function linkIsEmail(linkElement) {
 
 const RouteLinks = ({ to, children }) => (linkIsEmail(to)
   ? (
-    <a href={`mailto:${to}/`}>{children}</a>
+    <a href={`mailto:${to}`}>{children}</a>
   )
   : (linkIsInternal(to)
     ? (
