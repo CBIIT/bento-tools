@@ -18,4 +18,6 @@ export { default as TableSelectCell } from './components/datatables/components/T
 export { default as TableToolbar } from './components/datatables//components/TableToolbar';
 export { default as TableToolbarSelect } from './components/datatables/components/TableToolbarSelect';
 export { default as TableViewCol } from './components/datatables/components/TableViewCol';
+export { default as ProgramSunburst } from './components/PieCharts/ProgramSunburst/ProgramSunburstController';
+export { default as CustomActiveDonut } from './components/PieCharts/CustomActiveDonut/CustomActiveDonutController';
 export { debounceSearchRender, DebounceTableSearch } from './components/datatables/plug-ins/DebounceSearchRender';
