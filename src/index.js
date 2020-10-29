@@ -19,3 +19,23 @@ export { default as TableToolbar } from './components/datatables//components/Tab
 export { default as TableToolbarSelect } from './components/datatables/components/TableToolbarSelect';
 export { default as TableViewCol } from './components/datatables/components/TableViewCol';
 export { debounceSearchRender, DebounceTableSearch } from './components/datatables/plug-ins/DebounceSearchRender';
+export { prepareLinks, Anchor } from './utils/anchor'; 
+export { default as cn } from './utils/classNameConcat';
+export { default as createSvgIcon} from './utils/createSvgIcon';
+export { 
+	COLORS_LEVEL_1, 
+	COLORS_LEVEL_2, 
+	unselectFilters, 
+	getStatDataFromDashboardData, 
+	getSunburstDataFromDashboardData, 
+	getDonutDataFromDashboardData,
+	filterData,
+	getFilters,
+	customSorting,
+	getCheckBoxData,
+	transformInitialDataForSunburst,
+	transformAPIDataIntoCheckBoxData,
+	customCheckBox,
+} from './utils/dashboardUtilFunctions';
+export { getColumns, getDefaultCustomFooter, getOptions } from './utils/tables';
+export { manipulateLinks, dateTimeStamp, formatBytes } from './utils/helpers';
