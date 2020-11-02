@@ -7,6 +7,8 @@ import users from '../stubs/users.json';
 import footerData from '../stubs/footer.json';
 import Header from '../components/headers';
 import Footer from '../components/footer';
+import StatsBar from '../components/statsBar';
+import { data as statsData, statsStyling, globalStatsData } from '../stubs/statsBar';
 
 import nihLogo from './icdc_nih_logo.svg';
 import easter2000 from './Canine2000.png';
@@ -34,6 +36,10 @@ const title = 'Awesome list';
 
 const data = users;
 
+console.log(globalStatsData);
+console.log(statsData['numberOfFiles']);
+console.log(statsStyling.global.statTitleFirst);
+
 storiesOf('Header', module)
   .add('Header default', () => <Header alt="hello" homeLink="https://www.google.com" />)
   .add('Header with custom Logo', () => <Header logo={nihLogo} homeLink="https://www.google.com" />)
@@ -43,3 +49,4 @@ storiesOf('Header', module)
 storiesOf('Footer', module).add('Footer', () => <Footer data={footerData} />);
 storiesOf('MUIDatatable', module).add('left Selectable', () => <MUIDatatable columns={columns} data={data} title={title} selectCellPostion="right" />);
 storiesOf('MUIDatatable', module).add('right Selectable', () => <MUIDatatable columns={columns} data={data} options={options} title={title} selectCellPostion="right" />);
+storiesOf('StatsBar', module).add('StatsBar', () => <StatsBar data={statsData} globalStatsData={globalStatsData} statsStyling={statsStyling} />);
