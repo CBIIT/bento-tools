@@ -20,4 +20,7 @@ export { default as TableToolbarSelect } from './components/datatables/component
 export { default as TableViewCol } from './components/datatables/components/TableViewCol';
 export { default as ProgramSunburst } from './components/PieCharts/ProgramSunburst/ProgramSunburstController';
 export { default as CustomActiveDonut } from './components/PieCharts/CustomActiveDonut/CustomActiveDonutController';
+export { default as AboutHeader } from './components/about/aboutHeaderView';
+export { default as AboutBody } from './components/about/aboutBodyView';
+export { default as XoomInOut } from './components/about/xoomInOutView';
 export { debounceSearchRender, DebounceTableSearch } from './components/datatables/plug-ins/DebounceSearchRender';

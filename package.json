@@ -42,6 +42,7 @@
     "react-scripts": "3.4.1",
     "react-to-print": "^2.8.0",
     "react-vis": "^1.11.7",
+    "react-zoom-pan-pinch": "^1.6.1",
     "recharts": "^1.8.5",
     "svg-url-loader": "^5.0.0"
   },
