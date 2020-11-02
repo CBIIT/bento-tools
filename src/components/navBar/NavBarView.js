@@ -1,13 +1,12 @@
 import React from 'react';
 import queryString from 'query-string';
-import { withRouter, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import {
   AppBar,
   Button,
   Toolbar,
   Tooltip,
-  withStyles,
 } from '@material-ui/core';
 import classnames from 'classnames';
 import injectSheet from 'react-jss';
