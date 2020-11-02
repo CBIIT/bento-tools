@@ -52,7 +52,7 @@ function findCaseSizeOfTitle(data, title) {
 
 const styles = (theme) => ({
   title: {
-    color: theme.palette.widgetBackground.contrastText,
+    color: (theme.palette.widgetBackground) ? theme.palette.widgetBackground.contrastText : 'black',
     fontSize: '12px',
     maxWidth: '1440px',
     fontFamily: 'Nunito',

@@ -1,0 +1,31 @@
+{
+  "title": "root",
+  "color": "#057EBD",
+  "children": [
+    {
+      "title": "TAILORx",
+      "color": "#D4D4D4",
+      "caseSize": 10,
+      "children": [
+        {
+          "title": "TAILORx : B",
+          "color": "#F78F49",
+          "caseSize": 2,
+          "size": 2
+        },
+        {
+          "title": "TAILORx : C",
+          "color": "#79287C",
+          "caseSize": 5,
+          "size": 5
+        },
+        {
+          "title": "TAILORx : A",
+          "color": "#7CC242",
+          "caseSize": 3,
+          "size": 3
+        }
+      ]
+    }
+  ]
+}
