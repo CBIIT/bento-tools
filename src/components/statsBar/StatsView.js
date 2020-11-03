@@ -7,9 +7,6 @@ const StatsBar = ({
 }) => (
   <>
     <div className={classes.statsSection}>
-      {console.log(data)}
-      {console.log(globalStatsData)}
-      {console.log(statsStyling)}
       <div
         className={classes.box}
       >

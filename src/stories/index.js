@@ -36,10 +36,6 @@ const title = 'Awesome list';
 
 const data = users;
 
-console.log(globalStatsData);
-console.log(statsData['numberOfFiles']);
-console.log(statsStyling.global.statTitleFirst);
-
 storiesOf('Header', module)
   .add('Header default', () => <Header alt="hello" homeLink="https://www.google.com" />)
   .add('Header with custom Logo', () => <Header logo={nihLogo} homeLink="https://www.google.com" />)
