@@ -5,9 +5,9 @@ import {
   Button,
   Toolbar,
   Tooltip,
+  withStyles,
 } from '@material-ui/core';
 import classnames from 'classnames';
-import injectSheet from 'react-jss';
 import DropdownMenu from './components/DropdownMenu';
 
 const drawerWidth = 240;
@@ -215,8 +215,8 @@ const styles = () => ({
   buttonContainer: {
     margin: '0 auto',
   },
-  appBar: {
-    backgroundColor: '#142D64',
+  appBar: (props) => ({
+    backgroundColor: props.navBarstyling.global.backgroundColor ? props.navBarstyling.global.backgroundColor : '#142D64',
     marginTop: '100px',
     width: '100vw',
     // zIndex: theme.zIndex.drawer + 1,
@@ -224,7 +224,7 @@ const styles = () => ({
     //   easing: theme.transitions.easing.sharp,
     //   duration: theme.transitions.duration.leavingScreen,
     // }),
-  },
+  }),
   cartIcon: {
     width: '22px',
     height: '22px',
@@ -258,18 +258,18 @@ const styles = () => ({
     width: drawerWidth,
     flexShrink: 0,
   },
-  toolbar: {
-    minHeight: '39px',
+  toolbar: (props) => ({
+    minHeight: props.navBarstyling.global.height ? props.navBarstyling.global.height : '39px',
     paddingRight: '45px',
     paddingLeft: '45px',
     alignItems: 'flex-start',
-  },
-  buttonRoot: {
-    padding: '9px 20px 0px 20px',
-  },
-  buttonRootNoRightPadding: {
-    padding: '9px 20px 0px 20px',
-  },
+  }),
+  buttonRoot: (props) => ({
+    padding: props.navBarstyling.global.padding ? props.navBarstyling.global.padding : '9px 20px 0px 20px',
+  }),
+  buttonRootNoRightPadding: (props) => ({
+    padding: props.navBarstyling.global.padding ? props.navBarstyling.global.padding : '9px 20px 0px 20px',
+  }),
   badge: {
     display: 'inline-flex',
     position: 'relative',
@@ -332,7 +332,8 @@ const styles = () => ({
 
 NavBar.defaultProps = {
   classes: {},
+  navBarstyling: {},
 };
 
-const StyledNavBar = injectSheet(styles)(NavBar);
+const StyledNavBar = withStyles(styles)(NavBar);
 export default StyledNavBar;
