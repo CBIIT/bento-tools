@@ -1,7 +1,5 @@
 import React from 'react';
-import queryString from 'query-string';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import {
   AppBar,
   Button,
@@ -11,12 +9,11 @@ import {
 import classnames from 'classnames';
 import injectSheet from 'react-jss';
 import DropdownMenu from './components/DropdownMenu';
-import env from '../../utils/env';
 
 const drawerWidth = 240;
 // const FENCE_LOGIN_URL = process.env.FENCE_LOGIN_URL;
 // const FENCE_LOGIN_URL = process.env.REACT_APP_LOGIN_URL;
-const BACKEND_GETUSERINFO_API = env.REACT_APP_BACKEND_GETUSERINFO_API;
+const BACKEND_GETUSERINFO_API = 'https://k9dc.essential-dev.com/fence/login/';
 
 const NavBar = ({
   classes, isSidebarOpened, navBarData, navBarCartData, initCart,
@@ -37,7 +34,7 @@ const NavBar = ({
 
   React.useEffect(() => {
     initCart();
-    const values = queryString.parse(window.location.search);
+    const values = {};
 
     if (values.code) {
       fetch(BACKEND_GETUSERINFO_API + values.code)
@@ -65,12 +62,7 @@ const NavBar = ({
     }
   }, []);
 
-  const numberOfCases = useSelector((state) => {
-    if (state.cart.fileIds) {
-      return state.cart.fileIds.length;
-    }
-    return 0;
-  });
+  const numberOfCases = 0;
 
   // const activeFilters = useSelector((state) => (
   //   state.dashboard.datatable
@@ -204,7 +196,7 @@ const NavBar = ({
   );
 };
 
-const styles = (theme, navBarstyling) => ({
+const styles = () => ({
   myCasesPosition: {
     position: 'absolute',
     right: '20px',
@@ -216,9 +208,6 @@ const styles = (theme, navBarstyling) => ({
     fontSize: '11px',
     letterSpacing: '1.25px',
     fontWeight: '800',
-    [theme.breakpoints.down('xs')]: {
-      display: 'none',
-    },
     '&:hover, &:focus': {
       borderRadius: '0',
     },
@@ -227,14 +216,14 @@ const styles = (theme, navBarstyling) => ({
     margin: '0 auto',
   },
   appBar: {
-    backgroundColor: navBarstyling.global.backgroundColor ? navBarstyling.global.backgroundColor : '#142D64',
+    backgroundColor: '#142D64',
     marginTop: '100px',
     width: '100vw',
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
+    // zIndex: theme.zIndex.drawer + 1,
+    // transition: theme.transitions.create(['margin'], {
+    //   easing: theme.transitions.easing.sharp,
+    //   duration: theme.transitions.duration.leavingScreen,
+    // }),
   },
   cartIcon: {
     width: '22px',
@@ -260,26 +249,26 @@ const styles = (theme, navBarstyling) => ({
     paddingRight: '0px !important',
     width: '100%',
     marginLeft: drawerWidth,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
+    // transition: theme.transitions.create(['margin', 'width'], {
+    //   easing: theme.transitions.easing.easeOut,
+    //   duration: theme.transitions.duration.enteringScreen,
+    // }),
   },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
   },
   toolbar: {
-    minHeight: navBarstyling.global.height ? navBarstyling.global.height : '39px',
+    minHeight: '39px',
     paddingRight: '45px',
     paddingLeft: '45px',
     alignItems: 'flex-start',
   },
   buttonRoot: {
-    padding: navBarstyling.global.padding ? navBarstyling.global.padding : '9px 20px 0px 20px',
+    padding: '9px 20px 0px 20px',
   },
   buttonRootNoRightPadding: {
-    padding: navBarstyling.global.padding ? navBarstyling.global.padding : '9px 20px 0px 20px',
+    padding: '9px 20px 0px 20px',
   },
   badge: {
     display: 'inline-flex',
@@ -320,7 +309,7 @@ const styles = (theme, navBarstyling) => ({
     textTransform: 'none',
     color: 'black',
     marginLeft: '16px',
-    fontFamily: theme.custom.fontFamilySans,
+    // fontFamily: theme.custom.fontFamilySans,
     '&:hover': {
       backgroundColor: '#566672',
       color: 'white',
@@ -335,10 +324,10 @@ const styles = (theme, navBarstyling) => ({
     zIndex: '1201',
     height: 'calc(100% - 100px)',
   },
-  headerMenuButton: {
-    marginLeft: theme.spacing.unit,
-    padding: theme.spacing.unit / 2,
-  },
+  // headerMenuButton: {
+  //   marginLeft: theme.spacing.unit,
+  //   padding: theme.spacing.unit / 2,
+  // },
 });
 
 NavBar.defaultProps = {
