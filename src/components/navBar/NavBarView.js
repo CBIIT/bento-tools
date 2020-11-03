@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { HashRouter, NavLink } from 'react-router-dom';
 import {
   AppBar,
   Button,
@@ -16,7 +16,7 @@ const drawerWidth = 240;
 const BACKEND_GETUSERINFO_API = 'https://k9dc.essential-dev.com/fence/login/';
 
 const NavBar = ({
-  classes, isSidebarOpened, navBarData, navBarCartData, initCart, navBarstyling,
+  classes, isSidebarOpened, navBarData, navBarCartData, navBarstyling,
 }) => {
   // const theme = useTheme();
   const [authState, setAuthState] = React.useState({
@@ -33,7 +33,6 @@ const NavBar = ({
   }
 
   React.useEffect(() => {
-    initCart();
     const values = {};
 
     if (values.code) {
@@ -95,14 +94,16 @@ const NavBar = ({
                 )
                 : (
                   <Button id="button_navbar_navButton" disableRipple weight="medium" className={classes.logotype} classes={{ root: classes.buttonRoot }}>
-                    <NavLink
-                      className={classes.labelText}
-                      activeClassName={classes.activeLabel}
-                      to={navButton.link ? navButton.link : '/'}
-                      onClick={() => handleButtonClickEvent(`${navButton.labelText}`)}
-                    >
-                      {navButton.labelText}
-                    </NavLink>
+                    <HashRouter>
+                      <NavLink
+                        className={classes.labelText}
+                        activeClassName={classes.activeLabel}
+                        to={navButton.link ? navButton.link : '/'}
+                        onClick={() => handleButtonClickEvent(`${navButton.labelText}`)}
+                      >
+                        {navButton.labelText}
+                      </NavLink>
+                    </HashRouter>
                   </Button>
                 )
             ))}
@@ -110,36 +111,38 @@ const NavBar = ({
           {/* Start of Theme Switching Icon and logic */}
           <div className={classes.myCasesPosition}>
             <Button id="button_navbar_mycases" disableRipple weight="medium" className={classes.logotype} classes={{ root: classes.buttonRootNoRightPadding }}>
-              <NavLink
-                className={classes.cartLabelText}
-                to={navBarCartData.cartLink}
-              >
-                {navBarCartData.cartLabel}
-                {/* <IconButton
+              <HashRouter>
+                <NavLink
+                  className={classes.cartLabelText}
+                  to={navBarCartData.cartLink}
+                >
+                  {navBarCartData.cartLabel}
+                  {/* <IconButton
                 color="inherit"
                 aria-haspopup="true"
                 aria-controls="mail-menu"
                 className={classes.headerMenuButton}
                 classes={{ root: classes.iconButtonRoot }}
               > */}
-                {/* <Badge badgeContent={numberOfCases} max={99999}> */}
+                  {/* <Badge badgeContent={numberOfCases} max={99999}> */}
 
-                <Tooltip title="Cases" placement="bottom-end">
-                  <span className={classes.badge}>
-                    <img
-                      className={classes.cartIcon}
-                      src={navBarCartData.cartIcon}
-                      alt={navBarCartData.cartIconAlt}
-                    />
-                    <span className={classes.cartCounter}>
-                      {numberOfCases}
+                  <Tooltip title="Cases" placement="bottom-end">
+                    <span className={classes.badge}>
+                      <img
+                        className={classes.cartIcon}
+                        src={navBarCartData.cartIcon}
+                        alt={navBarCartData.cartIconAlt}
+                      />
+                      <span className={classes.cartCounter}>
+                        {numberOfCases}
+                      </span>
                     </span>
-                  </span>
-                </Tooltip>
+                  </Tooltip>
 
-                {/* </Badge> */}
-                {/* </IconButton> */}
-              </NavLink>
+                  {/* </Badge> */}
+                  {/* </IconButton> */}
+                </NavLink>
+              </HashRouter>
             </Button>
           </div>
           {/* Login button functionality on Navigation bar */}

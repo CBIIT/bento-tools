@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { HashRouter, NavLink } from 'react-router-dom';
 import {
   withStyles, Paper,
 } from '@material-ui/core';
@@ -9,14 +9,16 @@ const CustomDropdownMenu = ({ classes, handleClick, dropDownElements }) => (
     <Paper className={classes.paper}>
       <div id="aboutDropDown">
         {dropDownElements.map((dropDownElementsItem) => (
-          <NavLink
-            className={classes.link}
-            activeStyle={{ color: '#27DBFF' }}
-            to={dropDownElementsItem.link}
-            onClick={handleClick}
-          >
-            {dropDownElementsItem.labelText}
-          </NavLink>
+          <HashRouter>
+            <NavLink
+              className={classes.link}
+              activeStyle={{ color: '#27DBFF' }}
+              to={dropDownElementsItem.link}
+              onClick={handleClick}
+            >
+              {dropDownElementsItem.labelText}
+            </NavLink>
+          </HashRouter>
         ))}
       </div>
     </Paper>
