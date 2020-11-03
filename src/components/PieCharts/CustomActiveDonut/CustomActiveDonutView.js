@@ -3,7 +3,7 @@ import {
   PieChart, Pie, Sector, Cell, ResponsiveContainer,
 } from 'recharts';
 
-let COLORS_EVEN = [
+const DEFAULT_COLORS_EVEN = [
   '#D4D4D4',
   '#057EBD',
   '#0C3151',
@@ -13,7 +13,7 @@ let COLORS_EVEN = [
   '#61479D',
 ];
 
-let COLORS_ODD = [
+const DEFAULT_COLORS_ODD = [
   '#057EBD',
   '#0C3151',
   '#F78F49',
@@ -88,10 +88,8 @@ export default class CustomActiveDonut extends PureComponent {
       value: obj.subjects,
     }));
 
-    if (colors) {
-      COLORS_EVEN = colors.even;
-      COLORS_ODD = colors.odd;
-    }
+    const COLORS_EVEN = (colors && colors.even) ? colors.even : DEFAULT_COLORS_EVEN;
+    const COLORS_ODD = (colors && colors.odd) ? colors.even : DEFAULT_COLORS_ODD;
 
     const { activeIndex } = this.state;
 

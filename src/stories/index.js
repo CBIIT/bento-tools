@@ -3,8 +3,8 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 import MUIDatatable from '../components/datatables/MUIDataTable';
-import ProgramSunburst from '../components/PieCharts/ProgramSunburst/ProgramSunburstController';
-import CustomActiveDonut from '../components/PieCharts/CustomActiveDonut/CustomActiveDonutController';
+import ProgramSunburst from '../components/PieCharts/ProgramSunburst/ProgramSunburstView';
+import CustomActiveDonut from '../components/PieCharts/CustomActiveDonut/CustomActiveDonutView';
 import users from '../stubs/users.json';
 import footerData from '../stubs/footer.json';
 import dataSunburst from '../stubs/sunbust.json';

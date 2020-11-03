@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
+import injectSheet from 'react-jss';
 import { Sunburst, LabelSeries } from 'react-vis';
-import { withStyles } from '@material-ui/core';
 
 function getKeyPath(node) {
   if (!node.parent) {
@@ -159,4 +159,6 @@ class ProgramSunburst extends PureComponent {
   }
 }
 
-export default withStyles(styles)(ProgramSunburst);
+const chart = injectSheet(styles)(ProgramSunburst);
+
+export default chart;
