@@ -16,7 +16,6 @@ const drawerWidth = 240;
 const BACKEND_GETUSERINFO_API = 'https://k9dc.essential-dev.com/fence/login/';
 
 const NavBar = ({
-  // eslint-disable-next-line no-unused-vars
   classes, isSidebarOpened, navBarData, navBarCartData, initCart, navBarstyling,
 }) => {
   // const theme = useTheme();
@@ -91,6 +90,7 @@ const NavBar = ({
                     clickedEl={clickedEl}
                     linkText={navButton.labelText}
                     dropDownElements={navButton.dropDownLinks.slice(0, 9)}
+                    navBarstyling={navBarstyling}
                   />
                 )
                 : (

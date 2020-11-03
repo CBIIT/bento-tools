@@ -48,34 +48,38 @@ const DropdownMenu = ({
   );
 };
 
-const styles = (theme, navBarstyling) => ({
+const styles = () => ({
   logotype: {
     whiteSpace: 'nowrap',
-    color: theme.palette.primary.contrastText,
+    color: '#FFFFFF',
     fontFamily: 'Nunito',
     fontSize: '13px',
     fontWeight: '600',
     letterSpacing: '0.9px',
-    [theme.breakpoints.down('xs')]: {
-      display: 'none',
-    },
+    // [theme.breakpoints.down('xs')]: {
+    //   display: 'none',
+    // },
     '&:hover, &:focus': {
       borderRadius: '0',
     },
   },
-  buttonRoot: {
-    padding: navBarstyling.global.padding ? navBarstyling.global.padding : '9px 20px 0px 20px',
-  },
+  buttonRoot: (props) => ({
+    padding: props.navBarstyling.global.padding ? props.navBarstyling.global.padding : '9px 20px 0px 20px',
+  }),
   buttonRootClicked: {
     borderBottom: '2px solid #FFFFFF',
   },
-  dropDownicon: {
-    fontSize: navBarstyling.dropDownIcon.fontSize ? navBarstyling.dropDownIcon.fontSize : '18px',
-    margin: navBarstyling.dropDownIcon.margin ? navBarstyling.dropDownIcon.margin : '0px 0px 0px 0px',
-  },
+  dropDownicon: (props) => ({
+    fontSize: props.navBarstyling.dropDownIcon.fontSize ? props.navBarstyling.dropDownIcon.fontSize : '18px',
+    margin: props.navBarstyling.dropDownIcon.margin ? props.navBarstyling.dropDownIcon.margin : '0px 0px 0px 0px',
+  }),
   aboutMenu: {
     display: 'inline-block',
   },
 });
+
+DropdownMenu.defaultProps = {
+  navBarstyling: {},
+};
 
 export default withStyles(styles)(DropdownMenu);
