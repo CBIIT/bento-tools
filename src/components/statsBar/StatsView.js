@@ -1,5 +1,6 @@
 import React from 'react';
-import injectSheet from 'react-jss';
+// import injectSheet from 'react-jss';
+import { withStyles } from '@material-ui/core';
 
 const StatsBar = ({
   classes, data, globalStatsData, statsStyling,
@@ -49,24 +50,24 @@ const StatsBar = ({
   </>
 );
 
-const styles = (statsStyling) => ({
-  statsSection: {
+const styles = () => ({
+  statsSection: (props) => ({
     top: '139px',
     width: '100%',
     zIndex: 999,
     position: 'fixed',
-    background: statsStyling.global.background ? statsStyling.global.background : '#8DCAFF',
+    background: props.statsStyling.global.background ? props.statsStyling.global.background : '#8DCAFF',
     textAlign: 'center',
     left: 0,
     right: 0,
     display: 'flex',
     justifyContent: 'flex-end',
-  },
-  box: {
+  }),
+  box: (props) => ({
     display: 'inline-flex',
-    height: statsStyling.global.height ? statsStyling.global.height : '47px',
+    height: props.statsStyling.global.height ? props.statsStyling.global.height : '47px',
     margin: '0 auto',
-  },
+  }),
   statTitle: {
     float: 'left',
     color: '#062D4F',
@@ -77,7 +78,7 @@ const styles = (statsStyling) => ({
     margin: '14px 8px 0px 0px',
     textTransform: 'uppercase',
   },
-  statCount: statsStyling.global.horizontalStyle === true ? {
+  statCount: (props) => (props.statsStyling.global.horizontalStyle === true ? {
     display: 'inline-block',
     float: 'left',
     color: '#0467BD',
@@ -91,7 +92,7 @@ const styles = (statsStyling) => ({
     fontSize: '20px',
     margin: '6px 0px 0px 0px',
     fontWeight: 600,
-  },
+  }),
   statsGroup: {
     // spacing between stats
     margin: '4px 32px',
@@ -107,7 +108,8 @@ const styles = (statsStyling) => ({
 
 StatsBar.defaultProps = {
   classes: {},
+  statsStyling: {},
 };
 
-const StyledStatsBar = injectSheet(styles)(StatsBar);
+const StyledStatsBar = withStyles(styles)(StatsBar);
 export default StyledStatsBar;
