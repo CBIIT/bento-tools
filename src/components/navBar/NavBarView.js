@@ -16,7 +16,8 @@ const drawerWidth = 240;
 const BACKEND_GETUSERINFO_API = 'https://k9dc.essential-dev.com/fence/login/';
 
 const NavBar = ({
-  classes, isSidebarOpened, navBarData, navBarCartData, initCart,
+  // eslint-disable-next-line no-unused-vars
+  classes, isSidebarOpened, navBarData, navBarCartData, initCart, navBarstyling,
 }) => {
   // const theme = useTheme();
   const [authState, setAuthState] = React.useState({
