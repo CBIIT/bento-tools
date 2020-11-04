@@ -20,3 +20,4 @@ export { default as TableToolbarSelect } from './components/datatables/component
 export { default as TableViewCol } from './components/datatables/components/TableViewCol';
 export { debounceSearchRender, DebounceTableSearch } from './components/datatables/plug-ins/DebounceSearchRender';
 export { default as NavBar } from './components/navBar';
+export { default as StatsBar } from './components/statsBar';
