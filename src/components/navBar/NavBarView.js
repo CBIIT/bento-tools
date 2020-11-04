@@ -13,15 +13,15 @@ import DropdownMenu from './components/DropdownMenu';
 const drawerWidth = 240;
 // const FENCE_LOGIN_URL = process.env.FENCE_LOGIN_URL;
 // const FENCE_LOGIN_URL = process.env.REACT_APP_LOGIN_URL;
-const BACKEND_GETUSERINFO_API = 'https://k9dc.essential-dev.com/fence/login/';
+// const BACKEND_GETUSERINFO_API = 'https://k9dc.essential-dev.com/fence/login/';
 
 const NavBar = ({
   classes, isSidebarOpened, navBarData, navBarCartData, navBarstyling,
 }) => {
   // const theme = useTheme();
-  const [authState, setAuthState] = React.useState({
-    isAuthorized: localStorage.getItem('isAuthorized') === 'true',
-  });
+  // const [authState, setAuthState] = React.useState({
+  //   isAuthorized: localStorage.getItem('isAuthorized') === 'true',
+  // });
 
   // Similar to componentDidMount and componentDidUpdate:
   // Empty second argument of react useEffect will avoid the infinte loop that
@@ -32,34 +32,34 @@ const NavBar = ({
     setClickedEl(eventName);
   }
 
-  React.useEffect(() => {
-    const values = {};
+  // React.useEffect(() => {
+  //   const values = {};
 
-    if (values.code) {
-      fetch(BACKEND_GETUSERINFO_API + values.code)
-        .then((response) => {
-          if (!response.ok) {
-            throw Error(response.statusText);
-          }
-          return response.json();
-        })
-        .then((result) => {
-          setAuthState({
-            ...authState,
-            isAuthorized: true,
-          });
-          localStorage.setItem('username', JSON.stringify(result.user));
-          localStorage.setItem('isAuthorized', 'true');
-        })
-        .catch(() => {
-          // Ajay Need to update this
-          // setAuthState(
-          //  { ...authState, username: "", isAuthorized: false }
-          //  );
-          // localStorage.setItem("isAuthorized", "false");
-        });
-    }
-  }, []);
+  //   if (values.code) {
+  //     fetch(BACKEND_GETUSERINFO_API + values.code)
+  //       .then((response) => {
+  //         if (!response.ok) {
+  //           throw Error(response.statusText);
+  //         }
+  //         return response.json();
+  //       })
+  //       .then((result) => {
+  //         setAuthState({
+  //           ...authState,
+  //           isAuthorized: true,
+  //         });
+  //         localStorage.setItem('username', JSON.stringify(result.user));
+  //         localStorage.setItem('isAuthorized', 'true');
+  //       })
+  //       .catch(() => {
+  //         // Ajay Need to update this
+  //         // setAuthState(
+  //         //  { ...authState, username: "", isAuthorized: false }
+  //         //  );
+  //         // localStorage.setItem("isAuthorized", "false");
+  //       });
+  //   }
+  // }, []);
 
   const numberOfCases = 0;
 
