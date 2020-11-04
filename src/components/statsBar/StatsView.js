@@ -108,5 +108,6 @@ StatsBar.defaultProps = {
   statsStyling: {},
 };
 
+// TODO: need to change it to injectStyle sheet
 const StyledStatsBar = withStyles(styles)(StatsBar);
 export default StyledStatsBar;
