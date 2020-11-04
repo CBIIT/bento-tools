@@ -39,7 +39,7 @@ const options = {
 const title = 'Awesome list';
 
 const data = users;
-console.log(numberOfCases);
+
 storiesOf('Header', module)
   .add('Header default', () => <Header alt="hello" homeLink="https://www.google.com" />)
   .add('Header with custom Logo', () => <Header logo={nihLogo} homeLink="https://www.google.com" />)
