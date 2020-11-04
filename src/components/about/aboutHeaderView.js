@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core';
+import injectSheet from 'react-jss';
 
 const AboutHeader = ({ classes, title }) => (
   <div className={classes.container}>
@@ -34,4 +34,5 @@ const styles = () => ({
   },
 });
 
-export default withStyles(styles)(AboutHeader);
+const header = injectSheet(styles)(AboutHeader);
+export default header;
