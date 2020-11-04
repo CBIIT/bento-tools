@@ -55,3 +55,5 @@ export const navBarCartData = {
   cartIcon: 'https://raw.githubusercontent.com/CBIIT/bento-frontend/master/src/assets/icons/Icon-Cart-Navbar.svg',
   cartIconAlt: 'cart_logo',
 };
+
+export const numberOfCases = 0;

@@ -16,7 +16,7 @@ const drawerWidth = 240;
 // const BACKEND_GETUSERINFO_API = 'https://k9dc.essential-dev.com/fence/login/';
 
 const NavBar = ({
-  classes, isSidebarOpened, navBarData, navBarCartData, navBarstyling,
+  classes, isSidebarOpened, navBarData, navBarCartData, navBarstyling, numberOfCases,
 }) => {
   // const theme = useTheme();
   // const [authState, setAuthState] = React.useState({
@@ -60,8 +60,6 @@ const NavBar = ({
   //       });
   //   }
   // }, []);
-
-  const numberOfCases = 0;
 
   // const activeFilters = useSelector((state) => (
   //   state.dashboard.datatable
