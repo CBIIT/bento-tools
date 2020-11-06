@@ -144,7 +144,15 @@ export function getSunburstDataFromDashboardData(data, level1, level2) {
   });
 }
 
-// getWidegtDataFromDT
+
+/**
+ * Prepare Data fro Widegt
+ * @param {object} data
+ * @param {object} widgetName
+ * @return {object}
+ */
+
+
 export function getDonutDataFromDashboardData(data, widgetName) {
   const output = [];
   data.reduce((accumulator, currentValue) => {
@@ -177,14 +185,21 @@ export function getDonutDataFromDashboardData(data, widgetName) {
   return output;
 }
 
-/* filterData function evaluates a row of data with filters,
-      to check if this row will be showed in the data table.
 
-     If there is no filter, then display this row.
-     If has filters and for each group of filters, at least has one filter option
-     is related to the data.
-     Otherwise:  Hide this row.
-  */
+/**
+ * Get filter Data
+ * filterData function evaluates a row of data with filters,
+ *    to check if this row will be showed in the data table.
+ *
+ *   If there is no filter, then display this row.
+ *   If has filters and for each group of filters, at least has one filter option
+ *    is related to the data.
+ *   Otherwise:  Hide this row.
+ * @param {object} row
+ * @param {object} filters
+ * @return {object}
+ */
+
 export const filterData = (row, filters) => {
   // No filter
   if (filters.length === 0) {
@@ -222,6 +237,13 @@ export const filterData = (row, filters) => {
   return true;
 };
 
+/**
+ * Get updated Filters
+ * @param {object} orginFilter
+ * @param {object} newCheckBoxs
+ * @return {object}
+ */
+
 export function getFilters(orginFilter, newCheckBoxs) {
   let ogFilter = orginFilter;
   newCheckBoxs.forEach((checkbox) => {
@@ -243,6 +265,14 @@ export function getFilters(orginFilter, newCheckBoxs) {
 function isNumeric(value) {
   return /^-?\d+$/.test(value);
 }
+
+/**
+ * Custom Sorting
+ * @param {object} a
+ * @param {object} b
+ * @param {int} i
+ * @return {object}
+ */
 
 export function customSorting(a, b, i = 0) {
   if (b[i] && !a[i]) {
@@ -269,7 +299,16 @@ export function customSorting(a, b, i = 0) {
   return -1;
 }
 
-// Everytime the checkbox has been clicked, will call this function to update the data of checkbox
+/**
+ * Get CheckBox's Data
+ * Everytime the checkbox has been clicked, will call this function to update the data of checkbox
+ * @param {object} data
+ * @param {object} allCheckBoxs
+ * @param {object} activeCheckBoxs
+ * @param {object} filters
+ * @return {object}
+ */
+
 export const getCheckBoxData = (data, allCheckBoxs, activeCheckBoxs, filters) => (
   // deepc copy data of orignal checkbox
   JSON.parse(JSON.stringify(allCheckBoxs)).map((ck) => {
@@ -340,6 +379,13 @@ export const getCheckBoxData = (data, allCheckBoxs, activeCheckBoxs, filters) =>
   })
 );
 
+
+/**
+ * Transform API Data into Sunburst
+ *
+ * @param {object} data
+ * @return {object}
+ */
 export function transformInitialDataForSunburst(data) {
   const output = {};
   output.key = uuid();
@@ -358,6 +404,14 @@ export function transformInitialDataForSunburst(data) {
   }));
   return output;
 }
+
+/**
+ * Transform API Data into CheckBox
+ *
+ * @param {object} data
+ * @param {object} field
+ * @return {object}
+ */
 
 export function transformAPIDataIntoCheckBoxData(data, field) {
   const result = [];
@@ -399,3 +453,94 @@ export function customCheckBox(facetSearchData,data) {
     }))
   );
 }
+
+/**
+ * Sets the active filters checkboxes isChecked to true .
+ *
+ * @param {object} checkboxData
+ *  * @param {object} Filters
+ * @return {json}
+ */
+
+export function updateCurrentSelection(checkboxGroup, Filters) {
+  const result = checkboxGroup.checkboxItems.map((checkboxItem) => {
+    if (checkboxItem.name === Filters.name) {
+      return { ...checkboxItem, isChecked: Filters.isChecked };
+    }
+    return checkboxItem;
+  });
+  return { ...checkboxGroup, checkboxItems: result };
+}
+
+/**
+ *  Updates the checkboxes subject counts from newly recieved API data.
+ *  Doesn't updated the recent selected group
+ *  * @param {object} currentGroupCount
+ *  * @param {object} willUpdateGroupCount
+ * * @param {object} currentCheckboxSelection
+ * @return {json}
+ */
+
+export function updateCheckBox(currentGroupCount, willUpdateGroupCount, currentCheckboxSelection) {
+  return (
+    facetSearchData.map((mapping) => {
+      if (mapping.label === currentCheckboxSelection.groupName) {
+        const currentGroup = currentGroupCount.filter(
+          (data) => data.groupName === currentCheckboxSelection.groupName,
+        )[0];
+        return updateCurrentSelection(currentGroup, currentCheckboxSelection);
+      }
+      return {
+        groupName: mapping.label,
+        checkboxItems:
+          transformAPIDataIntoCheckBoxData(willUpdateGroupCount[mapping.api], mapping.field),
+        datafield: mapping.datafield,
+        show: mapping.show,
+      };
+    })
+  );
+}
+
+/**
+ * Sets the active filters  group checkboxes  isChecked to true .
+ *
+ * @param {object} checkboxData
+ *  * @param {array} filters
+ * @return {json}
+ */
+
+function setSelectedVlauesToTrue(checkboxItems, filters) {
+  const result = checkboxItems.map((checkboxItem) => {
+    if (filters.includes(checkboxItem.name)) return { ...checkboxItem, isChecked: true };
+    return checkboxItem;
+  });
+  return result;
+}
+
+/**
+ * Sets the active filters checkboxes isChecked to true .
+ *
+ * @param {object} checkboxData
+ *  * @param {object} Filters
+ * @return {json}
+ */
+
+export function setSelectedFilterValues(checkboxData, Filters) {
+  const result = checkboxData.map((filterGroup) => {
+    if (Array.isArray(Filters[filterGroup.datafield])
+     && Filters[filterGroup.datafield].length !== 0) {
+      return {
+        groupName: filterGroup.groupName,
+        checkboxItems: setSelectedVlauesToTrue(
+          filterGroup.checkboxItems,
+          Filters[filterGroup.datafield],
+        ),
+        datafield: filterGroup.datafield,
+        show: filterGroup.show,
+      };
+    }
+    return filterGroup;
+  });
+  return result;
+}
+
