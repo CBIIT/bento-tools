@@ -12,6 +12,10 @@ import { data as statsData, statsStyling, globalStatsData } from '../stubs/stats
 
 import nihLogo from './icdc_nih_logo.svg';
 import easter2000 from './Canine2000.png';
+import NavBar from '../components/navBar';
+import {
+  navBarData, navBarCartData, navBarstyling, numberOfCases,
+} from '../stubs/navBarData';
 
 const columns = [
   {
@@ -45,4 +49,5 @@ storiesOf('Header', module)
 storiesOf('Footer', module).add('Footer', () => <Footer data={footerData} />);
 storiesOf('MUIDatatable', module).add('left Selectable', () => <MUIDatatable columns={columns} data={data} title={title} selectCellPostion="right" />);
 storiesOf('MUIDatatable', module).add('right Selectable', () => <MUIDatatable columns={columns} data={data} options={options} title={title} selectCellPostion="right" />);
+storiesOf('NavBar', module).add('NavBar', () => <NavBar navBarData={navBarData} navBarCartData={navBarCartData} navBarstyling={navBarstyling} numberOfCases={numberOfCases} />);
 storiesOf('StatsBar', module).add('StatsBar', () => <StatsBar data={statsData} globalStatsData={globalStatsData} statsStyling={statsStyling} />);
