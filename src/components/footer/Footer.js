@@ -177,11 +177,21 @@ const Footer = ({ classes, data }) => (
             cn(classes.footerRowSection, classes.footerNciColumn, classes.marginRight40)
   }
         >
-          <img
-            src={data.footerLogoImage}
-            alt={data.footerLogoAltText}
-            className={classes.nciLogo}
-          />
+          {data.footerLogoHyperlink
+            ? (
+              <a href={data.footerLogoHyperlink} className={classes.nciLogo}>
+                <img
+                  src={data.footerLogoImage}
+                  alt={data.footerLogoAltText}
+                />
+              </a>
+            ) : (
+              <img
+                src={data.footerLogoImage}
+                alt={data.footerLogoAltText}
+                className={classes.nciLogo}
+              />
+            )}
         </div>
         { data.link_sections.slice(0, 3).map((linkSection) => (
           <div className={classes.footerRowSection}>
