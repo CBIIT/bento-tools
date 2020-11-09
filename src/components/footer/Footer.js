@@ -177,11 +177,21 @@ const Footer = ({ classes, data }) => (
             cn(classes.footerRowSection, classes.footerNciColumn, classes.marginRight40)
   }
         >
-          <img
-            src={data.footerLogoImage}
-            alt={data.footerLogoAltText}
-            className={classes.nciLogo}
-          />
+          {data.footerLogoHyperlink
+            ? (
+              <a href={data.footerLogoHyperlink} className={classes.nciLogo}>
+                <img
+                  src={data.footerLogoImage}
+                  alt={data.footerLogoAltText}
+                />
+              </a>
+            ) : (
+              <img
+                src={data.footerLogoImage}
+                alt={data.footerLogoAltText}
+                className={classes.nciLogo}
+              />
+            )}
         </div>
         { data.link_sections.slice(0, 3).map((linkSection) => (
           <div className={classes.footerRowSection}>
@@ -260,8 +270,25 @@ const Footer = ({ classes, data }) => (
         >
           <div>
             <span className={classes.footorVersiontext}>
-              Version:&nbsp;
+              FE Version:&nbsp;
               {data.version}
+            </span>
+          </div>
+        </div>
+      </div>
+      {/* End of Quick and dirty for adding version number in footer */}
+      {/* Quick and dirty for adding version number in footer */}
+      <div className={cn(classes.footerRow, classes.contentJustifyLeft)}>
+        <div
+          className={cn(
+            classes.nciLinks,
+            classes.contentJustifyCenter,
+          )}
+        >
+          <div>
+            <span className={classes.footorVersiontext}>
+              BE Version:&nbsp;
+              {data.BEversion}
             </span>
           </div>
         </div>

@@ -1,10 +1,13 @@
 {
 	"footerLogoImage": "https://raw.githubusercontent.com/CBIIT/bento-frontend/master/src/assets/footer/FNL_logo.png",
 	"footerLogoAltText": "https://raw.githubusercontent.com/CBIIT/bento-frontend/master/src/assets/footer/FNL_logo.png",
+	"footerLogoHyperlink": "https://frederick.cancer.gov/",
 	"footerStaticText": "NIH … Turning Discovery Into Health®",
 	"maxSubsections": 3,
 	"maxSubsectionsLinks": 4,
 	"maxAnchorLinks": 4,
+	"version": "1.0,0",
+	"BEversion": "1.0.0",
 	"link_sections": [
 		{
 			"title": "About Bento",
