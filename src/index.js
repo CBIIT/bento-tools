@@ -18,6 +18,11 @@ export { default as TableSelectCell } from './components/datatables/components/T
 export { default as TableToolbar } from './components/datatables//components/TableToolbar';
 export { default as TableToolbarSelect } from './components/datatables/components/TableToolbarSelect';
 export { default as TableViewCol } from './components/datatables/components/TableViewCol';
+export { default as ProgramSunburst } from './components/PieCharts/ProgramSunburst/ProgramSunburstView';
+export { default as CustomActiveDonut } from './components/PieCharts/CustomActiveDonut/CustomActiveDonutView';
+export { default as AboutHeader } from './components/about/aboutHeaderView';
+export { default as AboutBody } from './components/about/aboutBodyView';
+export { default as XoomInOut } from './components/about/xoomInOutView';
 export { debounceSearchRender, DebounceTableSearch } from './components/datatables/plug-ins/DebounceSearchRender';
 export { prepareLinks, Anchor } from './utils/anchor'; 
 export { default as cn } from './utils/classNameConcat';

@@ -1,0 +1,37 @@
+[
+    {
+      "group": "Other anthracycline with no taxane",
+      "subjects": 2,
+      "__typename": "GroupCount"
+    },
+    {
+      "group": "None",
+      "subjects": 3,
+      "__typename": "GroupCount"
+    },
+    {
+      "group": "IV CMF (3 week cycles)",
+      "subjects": 1,
+      "__typename": "GroupCount"
+    },
+    {
+      "group": "standard AC followed by a taxane",
+      "subjects": 1,
+      "__typename": "GroupCount"
+    },
+    {
+      "group": "Other treatment given as part of a CTSU protocol",
+      "subjects": 1,
+      "__typename": "GroupCount"
+    },
+    {
+      "group": "Dose dense AC (2 week cycles)",
+      "subjects": 1,
+      "__typename": "GroupCount"
+    },
+    {
+      "group": "TC (3 week cycles, includes any taxane with cyclophosphamide)",
+      "subjects": 1,
+      "__typename": "GroupCount"
+    }
+  ]
