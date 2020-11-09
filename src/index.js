@@ -24,3 +24,25 @@ export { default as AboutHeader } from './components/about/aboutHeaderView';
 export { default as AboutBody } from './components/about/aboutBodyView';
 export { default as XoomInOut } from './components/about/xoomInOutView';
 export { debounceSearchRender, DebounceTableSearch } from './components/datatables/plug-ins/DebounceSearchRender';
+export { prepareLinks, Anchor } from './utils/anchor'; 
+export { default as cn } from './utils/classNameConcat';
+export { default as createSvgIcon} from './utils/createSvgIcon';
+export { 
+	COLORS_LEVEL_1, 
+	COLORS_LEVEL_2, 
+	unselectFilters, 
+	getStatDataFromDashboardData, 
+	getSunburstDataFromDashboardData, 
+	getDonutDataFromDashboardData,
+	filterData,
+	getFilters,
+	customSorting,
+	getCheckBoxData,
+	transformInitialDataForSunburst,
+	transformAPIDataIntoCheckBoxData,
+	customCheckBox,
+} from './utils/dashboardUtilFunctions';
+export { getColumns, getDefaultCustomFooter, getOptions } from './utils/tables';
+export { manipulateLinks, dateTimeStamp, formatBytes } from './utils/helpers';
+export { default as NavBar } from './components/navBar';
+export { default as StatsBar } from './components/statsBar';
