@@ -6,6 +6,8 @@
 	"maxSubsections": 3,
 	"maxSubsectionsLinks": 4,
 	"maxAnchorLinks": 4,
+	"version": "1.0,0",
+	"BEversion": "1.0.0",
 	"link_sections": [
 		{
 			"title": "About Bento",

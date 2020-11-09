@@ -270,8 +270,25 @@ const Footer = ({ classes, data }) => (
         >
           <div>
             <span className={classes.footorVersiontext}>
-              Version:&nbsp;
+              FE Version:&nbsp;
               {data.version}
+            </span>
+          </div>
+        </div>
+      </div>
+      {/* End of Quick and dirty for adding version number in footer */}
+      {/* Quick and dirty for adding version number in footer */}
+      <div className={cn(classes.footerRow, classes.contentJustifyLeft)}>
+        <div
+          className={cn(
+            classes.nciLinks,
+            classes.contentJustifyCenter,
+          )}
+        >
+          <div>
+            <span className={classes.footorVersiontext}>
+              BE Version:&nbsp;
+              {data.BEversion}
             </span>
           </div>
         </div>
