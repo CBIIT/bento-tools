@@ -25,6 +25,7 @@
     "cross-env": "^7.0.2",
     "eslint-plugin-babel": "^5.3.1",
     "link-react": "^3.0.0",
+    "lodash": "^4.17.20",
     "lodash.assignwith": "^4.2.0",
     "lodash.clonedeep": "^4.5.0",
     "lodash.debounce": "^4.0.8",
@@ -72,6 +73,7 @@
   "devDependencies": {
     "@babel/core": "^7.11.0",
     "@storybook/addon-actions": "^5.3.18",
+    "@storybook/addon-knobs": "^6.0.28",
     "@storybook/addon-links": "^5.3.18",
     "@storybook/addons": "^5.3.18",
     "@storybook/preset-create-react-app": "^2.1.2",
