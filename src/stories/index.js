@@ -5,6 +5,7 @@ import { storiesOf } from '@storybook/react';
 import MUIDatatable from '../components/datatables/MUIDataTable';
 import ProgramSunburst from '../components/PieCharts/ProgramSunburst/ProgramSunburstView';
 import CustomActiveDonut from '../components/PieCharts/CustomActiveDonut/CustomActiveDonutView';
+import XoomInOut from '../components/about/xoomInOutView';
 import users from '../stubs/users.json';
 import footerData from '../stubs/footer.json';
 import dataSunburst from '../stubs/sunbust.json';
@@ -44,6 +45,8 @@ const title = 'Awesome list';
 
 const data = users;
 
+const imgPath = 'https://cbiit.github.io/bento-model/model-desc/bento-model.svg';
+
 storiesOf('Header', module)
   .add('Header default', () => <Header alt="hello" homeLink="https://www.google.com" />)
   .add('Header with custom Logo', () => <Header logo={nihLogo} homeLink="https://www.google.com" />)
@@ -53,7 +56,8 @@ storiesOf('Header', module)
 storiesOf('Footer', module).add('Footer', () => <Footer data={footerData} />);
 storiesOf('MUIDatatable', module).add('left Selectable', () => <MUIDatatable columns={columns} data={data} title={title} selectCellPostion="right" />);
 storiesOf('MUIDatatable', module).add('right Selectable', () => <MUIDatatable columns={columns} data={data} options={options} title={title} selectCellPostion="right" />);
-storiesOf('ProgramSunburst', module).add('right Selectable', () => (
+
+storiesOf('PieCharts', module).add('ProgramSunburst', () => (
   <ProgramSunburst
     width={250}
     height={173}
@@ -64,7 +68,7 @@ storiesOf('ProgramSunburst', module).add('right Selectable', () => (
     data={dataSunburst}
   />
 ));
-storiesOf('CustomActiveDonut', module).add('right Selectable', () => (
+storiesOf('PieCharts', module).add('CustomActiveDonut', () => (
   <CustomActiveDonut
     width={400}
     height={225}
@@ -77,3 +81,8 @@ storiesOf('CustomActiveDonut', module).add('right Selectable', () => (
 ));
 storiesOf('NavBar', module).add('NavBar', () => <NavBar navBarData={navBarData} navBarCartData={navBarCartData} navBarstyling={navBarstyling} numberOfCases={numberOfCases} />);
 storiesOf('StatsBar', module).add('StatsBar', () => <StatsBar data={statsData} globalStatsData={globalStatsData} statsStyling={statsStyling} />);
+storiesOf('About', module).add('XoomInOut', () => (
+  <div style={{ marginTop: '100px' }}>
+    <XoomInOut style={{ marginTop: '30px' }}><img src={imgPath} alt="zoominout" style={{ width: '100%' }} /></XoomInOut>
+  </div>
+));

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Grid, withStyles, Link } from '@material-ui/core';
+import { Grid, Link } from '@material-ui/core';
+import injectSheet from 'react-jss';
 import XoomInOut from './xoomInOutView';
 import externalIcon from '../assets/about/About-ExternalLink.svg';
 import submissionGuide from '../assets/footer/ICDC_DGAB_Guidelines.pdf';
@@ -259,4 +260,4 @@ AboutBody.defaultProps = {
   },
 };
 
-export default withStyles(styles)(AboutBody);
+export default injectSheet(styles)(AboutBody);

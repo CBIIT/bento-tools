@@ -67,7 +67,7 @@ const renderActiveShape = (props) => {
   );
 };
 
-export default class CustomActiveDonut extends PureComponent {
+class CustomActiveDonut extends PureComponent {
   constructor(props) {
     super(props);
     this.state = { activeIndex: 0 };
@@ -118,3 +118,5 @@ export default class CustomActiveDonut extends PureComponent {
     );
   }
 }
+
+export default CustomActiveDonut;
