@@ -56,4 +56,3 @@ export function formatBytes(bytes, decimals = 2) {
 
   return `${parseFloat((bytes / (1024 ** i)).toFixed(dm))} ${sizes[i]}`;
 }
-

@@ -1,6 +1,5 @@
-/* eslint-disbale */
 import React from 'react';
-
+/* eslint import/no-extraneous-dependencies: ["error", {"peerDependencies": true}] */
 import { storiesOf } from '@storybook/react';
 import MUIDatatable from '../components/datatables/MUIDataTable';
 import ProgramSunburst from '../components/PieCharts/ProgramSunburst/ProgramSunburstView';

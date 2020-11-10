@@ -40,6 +40,7 @@ module.exports = {
     "react/no-typos": 2,
     "react/jsx-no-duplicate-props": "off",
     "react-hooks/rules-of-hooks": "off", // Checks rules of Hooks
-    "react-hooks/exhaustive-deps": "off" // Checks effect dependencies
+    "react-hooks/exhaustive-deps": "off", // Checks effect dependencies
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.js", "**/*.spec.js",".storybook/**",'stories/**']}]
   },
 };

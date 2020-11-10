@@ -144,14 +144,12 @@ export function getSunburstDataFromDashboardData(data, level1, level2) {
   });
 }
 
-
 /**
  * Prepare Data fro Widegt
  * @param {object} data
  * @param {object} widgetName
  * @return {object}
  */
-
 
 export function getDonutDataFromDashboardData(data, widgetName) {
   const output = [];
@@ -184,7 +182,6 @@ export function getDonutDataFromDashboardData(data, widgetName) {
   );
   return output;
 }
-
 
 /**
  * Get filter Data
@@ -379,7 +376,6 @@ export const getCheckBoxData = (data, allCheckBoxs, activeCheckBoxs, filters) =>
   })
 );
 
-
 /**
  * Transform API Data into Sunburst
  *
@@ -443,7 +439,7 @@ export function transformAPIDataIntoCheckBoxData(data, field) {
 // CustomCheckBox works for first time init Checkbox,
 // that function transforms the data which returns from API into a another format
 // so it contains more information and easy for front-end to show it correctly.
-export function customCheckBox(facetSearchData,data) {
+export function customCheckBox(facetSearchData, data) {
   return (
     facetSearchData.map((mapping) => ({
       groupName: mapping.label,
@@ -481,7 +477,12 @@ export function updateCurrentSelection(checkboxGroup, Filters) {
  * @return {json}
  */
 
-export function updateCheckBox(currentGroupCount, willUpdateGroupCount, currentCheckboxSelection) {
+export function updateCheckBox(
+  currentGroupCount,
+  willUpdateGroupCount,
+  currentCheckboxSelection,
+  facetSearchData,
+) {
   return (
     facetSearchData.map((mapping) => {
       if (mapping.label === currentCheckboxSelection.groupName) {
@@ -543,4 +544,3 @@ export function setSelectedFilterValues(checkboxData, Filters) {
   });
   return result;
 }
-
