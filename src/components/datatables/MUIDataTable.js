@@ -12,6 +12,7 @@ import React from 'react';
 import MuiTooltip from '@material-ui/core/Tooltip';
 import DefaultTableBody from './components/TableBody';
 import DefaultTableFilterList from './components/TableFilterList';
+import DefaultTableHeader from './components/TableHeader';
 import DefaultTableFooter from './components/TableFooter';
 import DefaultTableHead from './components/TableHead';
 import DefaultTableResize from './components/TableResize';
@@ -245,6 +246,7 @@ class MUIDataTable extends React.Component {
     components: {
       TableBody: DefaultTableBody,
       TableFilterList: DefaultTableFilterList,
+      TableHeader: DefaultTableHeader,
       TableFooter: DefaultTableFooter,
       TableHead: DefaultTableHead,
       TableResize: DefaultTableResize,
@@ -290,6 +292,10 @@ class MUIDataTable extends React.Component {
   }
 
   UNSAFE_componentWillMount() {
+    this.initializeTable(this.props);
+  }
+
+  componentWillReceiveProps() {
     this.initializeTable(this.props);
   }
 
@@ -397,6 +403,8 @@ class MUIDataTable extends React.Component {
     textLabels: getTextLabels(),
     viewColumns: true,
     selectToolbarPlacement: STP.REPLACE,
+    headerPagination: false,
+    footerPagination: true,
   });
 
   warnDep = (msg, consoleWarnings) => {
@@ -1602,7 +1610,7 @@ class MUIDataTable extends React.Component {
       className,
       title,
       components: {
-        TableBody, TableFilterList, TableFooter, TableHead, TableResize, TableToolbar, TableToolbarSelect,
+        TableBody, TableFilterList, TableHeader, TableFooter, TableHead, TableResize, TableToolbar, TableToolbarSelect,
       },
     } = this.props;
     const {
@@ -1624,6 +1632,7 @@ class MUIDataTable extends React.Component {
 
     const TableBodyComponent = TableBody || DefaultTableBody;
     const TableFilterListComponent = TableFilterList || DefaultTableFilterList;
+    const TableHeaderComponent = TableHeader || DefaultTableHeader;
     const TableFooterComponent = TableFooter || DefaultTableFooter;
     const TableHeadComponent = TableHead || DefaultTableHead;
     const TableResizeComponent = TableResize || DefaultTableResize;
@@ -1694,6 +1703,15 @@ class MUIDataTable extends React.Component {
 
     return (
       <Paper elevation={this.options.elevation} ref={this.tableContent} className={paperClasses}>
+        {this.options.headerPagination && (
+        <TableHeaderComponent
+          options={this.options}
+          page={page}
+          rowCount={rowCount}
+          rowsPerPage={rowsPerPage}
+          changeRowsPerPage={this.changeRowsPerPage}
+          changePage={this.changePage}
+        />)}
         {selectedRows.data.length > 0 && this.options.selectToolbarPlacement !== STP.NONE && (
           <TableToolbarSelectComponent
             options={this.options}
@@ -1724,6 +1742,11 @@ class MUIDataTable extends React.Component {
               toggleViewColumn={this.toggleViewColumn}
               setTableAction={this.setTableAction}
               components={this.props.components}
+              page={page}
+              rowCount={rowCount}
+              rowsPerPage={rowsPerPage}
+              changeRowsPerPage={this.changeRowsPerPage}
+              changePage={this.changePage}
             />
         )}
         <TableFilterListComponent
@@ -1805,6 +1828,7 @@ class MUIDataTable extends React.Component {
               : null}
           </MuiTable>
         </div>
+        {this.options.footerPagination && (
         <TableFooterComponent
           options={this.options}
           page={page}
@@ -1812,7 +1836,7 @@ class MUIDataTable extends React.Component {
           rowsPerPage={rowsPerPage}
           changeRowsPerPage={this.changeRowsPerPage}
           changePage={this.changePage}
-        />
+        />)}
         <div className={classes.liveAnnounce} aria-live="polite">
           {announceText}
         </div>
