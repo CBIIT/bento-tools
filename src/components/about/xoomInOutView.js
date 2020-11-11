@@ -1,9 +1,9 @@
 import React from 'react';
 import {
   Button,
-  withStyles,
 } from '@material-ui/core';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
+import injectSheet from 'react-jss';
 import CenterIcon from '../assets/about/Model-Buttons-Center.svg';
 import ZoomInIcon from '../assets/about/Model-Buttons-ZoomIn.svg';
 import ZoomOutIcon from '../assets/about/Model-Buttons-ZoomOut.svg';
@@ -151,4 +151,6 @@ const styles = () => ({
   },
 });
 
-export default withStyles(styles, { withTheme: true })(ModelPage);
+const View = injectSheet(styles)(ModelPage);
+
+export default View;

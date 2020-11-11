@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
-import injectSheet from 'react-jss';
 import { Sunburst, LabelSeries } from 'react-vis';
+import injectSheet from 'react-jss';
 
 function getKeyPath(node) {
   if (!node.parent) {
@@ -50,9 +50,10 @@ function findCaseSizeOfTitle(data, title) {
   return data.caseSize;
 }
 
-const styles = (theme) => ({
+const styles = {
   title: {
-    color: (theme.palette.widgetBackground) ? theme.palette.widgetBackground.contrastText : 'black',
+    color: (props) => (props.textColor ? props.textColor : 'black'),
+    // (theme.palette.widgetBackground) ? theme.palette.widgetBackground.contrastText : 'black',
     fontSize: '12px',
     maxWidth: '1440px',
     fontFamily: 'Nunito',
@@ -64,7 +65,7 @@ const styles = (theme) => ({
   customWidget: {
     marginTop: '18px',
   },
-});
+};
 
 class ProgramSunburst extends PureComponent {
   constructor(props) {
@@ -159,6 +160,6 @@ class ProgramSunburst extends PureComponent {
   }
 }
 
-const chart = injectSheet(styles)(ProgramSunburst);
+const Chart = injectSheet(styles)(ProgramSunburst);
 
-export default chart;
+export default Chart;
