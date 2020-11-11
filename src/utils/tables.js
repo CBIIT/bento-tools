@@ -3,8 +3,7 @@ import TableFooter from '@material-ui/core/TableFooter';
 import TableRow from '@material-ui/core/TableRow';
 import TablePagination from '@material-ui/core/TablePagination';
 import { HashRouter, Link } from 'react-router-dom';
-import { dateTimeStamp, manipulateLinks } from './helpers';
-import formatBytes from './formatBytes';
+import { dateTimeStamp, manipulateLinks, formatBytes } from './helpers';
 
 //  Generate MuiTable's columns.
 export function getColumns(tableConfig, classes, data, externalLinkIcon, linkto, linkClick) {
@@ -42,13 +41,15 @@ export function getColumns(tableConfig, classes, data, externalLinkIcon, linkto,
                     : (column.formatBytes ? formatBytes(value)
                       : column.dataField === 'num_subjects'
                         ? (
-                          <HashRouter><Link
-                            className={classes.link}
-                            to={(location) => ({ ...location, pathname: linkto })}
-                            onClick={() => linkClick(tableMeta)}
-                          >
-                            {value}
-                          </Link></HashRouter>
+                          <HashRouter>
+                            <Link
+                              className={classes.link}
+                              to={(location) => ({ ...location, pathname: linkto })}
+                              onClick={() => linkClick(tableMeta)}
+                            >
+                              {value}
+                            </Link>
+                          </HashRouter>
                         )
                         : `${column.formatBytes ? formatBytes(value) : value}`
                     )}
