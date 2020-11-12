@@ -2,13 +2,13 @@ import React from 'react';
 import TableFooter from '@material-ui/core/TableFooter';
 import TableRow from '@material-ui/core/TableRow';
 import TablePagination from '@material-ui/core/TablePagination';
-import { HashRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { dateTimeStamp, manipulateLinks, formatBytes } from './helpers';
 
 //  Generate MuiTable's columns.
 export function getColumns(tableConfig, classes, data, externalLinkIcon, linkto, linkClick) {
   const updatedTableWithLinks = manipulateLinks(tableConfig.columns);
-  return updatedTableWithLinks.slice(0, 10).map((column, index) => ({
+  return updatedTableWithLinks.slice(0, 12).map((column, index) => ({
     name: column.dataField,
     label: column.header,
     options: {
@@ -17,7 +17,7 @@ export function getColumns(tableConfig, classes, data, externalLinkIcon, linkto,
       customBodyRender: (value, tableMeta) => (
         <div className={classes[`tableCell${index + 1}`]}>
           {
-          column.internalLink ? <HashRouter><Link className={classes.link} to={`${column.actualLink}${tableMeta.rowData[column.actualLinkId]}`}>{value}</Link></HashRouter>
+          column.internalLink ? <Link className={classes.link} to={`${column.actualLink}${tableMeta.rowData[column.actualLinkId]}`}>{value}</Link>
             : column.externalLink ? (
               <span className={classes.linkSpan}>
                 <a href={`${column.actualLink}${tableMeta.rowData[column.actualLinkId]}`} target="_blank" rel="noopener noreferrer" className={classes.link}>
@@ -41,15 +41,13 @@ export function getColumns(tableConfig, classes, data, externalLinkIcon, linkto,
                     : (column.formatBytes ? formatBytes(value)
                       : column.dataField === 'num_subjects'
                         ? (
-                          <HashRouter>
-                            <Link
-                              className={classes.link}
-                              to={(location) => ({ ...location, pathname: linkto })}
-                              onClick={() => linkClick(tableMeta)}
-                            >
-                              {value}
-                            </Link>
-                          </HashRouter>
+                          <Link
+                            className={classes.link}
+                            to={(location) => ({ ...location, pathname: linkto })}
+                            onClick={() => linkClick(tableMeta)}
+                          >
+                            {value}
+                          </Link>
                         )
                         : `${column.formatBytes ? formatBytes(value) : value}`
                     )}
@@ -64,6 +62,7 @@ export function getColumns(tableConfig, classes, data, externalLinkIcon, linkto,
   }));
 }
 
+//  Generate MuiTable's columns.
 export const getDefaultCustomFooter = (
   count,
   page,
