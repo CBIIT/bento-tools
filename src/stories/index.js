@@ -1,6 +1,10 @@
 import React from 'react';
 /* eslint import/no-extraneous-dependencies: ["error", {"peerDependencies": true}] */
 import { storiesOf } from '@storybook/react';
+import {
+  withKnobs,
+  select,
+} from '@storybook/addon-knobs';
 import MUIDatatable from '../components/datatables/MUIDataTable';
 import ProgramSunburst from '../components/PieCharts/ProgramSunburst/ProgramSunburstView';
 import CustomActiveDonut from '../components/PieCharts/CustomActiveDonut/CustomActiveDonutView';
@@ -38,6 +42,7 @@ const columns = [
 
 const options = {
   selectCellPostion: 'right',
+
 };
 
 const title = 'Awesome list';
@@ -53,10 +58,18 @@ storiesOf('Header', module)
   .add('Easter Header with custom logo and eas', () => <Header logo={nihLogo} easter={easter2000} />);
 
 storiesOf('Footer', module).add('Footer', () => <Footer data={footerData} />);
-storiesOf('MUIDatatable', module).add('left Selectable', () => <MUIDatatable columns={columns} data={data} title={title} selectCellPostion="right" />);
-storiesOf('MUIDatatable', module).add('right Selectable', () => <MUIDatatable columns={columns} data={data} options={options} title={title} selectCellPostion="right" />);
 
-storiesOf('PieCharts', module).add('ProgramSunburst', () => (
+storiesOf('MUIDatatable', module)
+  .addDecorator(withKnobs)
+  .add('Basic', () => {
+    options.headerPagination = select('headerPagination', [true, false], true);
+    options.footerPagination = select('footerPagination', [true, false], true);
+    options.selectCellPostion = select('selectCellPostion', ['left', 'right'], 'left');
+
+    return (<MUIDatatable columns={columns} data={data} options={options} title={title} />);
+  });
+
+storiesOf('ProgramSunburst', module).add('right Selectable', () => (
   <ProgramSunburst
     width={250}
     height={173}
