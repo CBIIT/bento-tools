@@ -1,4 +1,4 @@
-import uuid from 'uuid';
+import { v4 as uuid } from 'uuid';
 import { mergeWith, isArray } from 'lodash';
 
 export const COLORS_LEVEL_1 = [

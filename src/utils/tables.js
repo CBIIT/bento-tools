@@ -2,7 +2,7 @@ import React from 'react';
 import TableFooter from '@material-ui/core/TableFooter';
 import TableRow from '@material-ui/core/TableRow';
 import TablePagination from '@material-ui/core/TablePagination';
-import { Link } from 'react-router-dom';
+import { HashRouter, Link } from 'react-router-dom';
 import { dateTimeStamp, manipulateLinks, formatBytes } from './helpers';
 
 //  Generate MuiTable's columns.
@@ -17,7 +17,7 @@ export function getColumns(tableConfig, classes, data, externalLinkIcon, linkto,
       customBodyRender: (value, tableMeta) => (
         <div className={classes[`tableCell${index + 1}`]}>
           {
-          column.internalLink ? <Link className={classes.link} to={`${column.actualLink}${tableMeta.rowData[column.actualLinkId]}`}>{value}</Link>
+          column.internalLink ? <HashRouter><Link className={classes.link} to={`${column.actualLink}${tableMeta.rowData[column.actualLinkId]}`}>{value}</Link></HashRouter>
             : column.externalLink ? (
               <span className={classes.linkSpan}>
                 <a href={`${column.actualLink}${tableMeta.rowData[column.actualLinkId]}`} target="_blank" rel="noopener noreferrer" className={classes.link}>
@@ -41,13 +41,15 @@ export function getColumns(tableConfig, classes, data, externalLinkIcon, linkto,
                     : (column.formatBytes ? formatBytes(value)
                       : column.dataField === 'num_subjects'
                         ? (
-                          <Link
-                            className={classes.link}
-                            to={(location) => ({ ...location, pathname: linkto })}
-                            onClick={() => linkClick(tableMeta)}
-                          >
-                            {value}
-                          </Link>
+                          <HashRouter>
+                            <Link
+                              className={classes.link}
+                              to={(location) => ({ ...location, pathname: linkto })}
+                              onClick={() => linkClick(tableMeta)}
+                            >
+                              {value}
+                            </Link>
+                          </HashRouter>
                         )
                         : `${column.formatBytes ? formatBytes(value) : value}`
                     )}
@@ -62,7 +64,6 @@ export function getColumns(tableConfig, classes, data, externalLinkIcon, linkto,
   }));
 }
 
-//  Generate MuiTable's columns.
 export const getDefaultCustomFooter = (
   count,
   page,
@@ -101,6 +102,8 @@ export function getOptions(table, classes, customFooter, onRowSelectionChange, i
     print: typeof (table.print) !== 'undefined' ? table.print : false,
     viewColumns: typeof (table.viewColumns) !== 'undefined' ? table.viewColumns : false,
     pagination: typeof (table.pagination) !== 'undefined' ? table.pagination : true,
+    headerPagination: typeof (table.headerPagination) !== 'undefined' ? table.headerPagination : false,
+    footerPagination: typeof (table.footerPagination) !== 'undefined' ? table.footerPagination : true,
     download: typeof (table.download) !== 'undefined' ? table.download : false,
     rowsPerPageOptions: table.rowsPerPageOptions ? table.rowsPerPageOptions : [10, 25, 50, 100],
     sortOrder: {
@@ -131,3 +134,4 @@ export function getOptions(table, classes, customFooter, onRowSelectionChange, i
         : null),
   };
 }
+
