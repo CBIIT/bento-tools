@@ -134,4 +134,3 @@ export function getOptions(table, classes, customFooter, onRowSelectionChange, i
         : null),
   };
 }
-
