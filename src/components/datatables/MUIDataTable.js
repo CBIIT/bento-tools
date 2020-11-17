@@ -1552,12 +1552,14 @@ class MUIDataTable extends React.Component {
             this.options.onRowSelectionChange(
               this.state.selectedRows.data,
               this.state.selectedRows.data,
+              this.state.selectedRows.data.map((item) => item.dataIndex),
               this.state.displayData
             );
           } else if (this.options.onRowsSelect) {
             this.options.onRowsSelect(
               this.state.selectedRows.data,
               this.state.selectedRows.data,
+              this.state.selectedRows.data.map((item) => item.dataIndex),
               this.state.displayData
             );
           }
