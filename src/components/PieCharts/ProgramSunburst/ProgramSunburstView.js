@@ -53,14 +53,13 @@ function findCaseSizeOfTitle(data, title) {
 const styles = {
   title: {
     color: (props) => (props.textColor ? props.textColor : 'black'),
-    // (theme.palette.widgetBackground) ? theme.palette.widgetBackground.contrastText : 'black',
     fontSize: '12px',
     maxWidth: '1440px',
     fontFamily: 'Nunito',
     lineHeight: '20px',
     fontWeight: '500',
     height: '20px',
-    textAlign: 'center',
+    textAlign: (props) => (props.titleAlignment ? props.titleAlignment : 'center'),
   },
   customWidget: {
     marginTop: '18px',
@@ -84,7 +83,7 @@ class ProgramSunburst extends PureComponent {
       caseSize, size, widgetData, title,
     } = this.state;
     const {
-      width, height, data, textColor, classes,
+      width, height, data, textColor, classes, titleLocation,
     } = this.props;
     // update the caseSize  associated with title
 
@@ -98,6 +97,11 @@ class ProgramSunburst extends PureComponent {
     return (
       <>
         <div className={classes.customWidget}>
+          {titleLocation === 'top' && (
+          <div className={classes.title}>
+            {title}
+          </div>
+          )}
           <Sunburst
             id={widgetData.key}
             hideRootNode
@@ -151,9 +155,11 @@ class ProgramSunburst extends PureComponent {
             />
             )}
           </Sunburst>
+          {titleLocation === 'bottom' && (
           <div className={classes.title}>
             {title}
           </div>
+          )}
         </div>
       </>
     );

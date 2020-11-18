@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import {
   PieChart, Pie, Sector, Cell, ResponsiveContainer,
 } from 'recharts';
+import injectSheet from 'react-jss';
 
 const DEFAULT_COLORS_EVEN = [
   '#D4D4D4',
@@ -27,7 +28,9 @@ const renderActiveShape = (props) => {
   // const RADIAN = Math.PI / 180;
   const {
     cx, cy, innerRadius, outerRadius, startAngle, endAngle,
-    fill, payload, value, textColor, fontSize,
+    fill, payload, value, textColor, fontSize, fontWeight, fontFamily,
+    // eslint-disable-next-line no-unused-vars
+    titleLocation, titleAlignment,
   } = props;
   // const sin = Math.sin(-RADIAN * midAngle);
   // const cos = Math.cos(-RADIAN * midAngle);
@@ -39,9 +42,12 @@ const renderActiveShape = (props) => {
   // const ey = my;
   // const textAnchor = cos >= 0 ? 'start' : 'end';
 
+  const lableX = (titleAlignment === 'center') ? cx : (titleAlignment === 'left') ? 0 : cx * 2;
+  const lableY = (titleLocation === 'top') ? 9 : cy * 2;
+
   return (
     <g>
-      <text x={cx} y={cy * 2} dy={0} textAnchor="middle" fill={textColor} fontSize={fontSize || '12px'} fontWeight="500" fontFamily="Nunito">{String(payload.name).length > 30 ? `${String(payload.name).substr(0, 30)}...` : payload.name}</text>
+      <text x={lableX} y={lableY} dy={0} textAnchor={(titleAlignment === 'center') ? 'middle' : null} fill={textColor} fontSize={fontSize || '12px'} fontWeight={fontWeight || '500'} fontFamily={fontFamily || 'Nunito'}>{String(payload.name).length > 30 ? `${String(payload.name).substr(0, 30)}...` : payload.name}</text>
       <text x={cx} y={cy} dy={0} textAnchor="middle" fill={textColor} fontSize="12px" fontWeight="bold" fontFamily="Nunito">{`${value}`}</text>
       <text x={cx} y={cy} dy={12} textAnchor="middle" fill={textColor} fontSize="12px" fontWeight="light" fontFamily="Nunito">Cases</text>
       <Sector
@@ -67,6 +73,15 @@ const renderActiveShape = (props) => {
   );
 };
 
+const combineExtraProps = (props, extraProps, cb) => {
+  const combinedProps = { ...props, ...extraProps };
+  return cb(combinedProps);
+};
+
+const styles = {
+
+};
+
 class CustomActiveDonut extends PureComponent {
   constructor(props) {
     super(props);
@@ -82,6 +97,8 @@ class CustomActiveDonut extends PureComponent {
   render() {
     const {
       data: DataObj, textColor, colors,
+      titleLocation, titleAlignment,
+      fontSize, fontWeight, fontFamily,
     } = this.props;
     const data = DataObj.map((obj) => ({
       name: obj.group,
@@ -93,12 +110,22 @@ class CustomActiveDonut extends PureComponent {
 
     const { activeIndex } = this.state;
 
+    const extraProps = {
+      titleLocation,
+      titleAlignment,
+      fontSize,
+      fontWeight,
+      fontFamily,
+    };
+
+    console.log(titleLocation);
+
     return (
       <ResponsiveContainer width={185} height={210}>
         <PieChart textColor={textColor}>
           <Pie
             activeIndex={activeIndex}
-            activeShape={renderActiveShape}
+            activeShape={(props) => (combineExtraProps(props, extraProps, renderActiveShape))}
             data={data}
             cx={90}
             cy={98}
@@ -119,4 +146,5 @@ class CustomActiveDonut extends PureComponent {
   }
 }
 
-export default CustomActiveDonut;
+const Chart = injectSheet(styles)(CustomActiveDonut);
+export default Chart;
