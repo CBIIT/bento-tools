@@ -118,8 +118,6 @@ class CustomActiveDonut extends PureComponent {
       fontFamily,
     };
 
-    console.log(titleLocation);
-
     return (
       <ResponsiveContainer width={185} height={210}>
         <PieChart textColor={textColor}>
