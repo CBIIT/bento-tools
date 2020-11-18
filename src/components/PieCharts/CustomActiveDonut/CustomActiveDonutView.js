@@ -47,7 +47,7 @@ const renderActiveShape = (props) => {
 
   return (
     <g>
-      <text x={lableX} y={lableY} dy={0} fill={textColor} fontSize={fontSize || '12px'} fontWeight={fontWeight || '500'} fontFamily={fontFamily || 'Nunito'}>{String(payload.name).length > 30 ? `${String(payload.name).substr(0, 30)}...` : payload.name}</text>
+      <text x={lableX} y={lableY} dy={0} textAnchor={(titleAlignment === 'center') ? 'middle' : null} fill={textColor} fontSize={fontSize || '12px'} fontWeight={fontWeight || '500'} fontFamily={fontFamily || 'Nunito'}>{String(payload.name).length > 30 ? `${String(payload.name).substr(0, 30)}...` : payload.name}</text>
       <text x={cx} y={cy} dy={0} textAnchor="middle" fill={textColor} fontSize="12px" fontWeight="bold" fontFamily="Nunito">{`${value}`}</text>
       <text x={cx} y={cy} dy={12} textAnchor="middle" fill={textColor} fontSize="12px" fontWeight="light" fontFamily="Nunito">Cases</text>
       <Sector
