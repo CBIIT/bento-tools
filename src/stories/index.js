@@ -69,28 +69,45 @@ storiesOf('MUIDatatable', module)
     return (<MUIDatatable columns={columns} data={data} options={options} title={title} />);
   });
 
-storiesOf('ProgramSunburst', module).add('right Selectable', () => (
-  <ProgramSunburst
-    width={250}
-    height={173}
-    innerRadius={40}
-    outerRadius={65}
-    cx="50%"
-    cy="50%"
-    data={dataSunburst}
-  />
-));
-storiesOf('PieCharts', module).add('CustomActiveDonut', () => (
-  <CustomActiveDonut
-    width={400}
-    height={225}
-    innerRadius={50}
-    outerRadius={75}
-    cx="50%"
-    cy="50%"
-    data={dataDonut}
-  />
-));
+storiesOf('PieCharts', module)
+  .addDecorator(withKnobs)
+  .add('ProgramSunburst', () => {
+    const titleLocation = select('titleLocation', ['top', 'bottom'], 'top');
+    const titleAlignment = select('titleAlignment', ['left', 'center', 'right'], 'center');
+    return (
+      <ProgramSunburst
+        width={250}
+        height={173}
+        innerRadius={40}
+        outerRadius={65}
+        cx="50%"
+        cy="50%"
+        data={dataSunburst}
+        titleLocation={titleLocation}
+        titleAlignment={titleAlignment}
+      />
+    );
+  });
+storiesOf('PieCharts', module).add('CustomActiveDonut', () => {
+  const titleLocation = select('titleLocation', ['top', 'bottom'], 'bottom');
+  const titleAlignment = select('titleAlignment', ['left', 'center', 'right'], 'left');
+  const fontFamily = select('fontFamily', ['Nunito', 'Raleway'], 'Nunito');
+
+  return (
+    <CustomActiveDonut
+      width={400}
+      height={225}
+      innerRadius={50}
+      outerRadius={75}
+      cx="50%"
+      cy="50%"
+      data={dataDonut}
+      titleLocation={titleLocation}
+      titleAlignment={titleAlignment}
+      fontFamily={fontFamily}
+    />
+  );
+});
 storiesOf('NavBar', module).add('NavBar', () => <NavBar navBarData={navBarData} navBarCartData={navBarCartData} navBarstyling={navBarstyling} numberOfCases={numberOfCases} />);
 storiesOf('StatsBar', module).add('StatsBar', () => <StatsBar data={statsData} globalStatsData={globalStatsData} statsStyling={statsStyling} />);
 storiesOf('About', module).add('XoomInOut', () => (

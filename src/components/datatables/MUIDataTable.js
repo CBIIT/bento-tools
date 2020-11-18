@@ -295,7 +295,7 @@ class MUIDataTable extends React.Component {
     this.initializeTable(this.props);
   }
 
-  componentWillReceiveProps() {
+  UNSAFE_componentWillReceiveProps() {
     this.initializeTable(this.props);
   }
 
