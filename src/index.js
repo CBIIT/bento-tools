@@ -37,10 +37,15 @@ export {
 	filterData,
 	getFilters,
 	customSorting,
+	isNumeric,
 	getCheckBoxData,
 	transformInitialDataForSunburst,
 	transformAPIDataIntoCheckBoxData,
 	customCheckBox,
+	updateCurrentSelection,
+	updateCheckBox,
+	setSelectedVlauesToTrue,
+	setSelectedFilterValues,
 } from './utils/dashboardUtilFunctions';
 export { getColumns, getDefaultCustomFooter, getOptions } from './utils/tables';
 export { manipulateLinks, dateTimeStamp, formatBytes } from './utils/helpers';

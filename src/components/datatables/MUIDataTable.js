@@ -1461,12 +1461,14 @@ class MUIDataTable extends React.Component {
               this.state.curSelectedRows,
               this.state.selectedRows.data,
               this.state.selectedRows.data.map((item) => item.dataIndex),
+              this.state.data,
             );
           } else if (this.options.onRowsSelect) {
             this.options.onRowsSelect(
               this.state.curSelectedRows,
               this.state.selectedRows.data,
               this.state.selectedRows.data.map((item) => item.dataIndex),
+              this.state.data,
             );
           }
         },
@@ -1526,15 +1528,17 @@ class MUIDataTable extends React.Component {
           this.setTableAction('rowSelectionChange');
           if (this.options.onRowSelectionChange) {
             this.options.onRowSelectionChange(
-              [value],
+                [value],
               this.state.selectedRows.data,
               this.state.selectedRows.data.map((item) => item.dataIndex),
+              this.state.data,
             );
           } else if (this.options.onRowsSelect) {
             this.options.onRowsSelect(
               [value],
               this.state.selectedRows.data,
               this.state.selectedRows.data.map((item) => item.dataIndex),
+              this.state.data,
             );
           }
         },
@@ -1557,12 +1561,14 @@ class MUIDataTable extends React.Component {
               this.state.selectedRows.data,
               this.state.selectedRows.data,
               this.state.selectedRows.data.map((item) => item.dataIndex),
+              this.state.displayData
             );
           } else if (this.options.onRowsSelect) {
             this.options.onRowsSelect(
               this.state.selectedRows.data,
               this.state.selectedRows.data,
               this.state.selectedRows.data.map((item) => item.dataIndex),
+              this.state.displayData
             );
           }
         },

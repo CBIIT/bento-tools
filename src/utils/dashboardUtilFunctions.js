@@ -1,4 +1,4 @@
-import uuid from 'uuid';
+import { v4 as uuid } from 'uuid';
 import { mergeWith, isArray } from 'lodash';
 
 export const COLORS_LEVEL_1 = [
@@ -35,7 +35,6 @@ const NOT_PROVIDED = 'Not Specified';
   show: control show this category on the page or not
 
 */
-
 export const unselectFilters = (filtersObj) => filtersObj.map((filterElement) => ({
   groupName: filterElement.groupName,
   name: filterElement.name,
@@ -49,6 +48,14 @@ function customizer(objValue, srcValue) {
     return objValue.concat(srcValue);
   }
 }
+
+/**
+ * Get stat data from dashboard data
+ *
+ * @param {object} dashboardData
+ * @param {object} stats
+ * @return {json}
+ */
 
 export function getStatDataFromDashboardData(dashboardData, stats) {
   const statsWithArraySubj = dashboardData.reduce((acc, subjectRow) => {
@@ -84,7 +91,15 @@ export function getStatDataFromDashboardData(dashboardData, stats) {
   });
   return output;
 }
-// getStudiesProgramWidgetFromDT
+
+/**
+ * Get Studies program widget from datatable
+ *
+ * @param {object} data
+ * @param {object} level1
+ * @param {object} level2
+ * @return {json}
+ */
 
 export function getSunburstDataFromDashboardData(data, level1, level2) {
   // construct data tree
@@ -145,10 +160,11 @@ export function getSunburstDataFromDashboardData(data, level1, level2) {
 }
 
 /**
- * Prepare Data fro Widegt
+ * Get widegt data from datatable
+ *
  * @param {object} data
- * @param {object} widgetName
- * @return {object}
+ * @param {string} widgetName
+ * @return {json}
  */
 
 export function getDonutDataFromDashboardData(data, widgetName) {
@@ -183,20 +199,14 @@ export function getDonutDataFromDashboardData(data, widgetName) {
   return output;
 }
 
-/**
- * Get filter Data
- * filterData function evaluates a row of data with filters,
- *    to check if this row will be showed in the data table.
- *
- *   If there is no filter, then display this row.
- *   If has filters and for each group of filters, at least has one filter option
- *    is related to the data.
- *   Otherwise:  Hide this row.
- * @param {object} row
- * @param {object} filters
- * @return {object}
- */
+/* filterData function evaluates a row of data with filters,
+      to check if this row will be showed in the data table.
 
+     If there is no filter, then display this row.
+     If has filters and for each group of filters, at least has one filter option
+     is related to the data.
+     Otherwise:  Hide this row.
+  */
 export const filterData = (row, filters) => {
   // No filter
   if (filters.length === 0) {
@@ -235,10 +245,11 @@ export const filterData = (row, filters) => {
 };
 
 /**
- * Get updated Filters
+ * Get Filters
+ *
  * @param {object} orginFilter
  * @param {object} newCheckBoxs
- * @return {object}
+ * @return {json}
  */
 
 export function getFilters(orginFilter, newCheckBoxs) {
@@ -259,16 +270,17 @@ export function getFilters(orginFilter, newCheckBoxs) {
   return ogFilter;
 }
 
-function isNumeric(value) {
+export function isNumeric(value) {
   return /^-?\d+$/.test(value);
 }
 
 /**
- * Custom Sorting
- * @param {object} a
- * @param {object} b
+ * customSorting
+ *
+ * @param {array} a
+ * @param {array} b
  * @param {int} i
- * @return {object}
+ * @return {json}
  */
 
 export function customSorting(a, b, i = 0) {
@@ -297,13 +309,13 @@ export function customSorting(a, b, i = 0) {
 }
 
 /**
- * Get CheckBox's Data
  * Everytime the checkbox has been clicked, will call this function to update the data of checkbox
+ *
  * @param {object} data
  * @param {object} allCheckBoxs
  * @param {object} activeCheckBoxs
  * @param {object} filters
- * @return {object}
+ * @return {json}
  */
 
 export const getCheckBoxData = (data, allCheckBoxs, activeCheckBoxs, filters) => (
@@ -377,11 +389,12 @@ export const getCheckBoxData = (data, allCheckBoxs, activeCheckBoxs, filters) =>
 );
 
 /**
- * Transform API Data into Sunburst
+ * Transform initial data for sunburst
  *
  * @param {object} data
- * @return {object}
+ * @return {json}
  */
+
 export function transformInitialDataForSunburst(data) {
   const output = {};
   output.key = uuid();
@@ -402,13 +415,12 @@ export function transformInitialDataForSunburst(data) {
 }
 
 /**
- * Transform API Data into CheckBox
+ * Transform API Data into CheckBox Data
  *
  * @param {object} data
  * @param {object} field
- * @return {object}
+ * @return {json}
  */
-
 export function transformAPIDataIntoCheckBoxData(data, field) {
   const result = [];
   let preElementIndex = 0;
@@ -418,7 +430,6 @@ export function transformAPIDataIntoCheckBoxData(data, field) {
     isChecked: false,
     subjects: el.subjects,
   }))
-    .sort((a, b) => customSorting(a.name, b.name))
     .forEach((el) => {
       // reduce the duplication
       if (result[parseInt(preElementIndex, 10)] && result[parseInt(preElementIndex, 10)].name) {
@@ -432,14 +443,25 @@ export function transformAPIDataIntoCheckBoxData(data, field) {
         result.push(el);
       }
     });
-
-  return result;
+  // Sorting based on Filter Intm name
+  const sortBasedOnItemName = result.slice(0).sort((obj1, obj2) => {
+    const x = obj1.name.toLowerCase();
+    const y = obj2.name.toLowerCase();
+    return x < y ? -1 : x > y ? 1 : 0;
+  });
+  return sortBasedOnItemName;
 }
 
-// CustomCheckBox works for first time init Checkbox,
-// that function transforms the data which returns from API into a another format
-// so it contains more information and easy for front-end to show it correctly.
-export function customCheckBox(facetSearchData, data) {
+/**
+ *  CustomCheckBox works for first time init Checkbox,
+that function transforms the data which returns from API into a another format
+so it contains more information and easy for front-end to show it correctly.
+ *  * @param {object} currentGroupCount
+ *  * @param {object} willUpdateGroupCount
+ * * @param {object} currentCheckboxSelection
+ * @return {json}
+ */
+export function customCheckBox(data, facetSearchData) {
   return (
     facetSearchData.map((mapping) => ({
       groupName: mapping.label,
@@ -474,6 +496,7 @@ export function updateCurrentSelection(checkboxGroup, Filters) {
  *  * @param {object} currentGroupCount
  *  * @param {object} willUpdateGroupCount
  * * @param {object} currentCheckboxSelection
+ * * @param {object} facetSearchData
  * @return {json}
  */
 

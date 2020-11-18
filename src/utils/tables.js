@@ -8,7 +8,7 @@ import { dateTimeStamp, manipulateLinks, formatBytes } from './helpers';
 //  Generate MuiTable's columns.
 export function getColumns(tableConfig, classes, data, externalLinkIcon, linkto, linkClick) {
   const updatedTableWithLinks = manipulateLinks(tableConfig.columns);
-  return updatedTableWithLinks.slice(0, 10).map((column, index) => ({
+  return updatedTableWithLinks.slice(0, 12).map((column, index) => ({
     name: column.dataField,
     label: column.header,
     options: {
@@ -102,6 +102,8 @@ export function getOptions(table, classes, customFooter, onRowSelectionChange, i
     print: typeof (table.print) !== 'undefined' ? table.print : false,
     viewColumns: typeof (table.viewColumns) !== 'undefined' ? table.viewColumns : false,
     pagination: typeof (table.pagination) !== 'undefined' ? table.pagination : true,
+    headerPagination: typeof (table.headerPagination) !== 'undefined' ? table.headerPagination : false,
+    footerPagination: typeof (table.footerPagination) !== 'undefined' ? table.footerPagination : true,
     download: typeof (table.download) !== 'undefined' ? table.download : false,
     rowsPerPageOptions: table.rowsPerPageOptions ? table.rowsPerPageOptions : [10, 25, 50, 100],
     sortOrder: {
