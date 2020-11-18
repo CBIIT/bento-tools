@@ -468,6 +468,7 @@ export function customCheckBox(data, facetSearchData) {
       checkboxItems: transformAPIDataIntoCheckBoxData(data[mapping.api], mapping.field),
       datafield: mapping.datafield,
       show: mapping.show,
+      section: mapping.section,
     }))
   );
 }
@@ -520,6 +521,7 @@ export function updateCheckBox(
           transformAPIDataIntoCheckBoxData(willUpdateGroupCount[mapping.api], mapping.field),
         datafield: mapping.datafield,
         show: mapping.show,
+        section: mapping.section,
       };
     })
   );
@@ -561,6 +563,7 @@ export function setSelectedFilterValues(checkboxData, Filters) {
         ),
         datafield: filterGroup.datafield,
         show: filterGroup.show,
+        section: filterGroup.section,
       };
     }
     return filterGroup;
