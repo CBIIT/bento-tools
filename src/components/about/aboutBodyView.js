@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import { Grid, Link, withStyles } from '@material-ui/core';
 import XoomInOut from './xoomInOutView';
