@@ -65,16 +65,16 @@ const styles = () => ({
     height: props.statsStyling.global.height ? props.statsStyling.global.height : '47px',
     margin: '0 auto',
   }),
-  statTitle: {
+  statTitle: (props) => ({
     float: 'left',
     color: '#062D4F',
     fontFamily: 'Nunito',
     fontWeight: 'bold',
     fontSize: '11px',
     letterSpacing: '1px',
-    margin: '14px 8px 0px 0px',
+    margin: props.statsStyling.statTitleFirst ? '14px 8px 0px 0px' : '14px 8px 0px 8px',
     textTransform: 'uppercase',
-  },
+  }),
   statCount: (props) => (props.statsStyling.global.horizontalStyle === true ? {
     display: 'inline-block',
     float: 'left',
