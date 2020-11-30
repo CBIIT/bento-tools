@@ -72,7 +72,7 @@ const styles = () => ({
     fontWeight: 'bold',
     fontSize: '11px',
     letterSpacing: '1px',
-    margin: props.statsStyling.statTitleFirst ? '14px 8px 0px 0px' : '14px 8px 0px 8px',
+    margin: props.statsStyling.statTitleFirst === true ? '14px 8px 0px 0px' : '14px 8px 0px 8px',
     textTransform: 'uppercase',
   }),
   statCount: (props) => (props.statsStyling.global.horizontalStyle === true ? {
