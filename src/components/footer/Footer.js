@@ -179,12 +179,12 @@ const Footer = ({ classes, data }) => (
         >
           {data.footerLogoHyperlink
             ? (
-              <a href={data.footerLogoHyperlink} className={classes.nciLogo}>
+              <RouteLinks to={data.footerLogoHyperlink} className={classes.nciLogo}>
                 <img
                   src={data.footerLogoImage}
                   alt={data.footerLogoAltText}
                 />
-              </a>
+              </RouteLinks>
             ) : (
               <img
                 src={data.footerLogoImage}
