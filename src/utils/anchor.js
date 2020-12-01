@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import React from 'react';
+import RouteLinks from '../components/helpers/routeLinks';
 
 /**
  prepareLinks function find all "link" and "labelLink" properties,
@@ -33,5 +33,8 @@ export function prepareLinks(properties, data) {
 export const Anchor = ({ link, text, classes }) => (
   link.match(/\w+:\/\//)
     ? <a href={link} target="_blank" rel="noopener noreferrer" className={classes.link}>{text}</a>
-    : <Link to={link} className={classes.link}>{text}</Link>
+    : (
+      <RouteLinks to={link} className={classes.link}>{text}</RouteLinks>
+    )
+
 );
