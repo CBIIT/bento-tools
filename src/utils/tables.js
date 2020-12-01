@@ -72,7 +72,7 @@ export const getDefaultCustomFooter = (
   changePage,
   classes,
 ) => {
-  if (count >= 11) {
+  if (count >= 1) {
     return (
       <TableFooter>
         <TableRow>
