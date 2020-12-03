@@ -228,7 +228,6 @@ const styles = () => ({
     // }),
   }),
   cartIcon: {
-    width: '22px',
     height: '22px',
     margin: '0px 0px 0px 6px',
   },
