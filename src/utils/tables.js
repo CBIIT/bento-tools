@@ -39,7 +39,7 @@ export function getColumns(tableConfig, classes, data, externalLinkIcon, linkto,
                   {' '}
                   {column.dataFromRoot ? data[column.dataField]
                     : (column.formatBytes ? formatBytes(value)
-                      : column.dataField === 'num_subjects'
+                      : (column.dataField === 'num_subjects' || column.dataField === 'numberOfCases')
                         ? (
                           <HashRouter>
                             <Link
