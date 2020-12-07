@@ -16,48 +16,47 @@ export function getColumns(tableConfig, classes, data, externalLinkIcon, linkto,
       filter: typeof (column.filter) !== 'undefined' ? column.filter : false,
       customBodyRender: (value, tableMeta) => (
         <div className={classes[`tableCell${index + 1}`]}>
-          {
-          column.internalLink ? <HashRouter><Link className={classes.link} to={`${column.actualLink}${tableMeta.rowData[column.actualLinkId]}`}>{value}</Link></HashRouter>
-            : column.externalLink ? (
-              <span className={classes.linkSpan}>
-                <a href={`${column.actualLink}${tableMeta.rowData[column.actualLinkId]}`} target="_blank" rel="noopener noreferrer" className={classes.link}>
-                  {' '}
-                  {column.formatBytes ? formatBytes(value) : value}
-                  {' '}
-                </a>
-                {externalLinkIcon ? (
-                  <img
-                    src={externalLinkIcon.src}
-                    alt={externalLinkIcon.alt}
-                    className={classes.externalLinkIcon}
-                  />
-                ) : ''}
-              </span>
-            )
-              : (
-                <div className={classes[`tableCell${index + 1}`]}>
-                  {' '}
-                  {column.dataFromRoot ? data[column.dataField]
-                    : (column.formatBytes ? formatBytes(value)
-                      : (column.dataField === 'num_subjects' || column.dataField === 'numberOfCases')
-                        ? (
-                          <HashRouter>
-                            <Link
-                              className={classes.link}
-                              to={(location) => ({ ...location, pathname: linkto })}
-                              onClick={() => linkClick(tableMeta)}
-                            >
-                              {value}
-                            </Link>
-                          </HashRouter>
-                        )
-                        : `${column.formatBytes ? formatBytes(value) : value}`
-                    )}
-                  {' '}
-
-                </div>
+          { value
+            ? (column.internalLink ? <HashRouter><Link className={classes.link} to={`${column.actualLink}${tableMeta.rowData[column.actualLinkId]}`}>{value}</Link></HashRouter>
+              : column.externalLink ? (
+                <span className={classes.linkSpan}>
+                  <a href={`${column.actualLink}${tableMeta.rowData[column.actualLinkId]}`} target="_blank" rel="noopener noreferrer" className={classes.link}>
+                    {' '}
+                    {column.formatBytes ? formatBytes(value) : value}
+                    {' '}
+                  </a>
+                  {externalLinkIcon ? (
+                    <img
+                      src={externalLinkIcon.src}
+                      alt={externalLinkIcon.alt}
+                      className={classes.externalLinkIcon}
+                    />
+                  ) : ''}
+                </span>
               )
-              }
+                : (
+                  <div className={classes[`tableCell${index + 1}`]}>
+                    {' '}
+                    {column.dataFromRoot ? data[column.dataField]
+                      : (column.formatBytes ? formatBytes(value)
+                        : (column.dataField === 'num_subjects' || column.dataField === 'numberOfCases')
+                          ? (
+                            <HashRouter>
+                              <Link
+                                className={classes.link}
+                                to={(location) => ({ ...location, pathname: linkto })}
+                                onClick={() => linkClick(tableMeta)}
+                              >
+                                {value}
+                              </Link>
+                            </HashRouter>
+                          )
+                          : `${column.formatBytes ? formatBytes(value) : value}`
+                      )}
+                    {' '}
+
+                  </div>
+                )) : 'N/A'}
         </div>
       ),
     },
