@@ -509,7 +509,8 @@ export function updateCheckBox(
 ) {
   return (
     facetSearchData.map((mapping) => {
-      if (mapping.label === currentCheckboxSelection.groupName) {
+      if (mapping.label === currentCheckboxSelection.groupName
+        && currentCheckboxSelection.isChecked) {
         const currentGroup = currentGroupCount.filter(
           (data) => data.groupName === currentCheckboxSelection.groupName,
         )[0];
