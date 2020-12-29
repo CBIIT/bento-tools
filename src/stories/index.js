@@ -57,7 +57,8 @@ storiesOf('Header', module)
   .add('Easter Header with custom easter', () => <Header easter={easter2000} />)
   .add('Easter Header with custom logo and eas', () => <Header logo={nihLogo} easter={easter2000} />);
 
-storiesOf('Footer', module).add('Footer', () => <Footer data={footerData} />);
+storiesOf('Footer', module)
+  .add('Footer', () => <Footer data={footerData} background="#23355B" />);
 
 storiesOf('MUIDatatable', module)
   .addDecorator(withKnobs)
