@@ -58,11 +58,11 @@ storiesOf('Header', module)
   .add('Easter Header with custom logo and eas', () => <Header logo={nihLogo} easter={easter2000} />);
 
 storiesOf('Footer', module)
-.addDecorator(withKnobs)
-.add('Footer', () => {
-  const background = select('background', ['#325068', '#23355B'], '#23355B');
-  return <Footer data={footerData} background={background}/>
-});
+  .addDecorator(withKnobs)
+  .add('Footer', () => {
+    const background = select('background', ['#325068', '#23355B'], '#23355B');
+    return <Footer data={footerData} background={background} />;
+  });
 
 storiesOf('MUIDatatable', module)
   .addDecorator(withKnobs)
