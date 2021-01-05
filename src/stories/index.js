@@ -51,11 +51,11 @@ const data = users;
 
 const imgPath = 'https://cbiit.github.io/bento-model/model-desc/bento-model.svg';
 
-const nihLogoImg ={
-    height:'54px',
-    width:'463px',
-    marginLeft:'9px',
-  }
+const nihLogoImg = {
+  height: '54px',
+  width: '463px',
+  marginLeft: '9px',
+};
 
 storiesOf('Header', module)
   .add('Header default', () => <Header alt="hello" homeLink="https://www.google.com" />)

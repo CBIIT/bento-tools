@@ -73,7 +73,7 @@ Header.defaultProps = {
   logo: nihLogo,
   alt: 'NCI CTDC Logo - Clinical Trials Data Commons',
   homeLink: '/',
-  nihLogoImg:{}
+  nihLogoImg: {},
 };
 
 const StyledHeader = injectSheet(styles)(Header);
