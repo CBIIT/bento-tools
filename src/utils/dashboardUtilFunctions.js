@@ -392,20 +392,24 @@ export const getCheckBoxData = (data, allCheckBoxs, activeCheckBoxs, filters) =>
  * Transform initial data for sunburst
  *
  * @param {object} data
+ * @param {string} level1
+ * @param {string} level2
+ * @param {string} level1Children
+
  * @return {json}
  */
 
-export function transformInitialDataForSunburst(data) {
+export function transformInitialDataForSunburst(data, level1 = 'program', level2 = 'arm', level1Children = 'children') {
   const output = {};
   output.key = uuid();
   output.title = 'root';
   output.color = COLORS_LEVEL_1[parseInt(1, 10)];
   output.children = data.map((level1Child, index) => ({
-    title: level1Child.program,
+    title: level1Child[level1],
     color: COLORS_LEVEL_1[parseInt(index, 10)],
     caseSize: level1Child.caseSize,
-    children: level1Child.children.map((level2Child, index2) => ({
-      title: `${level1Child.program} : ${level2Child.arm}`,
+    children: level1Child[level1Children].map((level2Child, index2) => ({
+      title: `${level1Child.program} : ${level2Child[level2]}`,
       color: COLORS_LEVEL_2[parseInt(index2, 10)],
       caseSize: level2Child.caseSize,
       size: level2Child.caseSize,
