@@ -17,6 +17,7 @@ import Header from '../components/headers';
 import Footer from '../components/footer';
 import StatsBar from '../components/statsBar';
 import { data as statsData, statsStyling, globalStatsData } from '../stubs/statsBar';
+import { data as icdcStatsData, statsStyling as icdcStatsStyling, globalStatsData as icdcGlobalStatsData } from '../stubs/icdcStatsBar';
 
 import nihLogo from './icdc_nih_logo.svg';
 import easter2000 from './Canine2000.png';
@@ -123,7 +124,9 @@ storiesOf('PieCharts', module).add('CustomActiveDonut', () => {
 });
 storiesOf('LinkBar', module).add('LinkBar', () => <LinkBar />);
 storiesOf('NavBar', module).add('NavBar', () => <NavBar navBarData={navBarData} navBarCartData={navBarCartData} navBarstyling={navBarstyling} numberOfCases={numberOfCases} />);
-storiesOf('StatsBar', module).add('StatsBar', () => <StatsBar data={statsData} globalStatsData={globalStatsData} statsStyling={statsStyling} />);
+storiesOf('StatsBar', module)
+  .add('Bento StatsBar', () => <StatsBar data={statsData} globalStatsData={globalStatsData} statsStyling={statsStyling} />)
+  .add('ICDC StatsBar', () => <StatsBar data={icdcStatsData} globalStatsData={icdcGlobalStatsData} statsStyling={icdcStatsStyling} />);
 storiesOf('About', module).add('XoomInOut', () => (
   <div style={{ marginTop: '100px' }}>
     <XoomInOut style={{ marginTop: '30px' }}><img src={imgPath} alt="zoominout" style={{ width: '100%' }} /></XoomInOut>
