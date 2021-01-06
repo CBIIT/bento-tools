@@ -21,6 +21,7 @@ import { data as statsData, statsStyling, globalStatsData } from '../stubs/stats
 import nihLogo from './icdc_nih_logo.svg';
 import easter2000 from './Canine2000.png';
 import NavBar from '../components/navBar';
+import LinkBar from '../components/LinkBar';
 import {
   navBarData, navBarCartData, navBarstyling, numberOfCases,
 } from '../stubs/navBarData';
@@ -108,6 +109,7 @@ storiesOf('PieCharts', module).add('CustomActiveDonut', () => {
     />
   );
 });
+storiesOf('LinkBar', module).add('LinkBar', () => <LinkBar />);
 storiesOf('NavBar', module).add('NavBar', () => <NavBar navBarData={navBarData} navBarCartData={navBarCartData} navBarstyling={navBarstyling} numberOfCases={numberOfCases} />);
 storiesOf('StatsBar', module).add('StatsBar', () => <StatsBar data={statsData} globalStatsData={globalStatsData} statsStyling={statsStyling} />);
 storiesOf('About', module).add('XoomInOut', () => (
