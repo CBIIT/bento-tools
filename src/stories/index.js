@@ -52,11 +52,18 @@ const data = users;
 
 const imgPath = 'https://cbiit.github.io/bento-model/model-desc/bento-model.svg';
 
+const nihLogoImg = {
+  height: '54px',
+  width: '463px',
+  marginLeft: '9px',
+};
+
 storiesOf('Header', module)
   .add('Header default', () => <Header alt="hello" homeLink="https://www.google.com" />)
   .add('Header with custom Logo', () => <Header logo={nihLogo} homeLink="https://www.google.com" />)
   .add('Easter Header with custom easter', () => <Header easter={easter2000} />)
-  .add('Easter Header with custom logo and eas', () => <Header logo={nihLogo} easter={easter2000} />);
+  .add('Easter Header with custom logo and eas', () => <Header logo={nihLogo} easter={easter2000} />)
+  .add('ICDC Header', () => <Header logo={nihLogo} easter={easter2000} nihLogoImg={nihLogoImg} />);
 
 storiesOf('Footer', module).add('Footer', () => <Footer data={footerData} />);
 

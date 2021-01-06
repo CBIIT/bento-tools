@@ -35,14 +35,17 @@ const styles = {
       backgroundSize: '100% 100%',
     },
   },
-  nihLogoImg: {
+  nihLogoImg: (props) => ({
+    height: props.nihLogoImg.height,
+    width: props.nihLogoImg.width,
+    marginLeft: props.nihLogoImg.marginLeft,
     minWidth: '200px',
     minHeight: '60px',
     maxHeight: '80px',
     maxWidth: '460px',
     cursor: 'pointer',
     marginLeft: '45px',
-  },
+  }),
 
 };
 
@@ -70,6 +73,7 @@ Header.defaultProps = {
   logo: nihLogo,
   alt: 'NCI CTDC Logo - Clinical Trials Data Commons',
   homeLink: '/',
+  nihLogoImg: {},
 };
 
 const StyledHeader = injectSheet(styles)(Header);
