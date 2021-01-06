@@ -44,9 +44,9 @@ const styles = {
     fontSize: '14px',
     fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"',
   },
-  footerRoot: {
-    background: '#23355B',
-  },
+  footerRoot: (props) => ({
+    background: props.background,
+  }),
   footerComponent: {
     lineHeight: '1.42857143',
     maxWidth: '1800px',
@@ -299,7 +299,7 @@ const Footer = ({ classes, data }) => (
 );
 
 Footer.defaultProps = {
-  classes: {},
+  background: '#23355B',
 };
 
 const StyledFooter = injectSheet(styles)(Footer);
