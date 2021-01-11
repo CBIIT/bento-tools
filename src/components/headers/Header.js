@@ -7,18 +7,21 @@ const styles = {
   grow: {
     flexGrow: 3,
   },
-  headerBar: {
-    color: '#8A95A7',
-    width: '100%',
-    height: '100px',
-    margin: '0 auto',
-    display: 'flex',
-    position: 'fixed',
-    minHeight: '100px',
-    justifyContent: 'space-between',
-    top: '0px',
-    zIndex: '1201',
-    background: '#ffffff',
+  headerBar: (props) => {
+    const defaultProps = {
+      color: '#8A95A7',
+      width: '100%',
+      height: '100px',
+      margin: '0 auto',
+      display: 'flex',
+      position: 'fixed',
+      minHeight: '100px',
+      justifyContent: 'space-between',
+      top: '0px',
+      zIndex: '1201',
+      background: '#ffffff',
+    };
+    return Object.assign(defaultProps, props.customStyle.headerBar);
   },
   nihLogoContainer: {
     display: 'flex',
@@ -35,18 +38,17 @@ const styles = {
       backgroundSize: '100% 100%',
     },
   },
-  nihLogoImg: (props) => ({
-    height: props.nihLogoImg.height,
-    width: props.nihLogoImg.width,
-    marginLeft: props.nihLogoImg.marginLeft,
-    minWidth: '200px',
-    minHeight: '60px',
-    maxHeight: '80px',
-    maxWidth: '460px',
-    cursor: 'pointer',
-    marginLeft: '45px',
-  }),
-
+  nihLogoImg: (props) => {
+    const defaultProps = {
+      minWidth: '200px',
+      minHeight: '60px',
+      maxHeight: '80px',
+      maxWidth: '460px',
+      cursor: 'pointer',
+      marginLeft: '45px',
+    };
+    return Object.assign(defaultProps, props.customStyle.nihLogoImg);
+  },
 };
 
 const Header = ({ classes, ...props }) => {
@@ -73,7 +75,7 @@ Header.defaultProps = {
   logo: nihLogo,
   alt: 'NCI CTDC Logo - Clinical Trials Data Commons',
   homeLink: '/',
-  nihLogoImg: {},
+  customStyle: {},
 };
 
 const StyledHeader = injectSheet(styles)(Header);

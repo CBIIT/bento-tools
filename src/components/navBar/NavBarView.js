@@ -11,18 +11,10 @@ import classnames from 'classnames';
 import DropdownMenu from './components/DropdownMenu';
 
 const drawerWidth = 240;
-// const FENCE_LOGIN_URL = process.env.FENCE_LOGIN_URL;
-// const FENCE_LOGIN_URL = process.env.REACT_APP_LOGIN_URL;
-// const BACKEND_GETUSERINFO_API = 'https://k9dc.essential-dev.com/fence/login/';
 
 const NavBar = ({
   classes, isSidebarOpened, navBarData, navBarCartData, navBarstyling, numberOfCases,
 }) => {
-  // const theme = useTheme();
-  // const [authState, setAuthState] = React.useState({
-  //   isAuthorized: localStorage.getItem('isAuthorized') === 'true',
-  // });
-
   // Similar to componentDidMount and componentDidUpdate:
   // Empty second argument of react useEffect will avoid the infinte loop that
   // caused due to component update
@@ -32,169 +24,77 @@ const NavBar = ({
     setClickedEl(eventName);
   }
 
-  // React.useEffect(() => {
-  //   const values = {};
-
-  //   if (values.code) {
-  //     fetch(BACKEND_GETUSERINFO_API + values.code)
-  //       .then((response) => {
-  //         if (!response.ok) {
-  //           throw Error(response.statusText);
-  //         }
-  //         return response.json();
-  //       })
-  //       .then((result) => {
-  //         setAuthState({
-  //           ...authState,
-  //           isAuthorized: true,
-  //         });
-  //         localStorage.setItem('username', JSON.stringify(result.user));
-  //         localStorage.setItem('isAuthorized', 'true');
-  //       })
-  //       .catch(() => {
-  //         // Ajay Need to update this
-  //         // setAuthState(
-  //         //  { ...authState, username: "", isAuthorized: false }
-  //         //  );
-  //         // localStorage.setItem("isAuthorized", "false");
-  //       });
-  //   }
-  // }, []);
-
-  // const activeFilters = useSelector((state) => (
-  //   state.dashboard.datatable
-  //     && state.dashboard.datatable.filters
-  //     ? state.dashboard.datatable.filters : []));
   return (
-    <>
-      <AppBar
-        position="fixed"
-        className={classnames(classes.appBar, {
-          [classes.appBarShift]: isSidebarOpened,
-        })}
-      >
-        <Toolbar className={classes.toolbar}>
+    <AppBar
+      position="fixed"
+      className={classnames(classes.appBar, {
+        [classes.appBarShift]: isSidebarOpened,
+      })}
+    >
+      <Toolbar className={classes.toolbar}>
 
-          {/* Sidebar button */}
+        {/* Sidebar button */}
 
-          {/* End Sidebar button */}
-          <div id="navbar" className={classes.buttonContainer}>
-            {navBarData.slice(0, 5).map((navButton) => (
-              navButton.type === 'dropdown'
-                ? (
-                  <DropdownMenu
-                    handleButtonClickEvent={handleButtonClickEvent}
-                    clickedEl={clickedEl}
-                    linkText={navButton.labelText}
-                    dropDownElements={navButton.dropDownLinks.slice(0, 9)}
-                    navBarstyling={navBarstyling}
-                  />
-                )
-                : (
-                  <Button id="button_navbar_navButton" disableRipple weight="medium" className={classes.logotype} classes={{ root: classes.buttonRoot }}>
-                    <HashRouter>
-                      <NavLink
-                        className={classes.labelText}
-                        activeClassName={classes.activeLabel}
-                        to={navButton.link ? navButton.link : '/'}
-                        onClick={() => handleButtonClickEvent(`${navButton.labelText}`)}
-                      >
-                        {navButton.labelText}
-                      </NavLink>
-                    </HashRouter>
-                  </Button>
-                )
-            ))}
-          </div>
-          {/* Start of Theme Switching Icon and logic */}
-          <div className={classes.myCasesPosition}>
-            <Button id="button_navbar_mycases" disableRipple weight="medium" className={classes.logotype} classes={{ root: classes.buttonRootNoRightPadding }}>
-              <HashRouter>
-                <NavLink
-                  className={classes.cartLabelText}
-                  to={navBarCartData.cartLink}
-                >
-                  {navBarCartData.cartLabel}
-                  {/* <IconButton
-                color="inherit"
-                aria-haspopup="true"
-                aria-controls="mail-menu"
-                className={classes.headerMenuButton}
-                classes={{ root: classes.iconButtonRoot }}
-              > */}
-                  {/* <Badge badgeContent={numberOfCases} max={99999}> */}
-
-                  <Tooltip title="Cases" placement="bottom-end">
-                    <span className={classes.badge}>
-                      <img
-                        className={classes.cartIcon}
-                        src={navBarCartData.cartIcon}
-                        alt={navBarCartData.cartIconAlt}
-                      />
-                      <span className={classes.cartCounter}>
-                        {numberOfCases}
-                      </span>
-                    </span>
-                  </Tooltip>
-
-                  {/* </Badge> */}
-                  {/* </IconButton> */}
-                </NavLink>
-              </HashRouter>
-            </Button>
-          </div>
-          {/* Login button functionality on Navigation bar */}
-
-          {/* {authState.isAuthorized ? (
-            <ProfileMenu />
-          ) : (
-            <Button href={FENCE_LOGIN_URL} color="inherit">
-              LOGIN
-            </Button>
-          )} */}
-          {/* End Login button functionality on Navigation bar */}
-
-        </Toolbar>
-      </AppBar>
-      {/* { (location.pathname === '/cases') && (
-        <Drawer
-          className={classes.drawer}
-          variant="persistent"
-          anchor="left"
-          open={isSidebarOpened}
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-        >
-          <div className={classes.drawerAppBar}>
-            <div className={classes.floatLeft}>
-              <Button
-                variant="outlined"
-                disabled={activeFilters.length === 0}
-                onCl
-                className={classes.customButton}
-                classes={{ root: classes.clearAllButtonRoot }}
-                onClick={() => dispatch(toggleCheckBox(unselectFilters(activeFilters)))}
-                disableRipple
-              >
-              Clear All
-              </Button>
-            </div>
-            <div className={classes.floatRight} onClick={toggleSidebar}>
-              <IconButton classes={{ root: classes.iconCartButtonRoot }}>
-                <img
-                  className={classes.funnelLogoImg}
-                  src={funnelIconBlue}
-                  alt="funnel_image"
+        {/* End Sidebar button */}
+        <div id="navbar" className={classes.buttonContainer}>
+          {navBarData.slice(0, 5).map((navButton) => (
+            navButton.type === 'dropdown'
+              ? (
+                <DropdownMenu
+                  handleButtonClickEvent={handleButtonClickEvent}
+                  clickedEl={clickedEl}
+                  linkText={navButton.labelText}
+                  dropDownElements={navButton.dropDownLinks.slice(0, 9)}
+                  navBarstyling={navBarstyling}
                 />
-              </IconButton>
-            </div>
-          </div>
-          <Divider />
-          <SideBarContent />
-        </Drawer>
-      )} */}
-    </>
+              )
+              : (
+                <Button id="button_navbar_navButton" disableRipple weight="medium" className={classes.logotype} classes={{ root: classes.buttonRoot }}>
+                  <HashRouter>
+                    <NavLink
+                      className={classes.labelText}
+                      activeClassName={classes.activeLabel}
+                      to={navButton.link ? navButton.link : '/'}
+                      onClick={() => handleButtonClickEvent(`${navButton.labelText}`)}
+                    >
+                      {navButton.labelText}
+                    </NavLink>
+                  </HashRouter>
+                </Button>
+              )
+          ))}
+        </div>
+        {/* Start of Theme Switching Icon and logic */}
+        <div className={classes.myCasesPosition}>
+          <Button id="button_navbar_mycases" disableRipple weight="medium" className={classes.logotype} classes={{ root: classes.buttonRootNoRightPadding }}>
+            <HashRouter>
+              <NavLink
+                className={classes.cartLabelText}
+                to={navBarCartData.cartLink}
+              >
+                {navBarCartData.cartLabel}
+                {/* <Badge badgeContent={numberOfCases} max={99999}> */}
+                <Tooltip title="Cases" placement="bottom-end">
+                  <span className={classes.badge}>
+                    <img
+                      className={classes.cartIcon}
+                      src={navBarCartData.cartIcon}
+                      alt={navBarCartData.cartIconAlt}
+                    />
+                    <span className={classes.cartCounter}>
+                      {numberOfCases}
+                    </span>
+                  </span>
+                </Tooltip>
+
+                {/* </Badge> */}
+              </NavLink>
+            </HashRouter>
+          </Button>
+        </div>
+
+      </Toolbar>
+    </AppBar>
   );
 };
 
@@ -219,13 +119,8 @@ const styles = () => ({
   },
   appBar: (props) => ({
     backgroundColor: props.navBarstyling.global.backgroundColor ? props.navBarstyling.global.backgroundColor : '#142D64',
-    marginTop: '100px',
+    marginTop: props.navBarstyling.global.marginTop ? props.navBarstyling.global.marginTop : '100px',
     width: '100vw',
-    // zIndex: theme.zIndex.drawer + 1,
-    // transition: theme.transitions.create(['margin'], {
-    //   easing: theme.transitions.easing.sharp,
-    //   duration: theme.transitions.duration.leavingScreen,
-    // }),
   }),
   cartIcon: {
     height: '22px',
@@ -250,10 +145,6 @@ const styles = () => ({
     paddingRight: '0px !important',
     width: '100%',
     marginLeft: drawerWidth,
-    // transition: theme.transitions.create(['margin', 'width'], {
-    //   easing: theme.transitions.easing.easeOut,
-    //   duration: theme.transitions.duration.enteringScreen,
-    // }),
   },
   drawer: {
     width: drawerWidth,
