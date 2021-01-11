@@ -423,22 +423,23 @@ export function transformInitialDataForSunburst(data, level1 = 'program', level2
  *
  * @param {object} data
  * @param {object} field
+ * @param {string} caseCountField
  * @return {json}
  */
-export function transformAPIDataIntoCheckBoxData(data, field) {
+export function transformAPIDataIntoCheckBoxData(data, field, caseCountField = 'subjects') {
   const result = [];
   let preElementIndex = 0;
   data.map((el) => ({
     name: el[field.toString()] === '' || !el[field.toString()]
       ? NOT_PROVIDED : el[field.toString()],
     isChecked: false,
-    subjects: el.subjects,
+    subjects: el[caseCountField],
   }))
     .forEach((el) => {
       // reduce the duplication
       if (result[parseInt(preElementIndex, 10)] && result[parseInt(preElementIndex, 10)].name) {
         if (result[parseInt(preElementIndex, 10)].name === el.name) {
-          result[parseInt(preElementIndex, 10)].subjects += el.subjects;
+          result[parseInt(preElementIndex, 10)].subjects += el[caseCountField];
         } else {
           preElementIndex += 1;
           result.push(el);
@@ -462,14 +463,18 @@ that function transforms the data which returns from API into a another format
 so it contains more information and easy for front-end to show it correctly.
  *  * @param {object} currentGroupCount
  *  * @param {object} willUpdateGroupCount
- * * @param {object} currentCheckboxSelection
+ * * @param {string} caseCountField
  * @return {json}
  */
-export function customCheckBox(data, facetSearchData) {
+export function customCheckBox(data, facetSearchData1, caseCountField = 'subjects') {
   return (
-    facetSearchData.map((mapping) => ({
+    facetSearchData1.map((mapping) => ({
       groupName: mapping.label,
-      checkboxItems: transformAPIDataIntoCheckBoxData(data[mapping.api], mapping.field),
+      checkboxItems: transformAPIDataIntoCheckBoxData(
+        data[mapping.api],
+        mapping.field,
+        caseCountField,
+      ),
       datafield: mapping.datafield,
       show: mapping.show,
       section: mapping.section,
