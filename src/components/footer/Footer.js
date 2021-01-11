@@ -207,7 +207,7 @@ const Footer = ({ classes, data }) => (
                 <li>
                   {footerRowSectionItem.text
                 && (
-                  <RouteLinks to={footerRowSectionItem.link}>
+                  <RouteLinks to={footerRowSectionItem.link} title={footerRowSectionItem.title}>
                     <div className={classes.footerText}>
                       {footerRowSectionItem.text}
                     </div>

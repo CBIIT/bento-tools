@@ -11,14 +11,14 @@ function linkIsEmail(linkElement) {
   return (/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/.test(linkElement));
 }
 
-const RouteLinks = ({ to, children }) => (linkIsEmail(to)
+const RouteLinks = ({ title, to, children }) => (linkIsEmail(to)
   ? (
     <a href={`mailto:${to}`}>{children}</a>
   )
   : (linkIsInternal(to)
     ? (
       <HashRouter>
-        <Link to={to}>
+        <Link to={to} title={title}>
           {children}
         </Link>
       </HashRouter>
