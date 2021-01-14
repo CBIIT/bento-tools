@@ -43,16 +43,16 @@ const DropdownMenu = ({
         </span>
         {navBarstyling.dropDownIcon.displayIcon === true ? <ExpandMoreRoundedIcon className={classes.dropDownicon} /> : ''}
       </Button>
-      {displayDropDownMenu ? <DropdownItemsMenu handleClick={dropdownMenuClickEvent} dropDownElements={dropDownElements} /> : ''}
+      {displayDropDownMenu ? <DropdownItemsMenu navBarstyling={navBarstyling} handleClick={dropdownMenuClickEvent} dropDownElements={dropDownElements} /> : ''}
     </div>
   );
 };
 
 const styles = () => ({
-  logotype: {
+  logotype: (props) => ({
     whiteSpace: 'nowrap',
     color: '#FFFFFF',
-    fontFamily: 'Nunito',
+    fontFamily: props.navBarstyling.global.fontFamily ? props.navBarstyling.global.fontFamily : 'Nunito',
     fontSize: '13px',
     fontWeight: '600',
     letterSpacing: '0.9px',
@@ -62,7 +62,7 @@ const styles = () => ({
     '&:hover, &:focus': {
       borderRadius: '0',
     },
-  },
+  }),
   buttonRoot: (props) => ({
     padding: props.navBarstyling.global.padding ? props.navBarstyling.global.padding : '9px 20px 0px 20px',
   }),
