@@ -248,7 +248,7 @@ const styles = () => ({
   container: {
     margin: '16px auto 16px auto',
     color: '#000000',
-    fontFamily: (props) => (props.fontFamily ? props.fontFamily : 'Nunito'),
+    fontFamily: (props) => (props.data.fontFamily ? props.data.fontFamily : 'Nunito'),
     fontSize: '15px',
     lineHeight: '22px',
     maxWidth: '1440px',
@@ -270,9 +270,9 @@ const styles = () => ({
     // height: '476px',
     // width: '675px',
     color: '#000000',
-    fontFamily: (props) => (props.fontFamily ? props.fontFamily : 'Nunito'),
+    fontFamily: (props) => (props.data.fontFamily ? props.data.fontFamily : 'Nunito'),
     fontSize: '16px',
-    lineHeight: '30px',
+    lineHeight: (props) => (props.data.lineHeight ? props.data.lineHeight : '30px'),
   },
   title: {
     color: '#0B3556',
@@ -330,7 +330,7 @@ const styles = () => ({
     width: '100%',
   },
   tableHeader: {
-    fontFamily: (props) => (props.fontFamily ? props.fontFamily : 'Nunito'),
+    fontFamily: (props) => (props.data.fontFamily ? props.data.fontFamily : 'Nunito'),
     color: '#194563',
     textTransform: 'uppercase',
 
@@ -341,7 +341,7 @@ const styles = () => ({
     color: '#3E7AAA',
   },
   tableCell: {
-    fontFamily: (props) => (props.fontFamily ? props.fontFamily : 'Nunito'),
+    fontFamily: (props) => (props.data.fontFamily ? props.data.fontFamily : 'Nunito'),
     fontSize: '14px',
     padding: '8px 15px 8px 0px',
     borderBottom: '0.66px solid #087CA5',
@@ -361,6 +361,8 @@ AboutBody.defaultProps = {
   classes: {},
   data: {
     content: [],
+    fontFamily: 'Nunito',
+    lineHeight: '30px',
   },
 };
 
