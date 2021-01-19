@@ -16,7 +16,8 @@ const CustomDropdownMenu = ({ classes, handleClick, dropDownElements }) => (
                   ? cn(classes.sublink, classes.link)
                   : classes.link
 }
-            activeStyle={{ color: '#27DBFF' }}
+            activeStyle={dropDownElementsItem.linkActiveStyle
+              ? { color: dropDownElementsItem.linkActiveStyle } : { color: '#27DBFF' }}
             to={dropDownElementsItem.link}
             onClick={handleClick}
           >
