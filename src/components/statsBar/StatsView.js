@@ -35,7 +35,7 @@ const StatsBar = ({
                   {data[stat.statAPI]}
                 </div>
                 <div className={classes.statTitle}>
-                  {stat.statTitle}
+                  {stat.statTitle ? stat.statTitle : 0}
                 </div>
               </div>
             )
@@ -49,7 +49,7 @@ const StatsBar = ({
 
 const styles = () => ({
   statsSection: (props) => ({
-    top: '139px',
+    top: props.statsStyling.global.top ? props.statsStyling.global.top : '139px',
     width: '100%',
     zIndex: 999,
     position: 'fixed',
