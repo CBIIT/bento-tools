@@ -138,9 +138,9 @@ const styles = () => ({
     fontFamily: 'Nunito',
     fontSize: '13px',
   },
-  activeLabel: {
-    borderBottom: '1px solid  #FFFFFF',
-  },
+  activeLabel: (props) => ({
+    borderBottom: props.navBarstyling.global.activeLabel ? props.navBarstyling.global.activeLabel : '1px solid  #FFFFFF',
+  }),
   appBarShift: {
     paddingRight: '0px !important',
     width: '100%',
