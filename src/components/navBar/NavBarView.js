@@ -103,17 +103,17 @@ const styles = () => ({
     position: 'absolute',
     right: '20px',
   },
-  logotype: {
+  logotype: (props) => ({
     whiteSpace: 'nowrap',
     color: '#FFFFFF',
-    fontFamily: 'Raleway',
+    fontFamily: props.navBarstyling.global.fontFamily ? props.navBarstyling.global.fontFamily : 'Raleway',
     fontSize: '11px',
-    letterSpacing: '1.25px',
-    fontWeight: '800',
+    letterSpacing: props.navBarstyling.global.letterSpacing ? props.navBarstyling.global.letterSpacing : '1.25px',
+    fontWeight: props.navBarstyling.global.fontWeight ? props.navBarstyling.global.fontWeight : '800',
     '&:hover, &:focus': {
       borderRadius: '0',
     },
-  },
+  }),
   buttonContainer: {
     margin: '0 auto',
   },
@@ -126,18 +126,18 @@ const styles = () => ({
     height: '22px',
     margin: '0px 0px 0px 6px',
   },
-  labelText: {
+  labelText: (props) => ({
     textDecoration: 'none',
     color: '#FFFFFF',
-    fontFamily: 'Nunito',
+    fontFamily: props.navBarstyling.global.fontFamily ? props.navBarstyling.global.fontFamily : 'Nunito',
     fontSize: '13px',
-  },
-  cartLabelText: {
+  }),
+  cartLabelText: (props) => ({
     textDecoration: 'none',
     color: '#FFFFFF',
-    fontFamily: 'Nunito',
+    fontFamily: props.navBarstyling.global.fontFamily ? props.navBarstyling.global.fontFamily : 'Nunito',
     fontSize: '13px',
-  },
+  }),
   activeLabel: (props) => ({
     borderBottom: props.navBarstyling.global.activeLabel ? props.navBarstyling.global.activeLabel : '1px solid  #FFFFFF',
   }),
@@ -152,8 +152,8 @@ const styles = () => ({
   },
   toolbar: (props) => ({
     minHeight: props.navBarstyling.global.height ? props.navBarstyling.global.height : '39px',
-    paddingRight: '45px',
-    paddingLeft: '45px',
+    paddingRight: props.navBarstyling.global.paddingRight ? props.navBarstyling.global.paddingRight : '45px',
+    paddingLeft: props.navBarstyling.global.paddingLeft ? props.navBarstyling.global.paddingLeft : '45px',
     alignItems: 'flex-start',
   }),
   buttonRoot: (props) => ({

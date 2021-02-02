@@ -31,6 +31,7 @@ const styles = {
     display: 'flex',
     width: '100%',
     paddingLeft: '24px',
+    marginLeft: (props) => props.customStyle.icdcLogoContainerMarginLeft || 'auto',
     background: (props) => `url(${props.easter})` || '',
     overflow: 'hidden',
     '@media (min-width: 2400px)': {
