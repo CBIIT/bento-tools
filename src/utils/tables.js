@@ -56,7 +56,7 @@ export function getColumns(tableConfig, classes, data, externalLinkIcon, linkto,
                     {' '}
 
                   </div>
-                )) : 'N/A'}
+                )) : ''}
         </div>
       ),
     },
