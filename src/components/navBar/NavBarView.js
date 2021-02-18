@@ -170,6 +170,7 @@ const styles = () => ({
   cartCounter: {
     height: '16px',
     minWidth: '16px',
+    fontFamily: 'inter',
     fontWeight: '600',
     letterSpacing: '0.8px',
     transform: 'scale(1) translate(0%, -50%)',
