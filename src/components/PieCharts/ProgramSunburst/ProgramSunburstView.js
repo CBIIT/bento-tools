@@ -87,6 +87,14 @@ class ProgramSunburst extends PureComponent {
       width, height, data, textColor, classes, titleLocation,
     } = this.props;
 
+    // update the caseSize when data is filtered
+    this.setState({
+      widgetData: data,
+      size,
+      title,
+      caseSize: findCaseSizeOfTitle(data, title),
+    });
+
     return (
       <>
         <div className={classes.customWidget}>
