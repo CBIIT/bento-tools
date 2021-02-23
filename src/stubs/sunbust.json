@@ -26,6 +26,25 @@
           "size": 3
         }
       ]
+    },
+    {
+      "title": "COP",
+      "color": "#D4D4D4",
+      "caseSize": 14,
+      "children": [
+        {
+          "title": "COP : NCATS-COP01",
+          "color": "#F78F49",
+          "caseSize": 5,
+          "size": 5
+        },
+        {
+          "title": "COP : NCATS-COP02",
+          "color": "#F78F49",
+          "caseSize": 4,
+          "size": 4
+        }
+      ]
     }
   ]
 }

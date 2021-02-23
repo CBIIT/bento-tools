@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { PureComponent } from 'react';
 import { Sunburst, LabelSeries } from 'react-vis';
 import injectSheet from 'react-jss';
@@ -87,12 +88,12 @@ class ProgramSunburst extends PureComponent {
     } = this.props;
     // update the caseSize  associated with title
 
-    this.setState({
-      widgetData: data,
-      size,
-      title,
-      caseSize: findCaseSizeOfTitle(data, title),
-    });
+    // this.setState({
+    //   widgetData: data,
+    //   size,
+    //   title,
+    //   caseSize: findCaseSizeOfTitle(data, title),
+    // });
 
     return (
       <>
@@ -130,6 +131,7 @@ class ProgramSunburst extends PureComponent {
               });
             }}
           >
+            {console.log(caseSize)}
             {caseSize > 0 && (
             <LabelSeries data={[{
               x: 0,
