@@ -33,7 +33,7 @@ function updateData(d, keyPath) {
 // find the caseSize of a given title
 function findCaseSizeOfTitle(data, title) {
   if (title === '') {
-    return data.caseSize;
+    return data.children.reduce((a, c) => a + c.caseSize, 0);
   }
   if (data.title !== title) {
     if (data.children) {
@@ -75,7 +75,7 @@ class ProgramSunburst extends PureComponent {
       widgetData: data,
       size: findCaseSizeOfTitle(data, ''),
       title: '',
-      caseSize: data.children[0].caseSize,
+      caseSize: findCaseSizeOfTitle(data, ''),
     };
   }
 
@@ -123,7 +123,6 @@ class ProgramSunburst extends PureComponent {
               });
             }}
           >
-            {console.log(caseSize)}
             {caseSize > 0 && (
             <LabelSeries data={[{
               x: 0,
