@@ -82,10 +82,21 @@ const styles = {
 
 };
 
+function resetComponentState(component) {
+  component.setState({ activeIndex: 0 });
+}
+
 class CustomActiveDonut extends PureComponent {
   constructor(props) {
     super(props);
     this.state = { activeIndex: 0 };
+  }
+
+  componentDidUpdate(prevProps) {
+    const { data } = this.props;
+    if (data !== prevProps.data) {
+      resetComponentState(this);
+    }
   }
 
   onPieEnter = (data, index) => {

@@ -67,6 +67,17 @@ const styles = {
   },
 };
 
+function resetComponentState(component) {
+  const { data } = component.props;
+
+  component.setState({
+    widgetData: data,
+    size: findCaseSizeOfTitle(data, ''),
+    title: '',
+    caseSize: findCaseSizeOfTitle(data, ''),
+  });
+}
+
 class ProgramSunburst extends PureComponent {
   constructor(props) {
     super(props);
@@ -77,6 +88,13 @@ class ProgramSunburst extends PureComponent {
       title: '',
       caseSize: findCaseSizeOfTitle(data, ''),
     };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { data } = this.props;
+    if (data !== prevProps.data) {
+      resetComponentState(this);
+    }
   }
 
   render() {
