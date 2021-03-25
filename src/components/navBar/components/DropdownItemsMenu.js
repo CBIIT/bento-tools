@@ -66,4 +66,9 @@ const styles = () => ({
   },
 });
 
+CustomDropdownMenu.defaultProps = {
+  classes: {},
+  statsStyling: {},
+};
+
 export default withStyles(styles)(CustomDropdownMenu);
