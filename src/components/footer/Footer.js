@@ -183,6 +183,7 @@ const Footer = ({ classes, data }) => (
                 <img
                   src={data.footerLogoImage}
                   alt={data.footerLogoAltText}
+                  id="footer_logo_image"
                 />
               </RouteLinks>
             ) : (

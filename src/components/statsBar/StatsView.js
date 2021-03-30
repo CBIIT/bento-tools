@@ -10,7 +10,7 @@ const StatsBar = ({
       <div
         className={classes.box}
       >
-        {globalStatsData.slice(0, 6).map((stat) => (
+        {globalStatsData.slice(0, 6).map((stat, index) => (
           <div className={classes.statsGroup}>
             <div className={classes.statsIcon}>
               <img
@@ -21,20 +21,20 @@ const StatsBar = ({
             {
           statsStyling.global.statTitleFirst === true ? (
             <div>
-              <div className={classes.statTitle}>
+              <div className={classes.statTitle} id={`statsbar_title_${index + 1}`}>
                 {stat.statTitle}
               </div>
-              <div className={classes.statCount}>
+              <div className={classes.statCount} id={`statsbar_count_${index + 1}`}>
                 {data[stat.statAPI]}
               </div>
             </div>
           )
             : (
               <div>
-                <div className={classes.statCount}>
+                <div className={classes.statCount} id={`statsbar_count_${index + 1}`}>
                   {data[stat.statAPI]}
                 </div>
-                <div className={classes.statTitle}>
+                <div className={classes.statTitle} id={`statsbar_title_${index + 1}`}>
                   {stat.statTitle ? stat.statTitle : 0}
                 </div>
               </div>

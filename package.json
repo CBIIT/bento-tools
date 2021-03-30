@@ -1,15 +1,15 @@
 {
   "name": "bento-components",
-  "version": "0.1.58",
+  "version": "0.1.59",
   "private": false,
   "main": "lib/index.js",
   "module": "es/index.js",
   "jsnext:main": "es/index.js",
   "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0",
     "@material-ui/core": ">=4.0.0",
-    "@material-ui/icons": ">=4.0.0"
+    "@material-ui/icons": ">=4.0.0",
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   },
   "dependencies": {
     "@babel/cli": "^7.10.5",

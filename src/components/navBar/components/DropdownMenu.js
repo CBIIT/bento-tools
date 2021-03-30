@@ -38,7 +38,7 @@ const DropdownMenu = ({
         className={classes.logotype}
         classes={{ root: classes.buttonRoot }}
       >
-        <span className={clickedEl === 'aboutMenu' ? classes.buttonRootClicked : ''}>
+        <span className={clickedEl === 'aboutMenu' ? classes.buttonRootClicked : ''} id={`navbar_dropdown_${linkText}`}>
           { linkText }
         </span>
         {navBarstyling.dropDownIcon.displayIcon === true ? <ExpandMoreRoundedIcon className={classes.dropDownicon} /> : ''}
