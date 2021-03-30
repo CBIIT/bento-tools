@@ -39,13 +39,15 @@ const styles = () => ({
       margin: '-5px 0px 0px 18px',
       borderRadius: '0',
     };
-    return Object.assign(defaultProps, props.navBarstyling.dropdownMenu.paper);
+    return Object.assign(defaultProps, props.navBarstyling
+      ? props.navBarstyling.dropdownMenu ? props.navBarstyling.dropdownMenu.paper : {} : {});
   },
   sublink: (props) => {
     const defaultProps = {
       fontWeight: '500 !important',
     };
-    return Object.assign(defaultProps, props.navBarstyling.dropdownMenu.sublink);
+    return Object.assign(defaultProps, props.navBarstyling
+      ? props.navBarstyling.dropdownMenu ? props.navBarstyling.dropdownMenu.sublink : {} : {});
   },
   link: (props) => {
     const defaultProps = {
@@ -62,7 +64,8 @@ const styles = () => ({
         color: '#41A7FF',
       },
     };
-    return Object.assign(defaultProps, props.navBarstyling.dropdownMenu.link);
+    return Object.assign(defaultProps, props.navBarstyling
+      ? props.navBarstyling.dropdownMenu ? props.navBarstyling.dropdownMenu.link : {} : {});
   },
 });
 
