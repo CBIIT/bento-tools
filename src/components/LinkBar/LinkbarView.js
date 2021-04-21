@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core';
 const LinkBar = ({ classes }) => (
   <>
     <div className={classes.wrapper}>
-      <a className={classes.link} href="https://datacommons.cancer.gov/?cid=crdcnav_hp_gdc.cancer.gov">NCI Cancer Research Data Commons</a>
+      <a className={classes.link} href="https://datacommons.cancer.gov/?cid=crdcnav_hp_caninecommons.cancer.gov">NCI Cancer Research Data Commons</a>
     </div>
   </>
 );
