@@ -1,13 +1,43 @@
+/* eslint-disable react/default-props-match-prop-types */
+/* eslint-disable react/static-property-placement */
+/* eslint-disable react/require-default-props */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
 
-const LinkBar = ({ classes }) => (
-  <>
-    <div className={classes.wrapper}>
-      <a className={classes.link} href="https://datacommons.cancer.gov/?cid=crdcnav_hp_caninecommons.cancer.gov">NCI Cancer Research Data Commons</a>
-    </div>
-  </>
-);
+// eslint-disable-next-line react/prefer-stateless-function
+class LinkBar extends React.Component {
+  // eslint-disable-next-line react/static-property-placement
+  static propTypes = {
+    /** Title of the table */
+    // eslint-disable-next-line react/require-default-props
+    title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
+    // eslint-disable-next-line react/require-default-props
+    url: PropTypes.string.isRequired,
+    classes: PropTypes.string,
+  }
+
+  static defaultProps = {
+    title: 'NCI Cancer Research Data Commons',
+    url: 'https://datacommons.cancer.gov/?cid=crdcnav_hp_caninecommons.cancer.gov',
+  }
+
+  render() {
+    const {
+      classes,
+      title,
+      url,
+    } = this.props;
+
+    return (
+      <>
+        <div className={classes.wrapper}>
+          <a className={classes.link} href={url}>{title}</a>
+        </div>
+      </>
+    );
+  }
+}
 
 const styles = () => ({
   wrapper: {
