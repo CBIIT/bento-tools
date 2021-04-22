@@ -1,42 +1,16 @@
-/* eslint-disable react/prefer-stateless-function */
-/* eslint-disable react/default-props-match-prop-types */
-/* eslint-disable react/static-property-placement */
-/* eslint-disable react/require-default-props */
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
 
-class LinkBar extends React.Component {
-  static propTypes = {
-    /** Title of the Linkbar */
-    title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
-    /** Url of the Linkbar */
-    url: PropTypes.string.isRequired,
-    /** Class to style Linkbar */
-    classes: PropTypes.string,
-  }
+const defaultTitle = 'NCI Cancer Research Data Commons';
+const defaultUrl = 'https://datacommons.cancer.gov/?cid=crdcnav_hp_gdc.cancer.gov';
 
-  static defaultProps = {
-    title: 'NCI Cancer Research Data Commons',
-    url: 'https://datacommons.cancer.gov/?cid=crdcnav_hp_caninecommons.cancer.gov',
-  }
-
-  render() {
-    const {
-      classes,
-      title,
-      url,
-    } = this.props;
-
-    return (
-      <>
-        <div className={classes.wrapper}>
-          <a className={classes.link} href={url}>{title}</a>
-        </div>
-      </>
-    );
-  }
-}
+const LinkBar = ({ classes, title, url }) => (
+  <>
+    <div className={classes.wrapper}>
+      <a className={classes.link} href={url || defaultUrl}>{title || defaultTitle}</a>
+    </div>
+  </>
+);
 
 const styles = () => ({
   wrapper: {
@@ -58,7 +32,6 @@ const styles = () => ({
     fontFamily: 'Raleway',
     fontSize: '10px',
   },
-
 });
 
 export default withStyles(styles)(LinkBar);
