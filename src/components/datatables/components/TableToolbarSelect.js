@@ -67,13 +67,14 @@ class TableToolbarSelect extends React.Component {
       classes, onRowsDelete, selectedRows, options, displayData, components = {},
     } = this.props;
     const textLabels = options.textLabels.selectedRows;
+    const totalSelectedRows = options.serverTableRowCount;
     const Tooltip = components.Tooltip || MuiTooltip;
 
     return (
       <Paper className={classes.root}>
         <div>
           <Typography variant="subtitle1" className={classes.title}>
-            {selectedRows.data.length}
+            {totalSelectedRows ? totalSelectedRows : selectedRows.data.length}
             {' '}
             {textLabels.text}
           </Typography>

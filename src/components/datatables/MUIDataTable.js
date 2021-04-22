@@ -208,6 +208,7 @@ class MUIDataTable extends React.Component {
       selectableRowsHeader: PropTypes.bool,
       selectableRowsHideCheckboxes: PropTypes.bool,
       selectableRowsOnClick: PropTypes.bool,
+      selectedRowInfo: PropTypes.number,
       serverSide: PropTypes.bool,
       tableBodyHeight: PropTypes.string,
       tableBodyMaxHeight: PropTypes.string,
@@ -1718,7 +1719,7 @@ class MUIDataTable extends React.Component {
           changeRowsPerPage={this.changeRowsPerPage}
           changePage={this.changePage}
         />)}
-        {selectedRows.data.length > 0 && this.options.selectToolbarPlacement !== STP.NONE && (
+        {(this.options.serverTableRowCount > 0 || selectedRows.data.length > 0) && this.options.selectToolbarPlacement !== STP.NONE && (
           <TableToolbarSelectComponent
             options={this.options}
             selectedRows={selectedRows}
