@@ -1,16 +1,18 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core';
 
-const defaultTitle = 'NCI Cancer Research Data Commons';
-const defaultUrl = 'https://datacommons.cancer.gov/?cid=crdcnav_hp_gdc.cancer.gov';
-
 const LinkBar = ({ classes, title, url }) => (
   <>
     <div className={classes.wrapper}>
-      <a className={classes.link} href={url || defaultUrl}>{title || defaultTitle}</a>
+      <a className={classes.link} href={url}>{title}</a>
     </div>
   </>
 );
+
+LinkBar.defaultProps = {
+  title: 'NCI Cancer Research Data Commons',
+  url: 'https://datacommons.cancer.gov/?cid=crdcnav_hp_gdc.cancer.gov',
+};
 
 const styles = () => ({
   wrapper: {
