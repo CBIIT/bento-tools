@@ -1708,6 +1708,8 @@ class MUIDataTable extends React.Component {
     const tableClassNames = classnames(classes.tableRoot, tableProps.className);
     delete tableProps.className; // remove className from props to avoid the className being applied twice
 
+    const serverTableRowCount = this.options.serverTableRowCount ? this.options.serverTableRowCount : 0;
+
     return (
       <Paper elevation={this.options.elevation} ref={this.tableContent} className={paperClasses}>
         {this.options.headerPagination && (
@@ -1719,7 +1721,7 @@ class MUIDataTable extends React.Component {
           changeRowsPerPage={this.changeRowsPerPage}
           changePage={this.changePage}
         />)}
-        {(this.options.serverTableRowCount > 0 || selectedRows.data.length > 0) && this.options.selectToolbarPlacement !== STP.NONE && (
+        {(serverTableRowCount > 0 || selectedRows.data.length > 0) && this.options.selectToolbarPlacement !== STP.NONE && (
           <TableToolbarSelectComponent
             options={this.options}
             selectedRows={selectedRows}
@@ -1729,7 +1731,7 @@ class MUIDataTable extends React.Component {
             components={this.props.components}
           />
         )}
-        {(selectedRows.data.length === 0 || [STP.ABOVE, STP.NONE].includes(this.options.selectToolbarPlacement))
+        {(serverTableRowCount === 0 ? selectedRows.data.length === 0 : false || [STP.ABOVE, STP.NONE].includes(this.options.selectToolbarPlacement))
           && showToolbar && (
             <TableToolbarComponent
               columns={columns}
