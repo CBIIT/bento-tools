@@ -78,6 +78,7 @@ export function getColumns(
                 iconFileDownload={column.documentDownloadProps.iconFileDownload}
                 iconFilePreview={column.documentDownloadProps.iconFilePreview}
               />
+              <span>Test</span>
             </span>
             )
           }
