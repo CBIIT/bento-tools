@@ -1,5 +1,6 @@
 import React from 'react';
 import { withStyles, Icon } from '@material-ui/core';
+import injectSheet from 'react-jss';
 
 const CustomIcon = ({ imgSrc, classes }) => (
   <Icon>
@@ -18,4 +19,6 @@ const styles = () => ({
   },
 });
 
-export default withStyles(styles)(CustomIcon);
+const StyledCustomIcon = injectSheet(styles)(CustomIcon);
+
+export default withStyles(styles)(StyledCustomIcon);
