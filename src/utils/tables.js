@@ -4,7 +4,6 @@ import TableRow from '@material-ui/core/TableRow';
 import TablePagination from '@material-ui/core/TablePagination';
 import { HashRouter, Link } from 'react-router-dom';
 import { dateTimeStamp, manipulateLinks, formatBytes } from './helpers';
-// import DocumentDownload from '../components/DocumentDownload';
 
 //  Generate MuiTable's columns.
 export function getColumns(
@@ -72,17 +71,23 @@ export function getColumns(
                     )
                   ]
                 }
+                fileLocation={
+                  tableMeta.rowData[
+                    updatedTableWithLinks.findIndex(
+                      // eslint-disable-next-line max-len
+                      (tableRowData) => tableRowData.dataField === column.documentDownloadProps.fileLocationColumn,
+                    )
+                  ]
+                }
                 maxFileSize={column.documentDownloadProps.maxFileSize}
                 toolTipTextFileDownload={column.documentDownloadProps.toolTipTextFileDownload}
                 toolTipTextFilePreview={column.documentDownloadProps.toolTipTextFilePreview}
                 iconFileDownload={column.documentDownloadProps.iconFileDownload}
                 iconFilePreview={column.documentDownloadProps.iconFilePreview}
               />
-              <span>Test Column</span>
             </span>
             )
           }
-          <span>Test Release</span>
         </div>
       ),
     },
