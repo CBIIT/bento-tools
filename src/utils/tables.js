@@ -8,7 +8,7 @@ import DocumentDownload from '../components/DocumentDownload';
 
 //  Generate MuiTable's columns.
 export function getColumns(
-  tableConfig, classes, data, externalLinkIcon, linkto, linkClick, DocumentDownloadComponent = { DocumentDownload },
+  tableConfig, classes, data, externalLinkIcon, linkto, linkClick, DocumentDownloadComponent = DocumentDownload ,
 ) {
   const updatedTableWithLinks = manipulateLinks(tableConfig.columns);
   return updatedTableWithLinks.slice(0, 12).map((column, index) => ({
@@ -78,10 +78,11 @@ export function getColumns(
                 iconFileDownload={column.documentDownloadProps.iconFileDownload}
                 iconFilePreview={column.documentDownloadProps.iconFilePreview}
               />
-              <span>Test</span>
+              <span>Test Column</span>
             </span>
             )
           }
+          <span>Test Release</span>
         </div>
       ),
     },
