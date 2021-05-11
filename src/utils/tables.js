@@ -4,11 +4,11 @@ import TableRow from '@material-ui/core/TableRow';
 import TablePagination from '@material-ui/core/TablePagination';
 import { HashRouter, Link } from 'react-router-dom';
 import { dateTimeStamp, manipulateLinks, formatBytes } from './helpers';
-import DocumentDownload from '../components/DocumentDownload';
+// import DocumentDownload from '../components/DocumentDownload';
 
 //  Generate MuiTable's columns.
 export function getColumns(
-  tableConfig, classes, data, externalLinkIcon, linkto, linkClick, DocumentDownloadComponent = DocumentDownload ,
+  tableConfig, classes, data, externalLinkIcon, linkto, linkClick, DocumentDownloadComponent,
 ) {
   const updatedTableWithLinks = manipulateLinks(tableConfig.columns);
   return updatedTableWithLinks.slice(0, 12).map((column, index) => ({
