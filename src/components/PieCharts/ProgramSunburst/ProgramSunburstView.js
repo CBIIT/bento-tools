@@ -81,7 +81,7 @@ function resetComponentState(component) {
 class ProgramSunburst extends PureComponent {
   constructor(props) {
     super(props);
-    const { data } = this.props;
+    const { data, titleText } = this.props;
     this.state = {
       widgetData: data,
       size: findCaseSizeOfTitle(data, ''),
@@ -102,7 +102,7 @@ class ProgramSunburst extends PureComponent {
       caseSize, size, widgetData, title,
     } = this.state;
     const {
-      width, height, data, textColor, classes, titleLocation,
+      width, height, data, textColor, classes, titleLocation, titleText,
     } = this.props;
 
     // update the caseSize when data is filtered
@@ -163,7 +163,7 @@ class ProgramSunburst extends PureComponent {
             }, {
               x: 0,
               y: 1,
-              label: 'Cases',
+              label: titleText,
               style: {
                 fontSize: '12px',
                 textAnchor: 'middle',
@@ -184,6 +184,10 @@ class ProgramSunburst extends PureComponent {
     );
   }
 }
+
+ProgramSunburst.defaultProps = {
+  titleText: 'Cases',
+};
 
 const Chart = injectSheet(styles)(ProgramSunburst);
 

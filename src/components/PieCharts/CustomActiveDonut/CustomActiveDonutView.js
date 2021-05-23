@@ -30,7 +30,7 @@ const renderActiveShape = (props) => {
     cx, cy, innerRadius, outerRadius, startAngle, endAngle,
     fill, payload, value, textColor, fontSize, fontWeight, fontFamily,
     // eslint-disable-next-line no-unused-vars
-    titleLocation, titleAlignment,
+    titleLocation, titleAlignment, titleText,
   } = props;
   // const sin = Math.sin(-RADIAN * midAngle);
   // const cos = Math.cos(-RADIAN * midAngle);
@@ -49,7 +49,7 @@ const renderActiveShape = (props) => {
     <g>
       <text x={lableX} y={lableY} dy={0} textAnchor={(titleAlignment === 'center') ? 'middle' : null} fill={textColor} fontSize={fontSize || '12px'} fontWeight={fontWeight || '500'} fontFamily={fontFamily || 'Nunito'}>{String(payload.name).length > 30 ? `${String(payload.name).substr(0, 30)}...` : payload.name}</text>
       <text x={cx} y={cy} dy={0} textAnchor="middle" fill={textColor} fontSize="12px" fontWeight="bold" fontFamily="Nunito">{`${value}`}</text>
-      <text x={cx} y={cy} dy={12} textAnchor="middle" fill={textColor} fontSize="12px" fontWeight="light" fontFamily="Nunito">Cases</text>
+      <text x={cx} y={cy} dy={12} textAnchor="middle" fill={textColor} fontSize="12px" fontWeight="light" fontFamily="Nunito">{`${titleText}`}</text>
       <Sector
         cx={cx}
         cy={cy}
@@ -108,7 +108,7 @@ class CustomActiveDonut extends PureComponent {
   render() {
     const {
       data: DataObj, textColor, colors,
-      titleLocation, titleAlignment,
+      titleLocation, titleAlignment, titleText,
       fontSize, fontWeight, fontFamily,
     } = this.props;
     const data = DataObj.map((obj) => ({
@@ -124,6 +124,7 @@ class CustomActiveDonut extends PureComponent {
     const extraProps = {
       titleLocation,
       titleAlignment,
+      titleText,
       fontSize,
       fontWeight,
       fontFamily,
@@ -154,6 +155,10 @@ class CustomActiveDonut extends PureComponent {
     );
   }
 }
+
+CustomActiveDonut.defaultProps = {
+  titleText: 'Cases',
+};
 
 const Chart = injectSheet(styles)(CustomActiveDonut);
 export default Chart;
