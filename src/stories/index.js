@@ -99,6 +99,7 @@ storiesOf('PieCharts', module)
         data={dataSunburst}
         titleLocation={titleLocation}
         titleAlignment={titleAlignment}
+        titleText="Subjects"
       />
     );
   });
@@ -116,6 +117,7 @@ storiesOf('PieCharts', module).add('CustomActiveDonut', () => {
       cx="50%"
       cy="50%"
       data={dataDonut}
+      titleText="Subjects"
       titleLocation={titleLocation}
       titleAlignment={titleAlignment}
       fontFamily={fontFamily}
