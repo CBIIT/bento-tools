@@ -3,23 +3,23 @@ import { withStyles } from '@material-ui/core';
 
 const tooltip = withStyles((theme) => ({
   tooltip: {
-    backgroundColor: '#FFFFFF',
-    color: '#1C2023',
-    maxWidth: '220px',
-    fontSize: theme.typography.pxToRem(12),
-    border: '2px solid #A7AFB3',
-    fontFamily: 'Open Sans',
-    fontWeight: '600',
-    textAlign: 'justify',
-    textJustify: 'inter-character',
-    lineHeight: '1.6',
-    padding: '10px 12px 10px 12px',
+    backgroundColor: (props) => props.backgroundColor || '#FFFFFF',
+    color: (props) => props.color || '#1C2023',
+    maxWidth: (props) => props.maxWidth || '220px',
+    fontSize: (props) => props.fontSize || theme.typography.pxToRem(12),
+    border: (props) => props.border || '2px solid #A7AFB3',
+    fontFamily: (props) => props.fontFamily || 'Open Sans',
+    fontWeight: (props) => props.fontWeight || '600',
+    textAlign: (props) => props.textAlign || 'justify',
+    textJustify: (props) => props.textJustify || 'inter-character',
+    lineHeight: (props) => props.lineHeight || '1.6',
+    padding: (props) => props.padding || '10px 12px 10px 12px',
   },
   arrow: {
-    color: '#FFFFFF',
-    fontSize: theme.typography.pxToRem(20),
+    color: (props) => props.arrowColor || '#FFFFFF',
+    fontSize: (props) => props.arrowSize || theme.typography.pxToRem(20),
     '&::before': {
-      border: '2px solid #A7AFB3',
+      border: (props) => props.arrowBorder || '2px solid #A7AFB3',
     },
   },
 }))(Tooltip);
