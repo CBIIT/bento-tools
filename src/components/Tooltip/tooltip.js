@@ -1,7 +1,7 @@
-import Tooltip from '@material-ui/core/Tooltip';
+import MuiTooltip from '@material-ui/core/Tooltip';
 import { withStyles } from '@material-ui/core';
 
-const tooltip = withStyles((theme) => ({
+const ToolTip = withStyles((theme) => ({
   tooltip: {
     backgroundColor: (props) => props.backgroundColor || '#FFFFFF',
     color: (props) => props.color || '#1C2023',
@@ -22,6 +22,6 @@ const tooltip = withStyles((theme) => ({
       border: (props) => props.arrowBorder || '2px solid #A7AFB3',
     },
   },
-}))(Tooltip);
+}))(MuiTooltip);
 
-export default tooltip;
+export default ToolTip;
