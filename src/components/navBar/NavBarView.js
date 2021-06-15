@@ -4,7 +4,7 @@ import {
   AppBar,
   Button,
   Toolbar,
-  Tooltip,
+  Tooltip as MuiTooltip,
   withStyles,
 } from '@material-ui/core';
 import classnames from 'classnames';
@@ -13,7 +13,7 @@ import DropdownMenu from './components/DropdownMenu';
 const drawerWidth = 240;
 
 const NavBar = ({
-  classes, isSidebarOpened, navBarData, navBarCartData, navBarstyling, numberOfCases,
+  classes, isSidebarOpened, navBarData, navBarCartData, navBarstyling, numberOfCases, components = {},
 }) => {
   // Similar to componentDidMount and componentDidUpdate:
   // Empty second argument of react useEffect will avoid the infinte loop that
@@ -23,6 +23,8 @@ const NavBar = ({
   function handleButtonClickEvent(eventName) {
     setClickedEl(eventName);
   }
+
+  const Tooltip = components.Tooltip || MuiTooltip;
 
   return (
     <AppBar

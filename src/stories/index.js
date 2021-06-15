@@ -5,6 +5,7 @@ import {
   withKnobs,
   select,
 } from '@storybook/addon-knobs';
+import { Button } from '@material-ui/core';
 import MUIDatatable from '../components/datatables/MUIDataTable';
 import ProgramSunburst from '../components/PieCharts/ProgramSunburst/ProgramSunburstView';
 import CustomActiveDonut from '../components/PieCharts/CustomActiveDonut/CustomActiveDonutView';
@@ -26,6 +27,7 @@ import LinkBar from '../components/LinkBar';
 import {
   navBarData, navBarCartData, navBarstyling, numberOfCases,
 } from '../stubs/navBarData';
+import ToolTip from '../components/Tooltip';
 
 const columns = [
   {
@@ -125,6 +127,15 @@ storiesOf('PieCharts', module).add('CustomActiveDonut', () => {
   );
 });
 storiesOf('LinkBar', module).add('LinkBar', () => <LinkBar />);
+storiesOf('ToolTip', module).add('ToolTip', () => (
+  <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '50%' }}>
+    <ToolTip title="Sample tooltip title" arrow placement="right">
+      <Button>
+        Hover over me
+      </Button>
+    </ToolTip>
+  </div>
+));
 storiesOf('NavBar', module).add('NavBar', () => <NavBar navBarData={navBarData} navBarCartData={navBarCartData} navBarstyling={navBarstyling} numberOfCases={numberOfCases} />);
 storiesOf('StatsBar', module)
   .add('Bento StatsBar', () => <StatsBar data={statsData} globalStatsData={globalStatsData} statsStyling={statsStyling} />)
