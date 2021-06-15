@@ -52,4 +52,4 @@ export { manipulateLinks, dateTimeStamp, formatBytes } from './utils/helpers';
 export { default as NavBar } from './components/navBar';
 export { default as StatsBar } from './components/statsBar';
 export { default as LinkBar } from './components/LinkBar';
-export { default as ToolTip } from './components/toolTip';
+export { default as ToolTip } from './components/ToolTip';
