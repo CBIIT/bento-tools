@@ -27,7 +27,7 @@ import LinkBar from '../components/LinkBar';
 import {
   navBarData, navBarCartData, navBarstyling, numberOfCases,
 } from '../stubs/navBarData';
-import ToolTip from '../components/ToolTip';
+import ToolTip from '../components/Tooltip';
 
 const columns = [
   {
