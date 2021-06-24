@@ -46,6 +46,8 @@ export {
 	updateCheckBox,
 	setSelectedVlauesToTrue,
 	setSelectedFilterValues,
+	customSort,
+	range,
 } from './utils/dashboardUtilFunctions';
 export { getColumns, getDefaultCustomFooter, getOptions } from './utils/tables';
 export { manipulateLinks, dateTimeStamp, formatBytes } from './utils/helpers';
