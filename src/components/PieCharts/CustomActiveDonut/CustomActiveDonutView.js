@@ -81,11 +81,7 @@ const combineExtraProps = (props, extraProps, cb) => {
   return cb(combinedProps);
 };
 
-const styles = {
-  testing: {
-    fontSize: '22px',
-  },
-};
+const styles = {};
 
 function resetComponentState(component) {
   component.setState({ activeIndex: 0 });
