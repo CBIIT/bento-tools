@@ -419,6 +419,61 @@ export function transformInitialDataForSunburst(data, level1 = 'program', level2
   return output;
 }
 
+// function sortPreference(str) { return { '<'1, '<='2, '>='3, '>': 4 };
+export function sortPreference(str) {
+  if (/^<.*$/.test(str)) {
+    return 1;
+  }
+  if (/^<=.*$/.test(str)) {
+    return 2;
+  }
+  if (/^\(\d,\d]$/.test(str)) {
+    return 3;
+  }
+  if (/^\[\d,\d\]$/.test(str)) {
+    return 4;
+  }
+
+  if (/^\[\d,\d\)/.test(str)) {
+    return 5;
+  }
+  if (/^\(\d,\d\)/.test(str)) {
+    return 6;
+  }
+
+  if (/^>=.*$/.test(str)) {
+    return 7;
+  }
+  if (/^>.*$/.test(str)) {
+    return 8;
+  }
+  return 9;
+}
+
+export function customSort(checkboxData) {
+  // eslint-disable-next-line
+  checkboxData.map((rec) => rec.numberInGroup = rec.name.match(/\d+/g) === null ? null : rec.name.match(/\d+/g).map(Number));
+
+  checkboxData.sort((a, b) => {
+    const amin = a.numberInGroup !== null ? Math.min(...a.numberInGroup) : 'string';
+    const bmin = b.numberInGroup !== null ? Math.min(...b.numberInGroup) : 'string';
+    if (amin === bmin) {
+      if (amin === 'string' && bmin === 'string') {
+        const aName = a.name.toLowerCase();
+        const bName = b.name.toLowerCase();
+
+        return aName < bName ? -1 : aName > bName ? 1 : 0;
+      }
+
+      const anameSortPref = sortPreference(a.name);
+      const bnameSortPref = sortPreference(b.name);
+      return anameSortPref < bnameSortPref ? -1 : anameSortPref > bnameSortPref ? 1 : 0;
+    }
+    return amin < bmin ? -1 : amin > bmin ? 1 : 0;
+  });
+  return checkboxData;
+}
+
 /**
  * Transform API Data into CheckBox Data
  *
@@ -427,7 +482,7 @@ export function transformInitialDataForSunburst(data, level1 = 'program', level2
  * @param {string} caseCountField
  * @return {json}
  */
-export function transformAPIDataIntoCheckBoxData(data, field, caseCountField = 'subjects') {
+export function transformAPIDataIntoCheckBoxData(data, field, caseCountField = 'subjects', customNumberSort = false) {
   const result = [];
   let preElementIndex = 0;
   data.map((el) => ({
@@ -455,7 +510,7 @@ export function transformAPIDataIntoCheckBoxData(data, field, caseCountField = '
     const y = obj2.name.toLowerCase();
     return x < y ? -1 : x > y ? 1 : 0;
   });
-  return sortBasedOnItemName;
+  return customNumberSort ? customSort(sortBasedOnItemName) : sortBasedOnItemName;
 }
 
 /**
@@ -475,6 +530,7 @@ export function customCheckBox(data, facetSearchData1, caseCountField = 'subject
         data[mapping.api],
         mapping.field,
         caseCountField,
+        mapping.customNumberSort,
       ),
       datafield: mapping.datafield,
       show: mapping.show,
