@@ -482,7 +482,7 @@ export function customSort(checkboxData) {
  * @param {string} caseCountField
  * @return {json}
  */
-export function transformAPIDataIntoCheckBoxData(data, field, caseCountField = 'subjects', customNumberSoft = false) {
+export function transformAPIDataIntoCheckBoxData(data, field, caseCountField = 'subjects', customNumberSort = false) {
   const result = [];
   let preElementIndex = 0;
   data.map((el) => ({
@@ -510,7 +510,7 @@ export function transformAPIDataIntoCheckBoxData(data, field, caseCountField = '
     const y = obj2.name.toLowerCase();
     return x < y ? -1 : x > y ? 1 : 0;
   });
-  return customNumberSoft ? customSort(sortBasedOnItemName) : sortBasedOnItemName;
+  return customNumberSort ? customSort(sortBasedOnItemName) : sortBasedOnItemName;
 }
 
 /**
@@ -530,7 +530,7 @@ export function customCheckBox(data, facetSearchData1, caseCountField = 'subject
         data[mapping.api],
         mapping.field,
         caseCountField,
-        mapping.customNumberSoft,
+        mapping.customNumberSort,
       ),
       datafield: mapping.datafield,
       show: mapping.show,
