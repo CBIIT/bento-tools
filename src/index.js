@@ -47,7 +47,7 @@ export {
 	setSelectedVlauesToTrue,
 	setSelectedFilterValues,
 	customSort,
-	range,
+	sortPreference,
 } from './utils/dashboardUtilFunctions';
 export { getColumns, getDefaultCustomFooter, getOptions } from './utils/tables';
 export { manipulateLinks, dateTimeStamp, formatBytes } from './utils/helpers';
