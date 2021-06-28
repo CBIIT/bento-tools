@@ -618,7 +618,7 @@ function setSelectedVlauesToTrue(checkboxItems, filters) {
  * @return {json}
  */
 
-function setSelectedFilterValues(checkboxData, Filters) {
+export function setSelectedFilterValues(checkboxData, Filters) {
   const result = checkboxData.map((filterGroup) => {
     if (Array.isArray(Filters[filterGroup.datafield])
      && Filters[filterGroup.datafield].length !== 0) {
