@@ -90,7 +90,8 @@ function resetComponentState(component) {
 class CustomActiveDonut extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = { activeIndex: 0 };
+    const { data } = props;
+    this.state = { activeIndex: data.length - 1 };
   }
 
   componentDidUpdate(prevProps) {
