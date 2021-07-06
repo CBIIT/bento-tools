@@ -91,7 +91,7 @@ class CustomActiveDonut extends PureComponent {
   constructor(props) {
     super(props);
     const { data } = props;
-    const index = data.length !== undefined? data.length - 1 : 0;
+    const index = data.length !== undefined ? data.length - 1 : 0;
     this.state = { activeIndex: index };
   }
 
