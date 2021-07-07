@@ -66,16 +66,24 @@ export function getColumns(
                 fileSize={
                   tableMeta.rowData[
                     updatedTableWithLinks.findIndex(
-                      // eslint-disable-next-line max-len
-                      (tableRowData) => tableRowData.dataField === column.documentDownloadProps.fileSizeColumn,
+                      (tableRowData) => tableRowData.dataField
+                        === column.documentDownloadProps.fileSizeColumn,
                     )
                   ]
                 }
                 fileLocation={
                   tableMeta.rowData[
                     updatedTableWithLinks.findIndex(
-                      // eslint-disable-next-line max-len
-                      (tableRowData) => tableRowData.dataField === column.documentDownloadProps.fileLocationColumn,
+                      (tableRowData) => tableRowData.dataField
+                        === column.documentDownloadProps.fileLocationColumn,
+                    )
+                  ]
+                }
+                fileFormat={
+                  tableMeta.rowData[
+                    updatedTableWithLinks.findIndex(
+                      (tableRowData) => tableRowData.dataField
+                        === column.documentDownloadProps.fileFormatColumn,
                     )
                   ]
                 }
