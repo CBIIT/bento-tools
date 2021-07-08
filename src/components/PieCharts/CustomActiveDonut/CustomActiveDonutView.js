@@ -87,7 +87,7 @@ const getIndex = (data) => (data.length !== undefined)? data.length - 1 : 0;
 
 function resetComponentState(component) {
   const { props } = component;
-  const index = getIndex(props.data);
+  const index = (props.data !== undefined)? getIndex(props.data): 0;
   component.setState({ activeIndex: index });
 }
 
