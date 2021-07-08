@@ -83,15 +83,19 @@ const combineExtraProps = (props, extraProps, cb) => {
 
 const styles = {};
 
+const getIndex = (data) => (data.length !== undefined)? data.length - 1 : 0;
+
 function resetComponentState(component) {
-  component.setState({ activeIndex: 0 });
+  const { props } = component;
+  const index = getIndex(props.data);
+  component.setState({ activeIndex: index });
 }
 
 class CustomActiveDonut extends PureComponent {
   constructor(props) {
     super(props);
     const { data } = props;
-    const index = data.length !== undefined? data.length - 1 : 0;
+    const index = getIndex(data);
     this.state = { activeIndex: index };
   }
 
