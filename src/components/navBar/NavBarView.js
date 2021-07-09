@@ -130,13 +130,13 @@ const styles = () => ({
   },
   labelText: (props) => ({
     textDecoration: 'none',
-    color: '#FFFFFF',
+    color: props.navBarstyling.global.fontColor ? props.navBarstyling.global.fontColor : '#FFFFFF',
     fontFamily: props.navBarstyling.global.fontFamily ? props.navBarstyling.global.fontFamily : 'Nunito',
     fontSize: '13px',
   }),
   cartLabelText: (props) => ({
     textDecoration: 'none',
-    color: '#FFFFFF',
+    color: props.navBarstyling.global.fontColor ? props.navBarstyling.global.fontColor : '#FFFFFF',
     fontFamily: props.navBarstyling.global.fontFamily ? props.navBarstyling.global.fontFamily : 'Nunito',
     fontSize: '13px',
   }),
