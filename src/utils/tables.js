@@ -19,10 +19,24 @@ export function getColumns(
       customBodyRender: (value, tableMeta) => (
         <div className={classes[`tableCell${index + 1}`]}>
           { value
-            ? (column.internalLink ? <HashRouter><Link className={classes.link} to={`${column.actualLink}${tableMeta.rowData[column.actualLinkId]}`}>{value}</Link></HashRouter>
+            ? (column.internalLink ? (
+              <HashRouter>
+                <Link
+                  className={classes.link}
+                  to={`${column.actualLink}${tableMeta.rowData[column.actualLinkId] ? tableMeta.rowData[column.actualLinkId] : ''}`}
+                >
+                  {value}
+                </Link>
+              </HashRouter>
+            )
               : column.externalLink ? (
                 <span className={classes.linkSpan}>
-                  <a href={`${column.actualLink}${tableMeta.rowData[column.actualLinkId]}`} target="_blank" rel="noopener noreferrer" className={classes.link}>
+                  <a
+                    href={`${column.actualLink}${tableMeta.rowData[column.actualLinkId] ? tableMeta.rowData[column.actualLinkId] : ''}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={classes.link}
+                  >
                     {' '}
                     {column.formatBytes ? formatBytes(value) : value}
                     {' '}

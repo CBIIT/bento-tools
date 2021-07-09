@@ -51,7 +51,7 @@ const DropdownMenu = ({
 const styles = () => ({
   logotype: (props) => ({
     whiteSpace: 'nowrap',
-    color: '#FFFFFF',
+    color: props.navBarstyling.global.fontColor ? props.navBarstyling.global.fontColor : '#FFFFFF',
     fontFamily: props.navBarstyling.global.fontFamily ? props.navBarstyling.global.fontFamily : 'Nunito',
     fontSize: '13px',
     fontWeight: '600',
