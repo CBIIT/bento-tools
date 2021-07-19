@@ -45,6 +45,7 @@
     "react-vis": "^1.11.7",
     "react-zoom-pan-pinch": "^1.6.1",
     "recharts": "^1.8.5",
+    "rimraf": "^2.6.3",
     "svg-url-loader": "^5.0.0",
     "uuid": "^8.3.1"
   },
