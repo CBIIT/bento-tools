@@ -104,8 +104,10 @@ export function getColumns(
                 maxFileSize={column.documentDownloadProps.maxFileSize}
                 toolTipTextFileDownload={column.documentDownloadProps.toolTipTextFileDownload}
                 toolTipTextFilePreview={column.documentDownloadProps.toolTipTextFilePreview}
+                toolTipTextFileViewer={column.documentDownloadProps.toolTipTextFileViewer}
                 iconFileDownload={column.documentDownloadProps.iconFileDownload}
                 iconFilePreview={column.documentDownloadProps.iconFilePreview}
+                iconFileViewer={column.documentDownloadProps.iconFileViewer}
               />
             </span>
             )
