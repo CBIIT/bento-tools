@@ -7,7 +7,14 @@ import { dateTimeStamp, manipulateLinks, formatBytes } from './helpers';
 
 //  Generate MuiTable's columns.
 export function getColumns(
-  tableConfig, classes, data, externalLinkIcon, linkto, linkClick, DocumentDownloadComponent,
+  tableConfig,
+  classes,
+  data,
+  externalLinkIcon,
+  linkto = '',
+  linkClick,
+  DocumentDownloadComponent,
+  replaceEmptyValueWith = '',
 ) {
   const updatedTableWithLinks = manipulateLinks(tableConfig.columns);
   return updatedTableWithLinks.slice(0, 12).map((column, index) => ({
@@ -72,7 +79,7 @@ export function getColumns(
                     {' '}
 
                   </div>
-                )) : ''}
+                )) : replaceEmptyValueWith}
           {
             column.downloadDocument && (
             <span>
