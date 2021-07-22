@@ -11,10 +11,10 @@ export function getColumns(
   classes,
   data,
   externalLinkIcon,
-  linkto,
+  linkto = '',
   linkClick,
   DocumentDownloadComponent,
-  replaceEmptyValueWith,
+  replaceEmptyValueWith = '',
 ) {
   const updatedTableWithLinks = manipulateLinks(tableConfig.columns);
   return updatedTableWithLinks.slice(0, 12).map((column, index) => ({
@@ -79,7 +79,7 @@ export function getColumns(
                     {' '}
 
                   </div>
-                )) : replaceEmptyValueWith || ''}
+                )) : replaceEmptyValueWith}
           {
             column.downloadDocument && (
             <span>
