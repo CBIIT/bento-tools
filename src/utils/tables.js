@@ -108,6 +108,14 @@ export function getColumns(
                     )
                   ]
                 }
+                caseId={
+                  tableMeta.rowData[
+                    updatedTableWithLinks.findIndex(
+                      (tableRowData) => tableRowData.dataField
+                        === column.documentDownloadProps.caseIdColumn,
+                    )
+                  ]
+                }
                 maxFileSize={column.documentDownloadProps.maxFileSize}
                 toolTipTextFileDownload={column.documentDownloadProps.toolTipTextFileDownload}
                 toolTipTextFilePreview={column.documentDownloadProps.toolTipTextFilePreview}
