@@ -13,7 +13,6 @@ const ToolTip = withStyles((theme) => ({
     textAlign: (props) => props.textAlign || 'left',
     lineHeight: (props) => props.lineHeight || '1.6',
     padding: (props) => props.padding || '10px 12px 10px 12px',
-    borderRadius: (props) => props.borderRadius || '0px',
   },
   arrow: {
     color: (props) => props.arrowColor || '#FFFFFF',
