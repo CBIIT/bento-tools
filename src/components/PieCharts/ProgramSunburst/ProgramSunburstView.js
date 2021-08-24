@@ -63,7 +63,8 @@ const styles = {
     textAlign: (props) => (props.titleAlignment ? props.titleAlignment : 'center'),
   },
   customWidget: {
-    marginTop: '18px',
+    marginTop: (props) => (props.titleLocation === 'top' ? '0px' : '18px'),
+    marginBottom: (props) => (props.titleLocation === 'top' ? '18px' : '0px'),
   },
 };
 
