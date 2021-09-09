@@ -114,7 +114,7 @@ class CustomActiveDonut extends PureComponent {
 
   render() {
     const {
-      data: DataObj, textColor, colors,
+      data: DataObj, textColor, colors, paddingSpace,
       titleLocation, titleAlignment, titleText,
       fontSize, fontWeight, fontFamily,
     } = this.props;
@@ -127,7 +127,6 @@ class CustomActiveDonut extends PureComponent {
     const COLORS_ODD = (colors && colors.odd) ? colors.even : DEFAULT_COLORS_ODD;
 
     const { activeIndex } = this.state;
-
     const extraProps = {
       titleLocation,
       titleAlignment,
@@ -152,6 +151,7 @@ class CustomActiveDonut extends PureComponent {
             dataKey="value"
             onMouseEnter={this.onPieEnter}
             blendStroke
+            paddingAngle={paddingSpace}
           >
             {data.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={data.length % 2 === 0 ? COLORS_EVEN[index % COLORS_EVEN.length] : COLORS_ODD[index % COLORS_ODD.length]} textColor={textColor} />
@@ -165,6 +165,7 @@ class CustomActiveDonut extends PureComponent {
 
 CustomActiveDonut.defaultProps = {
   titleText: 'Cases',
+  paddingSpace: 0,
 };
 
 const Chart = injectSheet(styles)(CustomActiveDonut);
