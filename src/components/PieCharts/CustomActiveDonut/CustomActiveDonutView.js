@@ -176,6 +176,7 @@ class CustomActiveDonut extends PureComponent {
 CustomActiveDonut.defaultProps = {
   titleText: 'Cases',
   paddingSpace: 0,
+  showTotalCount: false,
 };
 
 const Chart = injectSheet(styles)(CustomActiveDonut);
