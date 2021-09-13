@@ -30,7 +30,7 @@ const renderActiveShape = (props) => {
     cx, cy, innerRadius, outerRadius, startAngle, endAngle,
     fill, payload, value, textColor, fontSize, fontWeight, fontFamily,
     // eslint-disable-next-line no-unused-vars
-    titleLocation, titleAlignment, titleText,
+    titleLocation, titleAlignment, titleText, totalCount, showTotalCount,
   } = props;
   // const sin = Math.sin(-RADIAN * midAngle);
   // const cos = Math.cos(-RADIAN * midAngle);
@@ -45,13 +45,15 @@ const renderActiveShape = (props) => {
   const lableX = (titleAlignment === 'center') ? cx : (titleAlignment === 'left') ? 0 : cx * 2;
   const lableY = (titleLocation === 'top') ? 9 : cy * 2;
 
+  const faceValue = showTotalCount === true ? `${value} / ${totalCount}` : value;
+
   return (
     <g>
       <text x={lableX} y={lableY} dy={0} textAnchor={(titleAlignment === 'center') ? 'middle' : null} fill={textColor} fontSize={fontSize || '12px'} fontWeight={fontWeight || '500'} fontFamily={fontFamily || 'Nunito'} cursor="text">
         {String(payload.name).length > 30 ? `${String(payload.name).substr(0, 30)}...` : payload.name}
         <title>{payload.name}</title>
       </text>
-      <text x={cx} y={cy} dy={0} textAnchor="middle" fill={textColor} fontSize="12px" fontWeight="bold" fontFamily="Nunito">{`${value}`}</text>
+      <text x={cx} y={cy} dy={0} textAnchor="middle" fill={textColor} fontSize="12px" fontWeight="bold" fontFamily="Nunito">{`${faceValue}`}</text>
       <text x={cx} y={cy} dy={12} textAnchor="middle" fill={textColor} fontSize="12px" fontWeight="light" fontFamily="Nunito">{`${titleText}`}</text>
       <Sector
         cx={cx}
@@ -83,11 +85,11 @@ const combineExtraProps = (props, extraProps, cb) => {
 
 const styles = {};
 
-const getIndex = (data) => (data.length !== undefined)? data.length - 1 : 0;
+const getIndex = (data) => ((data.length !== undefined) ? data.length - 1 : 0);
 
 function resetComponentState(component) {
   const { props } = component;
-  const index = (props.data !== undefined)? getIndex(props.data): 0;
+  const index = (props.data !== undefined) ? getIndex(props.data) : 0;
   component.setState({ activeIndex: index });
 }
 
@@ -116,12 +118,18 @@ class CustomActiveDonut extends PureComponent {
     const {
       data: DataObj, textColor, colors, paddingSpace,
       titleLocation, titleAlignment, titleText,
-      fontSize, fontWeight, fontFamily,
+      fontSize, fontWeight, fontFamily, showTotalCount,
     } = this.props;
-    const data = DataObj.map((obj) => ({
-      name: obj.group,
-      value: obj.subjects,
-    }));
+
+    let totalCount = 0;
+
+    const data = DataObj.map((obj) => {
+      totalCount += obj.subjects;
+      return ({
+        name: obj.group,
+        value: obj.subjects,
+      });
+    });
 
     const COLORS_EVEN = (colors && colors.even) ? colors.even : DEFAULT_COLORS_EVEN;
     const COLORS_ODD = (colors && colors.odd) ? colors.even : DEFAULT_COLORS_ODD;
@@ -134,6 +142,8 @@ class CustomActiveDonut extends PureComponent {
       fontSize,
       fontWeight,
       fontFamily,
+      totalCount,
+      showTotalCount,
     };
 
     return (
