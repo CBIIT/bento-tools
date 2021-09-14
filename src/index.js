@@ -55,3 +55,4 @@ export { default as NavBar } from './components/navBar';
 export { default as StatsBar } from './components/statsBar';
 export { default as LinkBar } from './components/LinkBar';
 export { default as ToolTip } from './components/toolTips';
+export { default as TextBar } from './components/textBar';
