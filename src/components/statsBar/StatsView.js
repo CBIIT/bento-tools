@@ -84,6 +84,8 @@ const styles = () => ({
     margin: props.statsStyling.statCount ? props.statsStyling.statCount.margin ? props.statsStyling.statCount.margin : '6px 0px 0px 0px' : '6px 0px 0px 0px',
     fontWeight: 600,
   } : {
+    width: props.statsStyling.statCount ? props.statsStyling.statCount.width ? props.statsStyling.statCount.width : '100%' : '100%',
+    textAlign: props.statsStyling.statCount ? props.statsStyling.statCount.textAlign ? props.statsStyling.statCount.textAlign : 'left' : 'left',
     color: props.statsStyling.statCount ? props.statsStyling.statCount.color ? props.statsStyling.statCount.color : '#0467BD' : '#0467BD',
     fontFamily: props.statsStyling.statCount ? props.statsStyling.statCount.fontFamily ? props.statsStyling.statCount.fontFamily : 'Oswald' : 'Oswald',
     fontSize: props.statsStyling.statCount ? props.statsStyling.statCount.fontSize ? props.statsStyling.statCount.fontSize : '20px' : '20px',
