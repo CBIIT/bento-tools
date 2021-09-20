@@ -103,7 +103,7 @@ class ProgramSunburst extends PureComponent {
       caseSize, size, widgetData, title,
     } = this.state;
     const {
-      width, height, data, textColor, classes, titleLocation, titleText,
+      width, height, data, textColor, classes, titleLocation, titleText, padAngle,
     } = this.props;
 
     // update the caseSize when data is filtered
@@ -149,6 +149,7 @@ class ProgramSunburst extends PureComponent {
                 caseSize: node.size || node.caseSize,
               });
             }}
+            padAngle={padAngle}
           >
             {caseSize > 0 && (
             <LabelSeries data={[{
@@ -188,6 +189,7 @@ class ProgramSunburst extends PureComponent {
 
 ProgramSunburst.defaultProps = {
   titleText: 'Cases',
+  padAngle: 0,
 };
 
 const Chart = injectSheet(styles)(ProgramSunburst);
