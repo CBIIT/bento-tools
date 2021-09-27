@@ -63,6 +63,12 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "jest": {
+    "collectCoverage": true,
+    "moduleNameMapper": {
+      "^.+.(svg)$": "jest-svg-transformer"
+    }
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -85,6 +91,7 @@
     "@storybook/react": "^5.3.18",
     "babel-core": "^6.24.1",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^24.9.0",
     "babel-loader": "^7.1.5",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
@@ -96,6 +103,7 @@
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^1.7.0",
     "file-loader": "^6.0.0",
-    "jest": "^26.6.3"
+    "jest": "^26.6.3",
+    "jest-svg-transformer": "^1.0.0"
   }
 }
