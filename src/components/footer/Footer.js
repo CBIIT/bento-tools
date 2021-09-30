@@ -295,7 +295,7 @@ const Footer = ({ classes, data }) => (
         </div>
       </div>
       {/* End of Quick and dirty for adding version number in footer */}
-      {/* Quick and dirty for adding version number in footer */}
+      {/* Adding file service version number in footer */}
       { data.FileServiceVersion && (
       <div className={cn(classes.footerRow, classes.contentJustifyLeft)}>
         <div
@@ -313,7 +313,7 @@ const Footer = ({ classes, data }) => (
         </div>
       </div>
       )}
-      {/* End of Quick and dirty for adding version number in footer */}
+      {/* End Adding file service version number in footer */}
     </div>
   </div>
 );
