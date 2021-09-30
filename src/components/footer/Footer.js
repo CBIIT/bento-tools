@@ -295,6 +295,25 @@ const Footer = ({ classes, data }) => (
         </div>
       </div>
       {/* End of Quick and dirty for adding version number in footer */}
+      {/* Quick and dirty for adding version number in footer */}
+      { data.FMversion && (
+      <div className={cn(classes.footerRow, classes.contentJustifyLeft)}>
+        <div
+          className={cn(
+            classes.nciLinks,
+            classes.contentJustifyCenter,
+          )}
+        >
+          <div>
+            <span className={classes.footorVersiontext}>
+              BE Version:&nbsp;
+              {data.FMversion}
+            </span>
+          </div>
+        </div>
+      </div>
+      )}
+      {/* End of Quick and dirty for adding version number in footer */}
     </div>
   </div>
 );

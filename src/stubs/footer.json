@@ -8,6 +8,7 @@
 	"maxAnchorLinks": 4,
 	"version": "1.0,0",
 	"BEversion": "1.0.0",
+	"FMversion": "1.2.0",
 	"link_sections": [
 		{
 			"title": "About Bento",
