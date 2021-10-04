@@ -14,9 +14,11 @@ import users from '../stubs/users.json';
 import footerData from '../stubs/footer.json';
 import dataSunburst from '../stubs/sunbust.json';
 import dataDonut from '../stubs/donut.json';
+import {data as barChartData, palette} from '../stubs/barChart';
 import Header from '../components/headers';
 import Footer from '../components/footer';
 import StatsBar from '../components/statsBar';
+import BarChart from '../components/BarCharts/BarCharts';
 import { data as statsData, statsStyling, globalStatsData } from '../stubs/statsBar';
 import { data as icdcStatsData, statsStyling as icdcStatsStyling, globalStatsData as icdcGlobalStatsData } from '../stubs/icdcStatsBar';
 
@@ -126,6 +128,81 @@ storiesOf('PieCharts', module).add('CustomActiveDonut', () => {
     />
   );
 });
+
+storiesOf('BarChart', module).add('BarChart', () => {
+  //** tooltip content */
+  const tooltipContent = ({ argument, value, point }) => {
+    const color = point.series.getColor();
+    return (
+      <>
+        <div>
+          <span
+            style={{
+              fontWeight: 600,
+              color: '#1C2023',
+            }}
+          >
+            {argument}
+            {', '}
+          </span>
+          <span
+            style={{
+              color: color.toString(),
+              fontWeight: 900,
+            }}
+          >
+            {value}
+          </span>
+        </div>
+      </>
+    );
+  };
+
+  //** argument or y-axis config */
+  const argument = {
+      field: 'group',
+      visible: false,
+      position: 'inside',
+      size: 16,
+      title: {
+        text: 'Sample site'
+      },
+      label: {
+        size: 20,
+        position: 'inside',
+        staggeringSpacing: 10,
+      }
+  }
+
+  //** value or x-axis config */
+  const value = { 
+      field: 'count',
+      size: 22,
+      allowDecimals: false,
+      title: {
+        text: 'Sample count',
+        size: 16,
+      },
+      chartGrid: {
+        visible: false,
+      },
+      label: {
+        size: 16,
+        position: 'outside',
+      }
+  }
+
+  return (
+    <BarChart
+      data={barChartData.studySampleSiteCount}
+      palette={palette}
+      tooltipContent={tooltipContent}
+      argument={argument}
+      value={value}
+    />
+  )
+});
+
 storiesOf('LinkBar', module).add('LinkBar', () => <LinkBar />);
 storiesOf('ToolTip', module).add('ToolTip', () => (
   <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '50%' }}>
