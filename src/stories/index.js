@@ -14,7 +14,7 @@ import users from '../stubs/users.json';
 import footerData from '../stubs/footer.json';
 import dataSunburst from '../stubs/sunbust.json';
 import dataDonut from '../stubs/donut.json';
-import {data as barChartData, palette} from '../stubs/barChart';
+import {data as barChartData, palette, argument, value} from '../stubs/barChart';
 import Header from '../components/headers';
 import Footer from '../components/footer';
 import StatsBar from '../components/statsBar';
@@ -157,40 +157,6 @@ storiesOf('BarChart', module).add('BarChart', () => {
       </>
     );
   };
-
-  //** argument or y-axis config */
-  const argument = {
-      field: 'group',
-      visible: false,
-      position: 'inside',
-      size: 16,
-      title: {
-        text: 'Sample site'
-      },
-      label: {
-        size: 20,
-        position: 'inside',
-        staggeringSpacing: 10,
-      }
-  }
-
-  //** value or x-axis config */
-  const value = { 
-      field: 'count',
-      size: 22,
-      allowDecimals: false,
-      title: {
-        text: 'Sample count',
-        size: 16,
-      },
-      chartGrid: {
-        visible: false,
-      },
-      label: {
-        size: 16,
-        position: 'outside',
-      }
-  }
 
   return (
     <BarChart
