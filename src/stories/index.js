@@ -14,9 +14,11 @@ import users from '../stubs/users.json';
 import footerData from '../stubs/footer.json';
 import dataSunburst from '../stubs/sunbust.json';
 import dataDonut from '../stubs/donut.json';
+import {data as barChartData, palette, argument, value} from '../stubs/barChart';
 import Header from '../components/headers';
 import Footer from '../components/footer';
 import StatsBar from '../components/statsBar';
+import BarChart from '../components/BarCharts/BarCharts';
 import { data as statsData, statsStyling, globalStatsData } from '../stubs/statsBar';
 import { data as icdcStatsData, statsStyling as icdcStatsStyling, globalStatsData as icdcGlobalStatsData } from '../stubs/icdcStatsBar';
 
@@ -126,6 +128,47 @@ storiesOf('PieCharts', module).add('CustomActiveDonut', () => {
     />
   );
 });
+
+storiesOf('BarChart', module).add('BarChart', () => {
+  //** tooltip content */
+  const tooltipContent = ({ argument, value, point }) => {
+    const color = point.series.getColor();
+    return (
+      <>
+        <div>
+          <span
+            style={{
+              fontWeight: 600,
+              color: '#1C2023',
+            }}
+          >
+            {argument}
+            {', '}
+          </span>
+          <span
+            style={{
+              color: color.toString(),
+              fontWeight: 900,
+            }}
+          >
+            {value}
+          </span>
+        </div>
+      </>
+    );
+  };
+
+  return (
+    <BarChart
+      data={barChartData.studySampleSiteCount}
+      palette={palette}
+      tooltipContent={tooltipContent}
+      argument={argument}
+      value={value}
+    />
+  )
+});
+
 storiesOf('LinkBar', module).add('LinkBar', () => <LinkBar />);
 storiesOf('ToolTip', module).add('ToolTip', () => (
   <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '50%' }}>
