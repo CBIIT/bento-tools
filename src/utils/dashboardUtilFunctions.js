@@ -630,6 +630,7 @@ export function setSelectedFilterValues(checkboxData, Filters) {
         ),
         datafield: filterGroup.datafield,
         show: filterGroup.show,
+        slider: filterGroup.slider,
         section: filterGroup.section,
       };
     }
