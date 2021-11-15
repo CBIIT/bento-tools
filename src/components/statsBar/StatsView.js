@@ -10,7 +10,7 @@ const StatsBar = ({
       <div
         className={classes.box}
       >
-        {globalStatsData.slice(0, 6).map((stat, index) => (
+        {globalStatsData.slice(0, 7).map((stat, index) => (
           <div className={classes.statsGroup}>
             <div className={classes.statsIcon}>
               <img
