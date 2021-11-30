@@ -115,13 +115,13 @@ const styles = () => ({
     "&:first-child": {
       minWidth: '190px',
       maxWidth: '225px',
-      padding: '4px 40px 10px 0px',
+      padding: '6px 20px 10px 90px',
     },
     "&:last-child": {
       borderRight: 'none',
       minWidth: '205px',
       maxWidth: '225px',
-      padding: '4px 40px 10px 0px',
+      padding: '4px 40px 10px 80px',
     },
   }),
   statsIcon: (props) => ({
