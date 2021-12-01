@@ -65,7 +65,7 @@ const styles = () => ({
     height: props.statsStyling.global.height ? props.statsStyling.global.height : '47px',
     margin: '0 auto',
   }),
-  statTitle: (props) => (props.statsStyling.global.horizontalStyle === true ? {
+  statTitle: (props) => ((props.statsStyling.global && props.statsStyling.global.horizontalStyle) ? {
     float: props.statsStyling.statTitle ? props.statsStyling.statTitle.float ? props.statsStyling.statTitle.float : 'left' : 'left',
     color: props.statsStyling.statTitle ? props.statsStyling.statTitle.color ? props.statsStyling.statTitle.color : '#062D4F' : '#062D4F',
     fontFamily: props.statsStyling.statTitle ? props.statsStyling.statTitle.fontFamily ? props.statsStyling.statTitle.fontFamily : 'Nunito' : 'Nunito',
@@ -85,7 +85,7 @@ const styles = () => ({
     width: props.statsStyling.statTitle ? props.statsStyling.statTitle.width ? props.statsStyling.statTitle.width : '90px' : '90px',
     textAlign: 'left',
   }),
-  statCount: (props) => (props.statsStyling.global.horizontalStyle === true ? {
+  statCount: (props) => ((props.statsStyling.global && props.statsStyling.global.horizontalStyle)  ? {
     display: 'inline-block',
     float: props.statsStyling.statCount ? props.statsStyling.statCount.float ? props.statsStyling.statCount.float : 'left' : 'left',
     color: props.statsStyling.statCount ? props.statsStyling.statCount.color ? props.statsStyling.statCount.color : '#0467BD' : '#0467BD',
@@ -103,7 +103,7 @@ const styles = () => ({
     float: props.statsStyling.statCount ? props.statsStyling.statCount.float ? props.statsStyling.statCount.float : 'none' : 'none',
     fontWeight: 600,
   }),
-  statsGroup: (props) => (props.statsStyling.global.horizontalStyle === true ? {
+  statsGroup: (props) => ((props.statsStyling.global && props.statsStyling.global.horizontalStyle) ? {
     // spacing between stats
     margin: props.statsStyling.statsGroup ? props.statsStyling.statsGroup.margin ? props.statsStyling.statsGroup.margin : '4px 32px' : '4px 32px',
   } : {
