@@ -65,19 +65,27 @@ const styles = () => ({
     height: props.statsStyling.global.height ? props.statsStyling.global.height : '47px',
     margin: '0 auto',
   }),
-  statTitle: (props) => ({
+  statTitle: (props) => ((props.statsStyling.global && props.statsStyling.global.horizontalStyle) ? {
     float: props.statsStyling.statTitle ? props.statsStyling.statTitle.float ? props.statsStyling.statTitle.float : 'left' : 'left',
     color: props.statsStyling.statTitle ? props.statsStyling.statTitle.color ? props.statsStyling.statTitle.color : '#062D4F' : '#062D4F',
     fontFamily: props.statsStyling.statTitle ? props.statsStyling.statTitle.fontFamily ? props.statsStyling.statTitle.fontFamily : 'Nunito' : 'Nunito',
     fontWeight: 600,
     fontSize: props.statsStyling.statTitle ? props.statsStyling.statTitle.fontSize ? props.statsStyling.statTitle.fontSize : '11px' : '11px',
     letterSpacing: '1px',
-    margin: props.statsStyling.global.statTitleFirst === true ? '14px 8px 0px 0px'
-      : props.statsStyling.statTitle ? props.statsStyling.statTitle.margin
-      ? props.statsStyling.statTitle.margin : '6px 0px 0px 15px' : '6px 0px 0px 15px',
+    margin: '14px 8px 0px 0px',
     textTransform: props.statsStyling.statTitle ? props.statsStyling.statTitle.textTransform ? props.statsStyling.statTitle.textTransform : 'uppercase' : 'uppercase',
+  } : {
+    float: props.statsStyling.statTitle ? props.statsStyling.statTitle.float ? props.statsStyling.statTitle.float : 'left' : 'left',
+    color: props.statsStyling.statTitle ? props.statsStyling.statTitle.color ? props.statsStyling.statTitle.color : '#263960' : '#263960',
+    fontFamily: props.statsStyling.statTitle ? props.statsStyling.statTitle.fontFamily ? props.statsStyling.statTitle.fontFamily : 'Nunito' : 'Nunito',
+    fontSize: props.statsStyling.statTitle ? props.statsStyling.statTitle.fontSize ? props.statsStyling.statTitle.fontSize : '11px' : '11px',
+    fontWeight: props.statsStyling.statTitle ? props.statsStyling.statTitle.fontWeight ? props.statsStyling.statTitle.fontWeight : 500 : 500,
+    margin: props.statsStyling.statTitle ? props.statsStyling.statTitle.margin ? props.statsStyling.statTitle.margin : '6px 0px 0px 15px' : '6px 0px 0px 15px',
+    textTransform: props.statsStyling.statTitle ? props.statsStyling.statTitle.textTransform ? props.statsStyling.statTitle.textTransform : 'uppercase' : 'uppercase',
+    width: props.statsStyling.statTitle ? props.statsStyling.statTitle.width ? props.statsStyling.statTitle.width : '90px' : '90px',
+    textAlign: 'left',
   }),
-  statCount: (props) => (props.statsStyling.global.horizontalStyle === true ? {
+  statCount: (props) => ((props.statsStyling.global && props.statsStyling.global.horizontalStyle)  ? {
     display: 'inline-block',
     float: props.statsStyling.statCount ? props.statsStyling.statCount.float ? props.statsStyling.statCount.float : 'left' : 'left',
     color: props.statsStyling.statCount ? props.statsStyling.statCount.color ? props.statsStyling.statCount.color : '#0467BD' : '#0467BD',
@@ -88,23 +96,33 @@ const styles = () => ({
   } : {
     width: props.statsStyling.statCount ? props.statsStyling.statCount.width ? props.statsStyling.statCount.width : '100%' : '100%',
     textAlign: props.statsStyling.statCount ? props.statsStyling.statCount.textAlign ? props.statsStyling.statCount.textAlign : 'left' : 'left',
-    color: props.statsStyling.statCount ? props.statsStyling.statCount.color ? props.statsStyling.statCount.color : '#0467BD' : '#0467BD',
+    color: props.statsStyling.statCount ? props.statsStyling.statCount.color ? props.statsStyling.statCount.color : '#263960' : '#263960',
     fontFamily: props.statsStyling.statCount ? props.statsStyling.statCount.fontFamily ? props.statsStyling.statCount.fontFamily : 'Oswald' : 'Oswald',
     fontSize: props.statsStyling.statCount ? props.statsStyling.statCount.fontSize ? props.statsStyling.statCount.fontSize : '20px' : '20px',
     margin: props.statsStyling.statCount ? props.statsStyling.statCount.margin ? props.statsStyling.statCount.margin : '6px 0px 0px 0px' : '6px 0px 0px 0px',
     float: props.statsStyling.statCount ? props.statsStyling.statCount.float ? props.statsStyling.statCount.float : 'none' : 'none',
     fontWeight: 600,
   }),
-  statsGroup: (props) => (props.statsStyling.global.horizontalStyle === true ? {
+  statsGroup: (props) => ((props.statsStyling.global && props.statsStyling.global.horizontalStyle) ? {
     // spacing between stats
     margin: props.statsStyling.statsGroup ? props.statsStyling.statsGroup.margin ? props.statsStyling.statsGroup.margin : '4px 32px' : '4px 32px',
   } : {
     margin: props.statsStyling.statsGroup ? props.statsStyling.statsGroup.margin ? props.statsStyling.statsGroup.margin : '4px 0px' : '4px 0px',
     padding: props.statsStyling.statsGroup ? props.statsStyling.statsGroup.padding ? props.statsStyling.statsGroup.padding : '4px 40px 10px 60px' : '4px 40px 10px 60px',
-    borderRight: props.statsStyling.statsGroup ? props.statsStyling.statsGroup.borderRight ? props.statsStyling.statsGroup.borderRight : '2px solid #0B3556' : '2px solid #0B3556',
+    borderRight: props.statsStyling.statsGroup ? props.statsStyling.statsGroup.borderRight ? props.statsStyling.statsGroup.borderRight : '4px solid #0B3556' : '4px solid #0B3556',
+    minWidth: '180px',
+    maxWidth: '185px',
+    "&:first-child": {
+      minWidth: '190px',
+      maxWidth: '225px',
+      padding: '6px 20px 10px 90px',
+    },
     "&:last-child": {
       borderRight: 'none',
-    }
+      minWidth: '205px',
+      maxWidth: '225px',
+      padding: '4px 40px 10px 80px',
+    },
   }),
   statsIcon: (props) => ({
     position: 'absolute',
