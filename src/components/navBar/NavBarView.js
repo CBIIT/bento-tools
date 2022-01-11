@@ -40,7 +40,7 @@ const NavBar = ({
 
         {/* End Sidebar button */}
         <div id="navbar" className={classes.buttonContainer}>
-          {navBarData.slice(0, 5).map((navButton) => (
+          {navBarData.slice(0, 6).map((navButton) => (
             navButton.type === 'dropdown'
               ? (
                 <DropdownMenu
