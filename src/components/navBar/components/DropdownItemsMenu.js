@@ -5,17 +5,20 @@ import {
 } from '@material-ui/core';
 import cn from '../../../utils/classNameConcat';
 
-const CustomDropdownMenu = ({ classes, handleClick, dropDownElements }) => (
+const CustomDropdownMenu = ({
+  classes, handleClick, dropDownElements,
+  extraLinksFlag, extraLinks,
+}) => (
   <Paper className={classes.paper}>
     <div id="aboutDropDown">
       {dropDownElements.map((dropDownElementsItem) => (
         <HashRouter>
           <NavLink
             className={
-                dropDownElementsItem.sublink
-                  ? cn(classes.sublink, classes.link)
-                  : classes.link
-}
+              dropDownElementsItem.sublink
+                ? cn(classes.sublink, classes.link)
+                : classes.link
+            }
             activeStyle={dropDownElementsItem.linkActiveStyle
               ? { color: dropDownElementsItem.linkActiveStyle } : { color: '#27DBFF' }}
             to={dropDownElementsItem.link}
@@ -25,6 +28,25 @@ const CustomDropdownMenu = ({ classes, handleClick, dropDownElements }) => (
           </NavLink>
         </HashRouter>
       ))}
+
+      {
+        extraLinksFlag ? (
+          extraLinks.map((link) => (
+            <a
+              href={link.link}
+              rel="noreferrer"
+              target="_blank"
+              className={
+              classes.link
+            }
+              activeStyle={{ color: '#27DBFF' }}
+            >
+              {link.title}
+            </a>
+          ))
+        ) : null
+      }
+
     </div>
   </Paper>
 );
