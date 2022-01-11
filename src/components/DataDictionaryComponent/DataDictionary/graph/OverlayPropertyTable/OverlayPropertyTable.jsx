@@ -1,7 +1,10 @@
+/* eslint-disable max-len */
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@gen3/ui-component/dist/components/Button';
+import { PDFDownloadLink } from '@react-pdf/renderer';
+// eslint-disable-next-line no-unused-vars
 import { downloadTemplate, SearchResultItemShape } from '../../utils';
 import { getCategoryIconSVG } from '../../NodeCategories/helper';
 import {
@@ -10,6 +13,7 @@ import {
 } from '../../highlightHelper';
 import DataDictionaryPropertyTable from '../../table/DataDictionaryPropertyTable';
 import './OverlayPropertyTable.css';
+import PdfDocument from '../../NodePDF';
 
 class OverlayPropertyTable extends React.Component {
   getTitle = () => {
@@ -62,6 +66,8 @@ class OverlayPropertyTable extends React.Component {
   render() {
     if (!this.props.node || this.props.hidden) return (<></>);
     const IconSVG = getCategoryIconSVG(this.props.node.category);
+    // eslint-disable-next-line no-console
+    console.log('category', this.props.node.category);
     const searchedNodeNotOpened = this.props.isSearchMode && !this.props.isSearchResultNodeOpened;
     const needHighlightSearchResult = this.props.isSearchMode;
     return (
@@ -94,20 +100,24 @@ class OverlayPropertyTable extends React.Component {
                   Close
                   <i className="overlay-property-table__close-icon g3-icon g3-icon--cross g3-icon--sm" />
                 </span>
-                <Button
+                {
+                // Fix Download buttons
+                /* <Button
                   className="overlay-property-table__download-button"
                   onClick={() => { downloadTemplate('tsv', this.props.node.id); }}
                   label="TSV"
                   buttonType="secondary"
                   rightIcon="download"
-                />
-                <Button
+                /> */}
+                <PDFDownloadLink
+                  document={<PdfDocument node={this.props.node} />}
+                  fileName={`${this.props.node.id}.pdf`}
                   className="overlay-property-table__download-button"
-                  onClick={() => { downloadTemplate('json', this.props.node.id); }}
-                  label="JSON"
-                  buttonType="secondary"
-                  rightIcon="download"
-                />
+                >
+                  {({
+                    loading,
+                  }) => (loading ? 'Loading document...' : <div className="overlay-property-table__download-text">PDF</div>)}
+                </PDFDownloadLink>
               </div>
 
             </div>
@@ -115,10 +125,11 @@ class OverlayPropertyTable extends React.Component {
               <DataDictionaryPropertyTable
                 properties={this.props.node.properties}
                 requiredProperties={this.props.node.required}
+                preferredProperties={this.props.node.preferred}
                 hasBorder={false}
                 onlyShowMatchedProperties={searchedNodeNotOpened}
                 needHighlightSearchResult={needHighlightSearchResult}
-                hideIsRequired={searchedNodeNotOpened}
+                // hideIsRequired={searchedNodeNotOpened}
                 matchedResult={this.props.matchedResult}
               />
             </div>

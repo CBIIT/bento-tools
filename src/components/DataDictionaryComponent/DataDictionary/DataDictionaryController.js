@@ -3,8 +3,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import DataDictionary from './DataDictionary';
 
 const DictionarySearcherController = (props) => {
-  const { dictionary } = props;
-  if (!dictionary) {
+  if (!props.dictionary) {
     return <CircularProgress />;
   }
 

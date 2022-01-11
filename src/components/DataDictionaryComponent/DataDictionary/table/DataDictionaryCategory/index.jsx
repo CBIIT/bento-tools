@@ -13,10 +13,14 @@ class DataDictionaryCategory extends React.Component {
       <div className="data-dictionary-category">
         <div className="data-dictionary-category__head" style={{ borderLeftColor: getCategoryColor(this.props.category) }}>
           <IconSVG className="data-dictionary-category__icon" />
-          <span>
+          <span style={{ color: getCategoryColor(this.props.category) }}>
             {capitalizeFirstLetter(this.props.category)}
           </span>
-          <span className="data-dictionary-category__download_template">Download Template</span>
+          {
+          // Fix Download buttons
+          // eslint-disable-next-line max-len
+          /* <span className="data-dictionary-category__download_template">Download Template</span> */
+          }
         </div>
         {
         this.props.nodes.map(
