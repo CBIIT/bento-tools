@@ -14,13 +14,12 @@ const drawerWidth = 240;
 
 const NavBar = ({
   classes, isSidebarOpened, navBarData, navBarCartData, navBarstyling, numberOfCases, 
-  releaseNotesFlag, releaseNotesLink, components = {},
+  extraLinksFlag, extraLinks, components = {},
 }) => {
   // Similar to componentDidMount and componentDidUpdate:
   // Empty second argument of react useEffect will avoid the infinte loop that
   // caused due to component update
   const [clickedEl, setClickedEl] = React.useState(null);
-  console.log('reee', releaseNotesFlag);
   function handleButtonClickEvent(eventName) {
     setClickedEl(eventName);
   }
@@ -49,8 +48,8 @@ const NavBar = ({
                   linkText={navButton.labelText}
                   dropDownElements={navButton.dropDownLinks.slice(0, 9)}
                   navBarstyling={navBarstyling}
-                  releaseNotesFlag={releaseNotesFlag}
-                  releaseNotesLink={releaseNotesLink}
+                  extraLinksFlag={extraLinksFlag}
+                  extraLinks={extraLinks}
                 />
               )
               : (

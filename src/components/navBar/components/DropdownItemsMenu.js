@@ -7,7 +7,7 @@ import cn from '../../../utils/classNameConcat';
 
 const CustomDropdownMenu = ({
   classes, handleClick, dropDownElements,
-  releaseNotesFlag, releaseNotesLink,
+  extraLinksFlag, extraLinks,
 }) => (
   <Paper className={classes.paper}>
     <div id="aboutDropDown">
@@ -30,18 +30,20 @@ const CustomDropdownMenu = ({
       ))}
 
       {
-        releaseNotesFlag ? (
-          <a
-            href={releaseNotesLink}
-            rel="noreferrer"
-            target="_blank"
-            className={
+        extraLinksFlag ? (
+          extraLinks.map((link) => (
+            <a
+              href={link.link}
+              rel="noreferrer"
+              target="_blank"
+              className={
               classes.link
             }
-            activeStyle={{ color: '#27DBFF' }}
-          >
-            Release Notes
-          </a>
+              activeStyle={{ color: '#27DBFF' }}
+            >
+              {link.title}
+            </a>
+          ))
         ) : null
       }
 
