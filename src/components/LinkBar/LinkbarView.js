@@ -10,7 +10,7 @@ const LinkBar = ({ classes, title, url }) => (
 );
 
 LinkBar.defaultProps = {
-  title: 'NCI Cancer Research Data Commons!!OOOOO!!!',
+  title: 'NCI Cancer Research Data Commons',
   url: 'https://datacommons.cancer.gov/?cid=crdcnav_hp_gdc.cancer.gov',
 };
 
