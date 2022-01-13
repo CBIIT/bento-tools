@@ -12,7 +12,7 @@ export const navBarstyling = {
 };
 
 export const navBarData = [
-  // A maximum of 5 nav bar items are allowed
+  // A maximum of 6 nav bar items are allowed
   // A maximum of 9 dropDownLinks items are allowed
   {
     labelText: 'home',
