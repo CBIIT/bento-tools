@@ -3,14 +3,14 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import CheckBoxView from '../CheckBoxView';
 
-class ExpandableSectionLogic extends Component {
+class SectionsFunctions extends Component {
     groupNameColor = '';
 
-    size = '10px';
+    resetIconSize = '10px';
 
     constructor(props) {
       super(props);
-      Object.assign(this, props);
+      //   Object.assign(this, props);
       this.state = {
         groupsExpanded: [],
         sectionExpanded: [],
@@ -168,51 +168,18 @@ class ExpandableSectionLogic extends Component {
     render() {
       this.setDefaultGroupsExpanded();
 
-      const {
-        classes,
-        ui: ExpandableSectionUI,
-        styles,
-        // store data from props
-        sideBarContent,
-        isSidebarLoading,
-        tabDataLoading,
-        sortByForGroups,
-
-        // other props
-        CustomExpansionPanelSummary,
-        facetSectionVariables,
-        defaultFacetSectionVariables,
-        sortLabels,
-        resetIconFilter,
-      } = this.props;
-      // Section: Defaults OR Custom
-      const DEFAULT_UI_PROPS = {
-        classes,
-        styles,
-        facetSectionVariables,
-        defaultFacetSectionVariables,
-        sortLabels,
-        resetIconFilter,
-        sideBarContent,
-        // eslint-disable-next-line object-shorthand
-        // isSidebarLoading: isSidebarLoading,
-        // tabDataLoading,
-        sortByForGroups,
-        CustomExpansionPanelSummary,
-      };
-      Object.assign(DEFAULT_UI_PROPS, this);
-      Object.assign(DEFAULT_UI_PROPS, this.state);
-
-      console.log(DEFAULT_UI_PROPS);
+      const { ComponentUI } = this.props;
+      const props = {};
+      Object.assign(props, this);
+      Object.assign(props, this.props);
+      Object.assign(props, this.state);
 
       return (
-        <ExpandableSectionUI
-          {...DEFAULT_UI_PROPS}
-          isSidebarLoading={isSidebarLoading}
-          tabDataLoading={tabDataLoading}
+        <ComponentUI
+          {...props}
         />
       );
     }
 }
 
-export default ExpandableSectionLogic;
+export default SectionsFunctions;

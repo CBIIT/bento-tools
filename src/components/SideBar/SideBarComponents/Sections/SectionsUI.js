@@ -3,49 +3,67 @@ import {
   List,
   ExpansionPanel,
   ExpansionPanelDetails,
+  ExpansionPanelSummary,
   Divider,
   Backdrop,
   CircularProgress,
   Icon,
+  withStyles,
   makeStyles,
 } from '@material-ui/core';
 import {
   ArrowDropDown as ArrowDropDownIcon,
-  // Replay as ReplayIcon,
 } from '@material-ui/icons';
 import CheckBoxView from '../CheckBoxView';
 
-function UI(props) {
+const CustomExpansionPanelSummary = withStyles({
+  root: {
+    marginBottom: -1,
+    minHeight: 48,
+    '&$expanded': {
+      minHeight: 48,
+    },
+  },
+  content: {
+    '&$expanded': {
+      margin: '16px 0',
+    },
+  },
+  expanded: {},
+})(ExpansionPanelSummary);
+
+function SectionsUI(props) {
   const {
-    styles,
+    // Common Props
+    // configProps,
+    dashboardFunctions,
+    // dashboardContext,
+    ComponentStyles,
+
+    // Component Props
+    sideBarSections,
     facetSectionVariables,
     defaultFacetSectionVariables,
-    sortLabels,
+    sectionExpanded,
+    handleSectionChange,
+    groupsExpanded,
+    handleGroupsChange,
+    getGroupNameColor,
+    handleGroupReset,
     resetIconFilter,
-    size,
-    CustomExpansionPanelSummary,
-    dashboardFunctions,
+    resetIconSize,
+    getSortButtonColor,
+    sortLabels,
+    handleToggle,
+    getCheckBoxColor,
+    getLineColor,
+    showSelectedChecbox,
     isSidebarLoading,
     tabDataLoading,
-    groupsExpanded,
-    sectionExpanded,
-    getGroupNameColor,
-    getLineColor,
-    handleGroupsChange,
-    handleSectionChange,
-    handleToggle,
-    handleGroupReset,
-    sideBarSections,
-    getSortButtonColor,
-    getCheckBoxColor,
-    showSelectedChecbox,
   } = props;
 
-  console.log(`ExpandableSectionUI isSidebarLoading: ${isSidebarLoading} tabDataLoading: ${tabDataLoading}`);
-  console.log(`ExpandableSectionUI ${props}`);
-  const useStyles = makeStyles(styles);
+  const useStyles = makeStyles(ComponentStyles);
   const classes = useStyles();
-  console.log('Apple');
 
   return (
     <>
@@ -134,8 +152,8 @@ function UI(props) {
                               >
                                 <img
                                   src={resetIconFilter.src}
-                                  height={size}
-                                  width={size}
+                                  height={resetIconSize}
+                                  width={resetIconSize}
                                   alt={resetIconFilter.alt}
                                 />
                               </Icon>
@@ -200,4 +218,4 @@ function UI(props) {
   );
 }
 
-export default UI;
+export default SectionsUI;

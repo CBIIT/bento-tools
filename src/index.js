@@ -58,7 +58,7 @@ export { default as ToolTip } from './components/toolTips';
 export { default as TextBar } from './components/textBar';
 export { default as BarChart } from './components/BarCharts';
 export { default as SideBar } from './components/SideBar';
-export { default as ExpandableSectionLogic } from './components/SideBar/SideBarComponents/FacetFilter/ExpandableSection.Logic';
+export {default as SectionsFunctions } from './components/SideBar/SideBarComponents/Sections/SectionsFunctions';
 
 export {
 	default as DashboardContextProvider,
