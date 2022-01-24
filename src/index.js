@@ -58,7 +58,24 @@ export { default as ToolTip } from './components/toolTips';
 export { default as TextBar } from './components/textBar';
 export { default as BarChart } from './components/BarCharts';
 export { default as SideBar } from './components/SideBar';
-export {default as SectionsFunctions } from './components/SideBar/SideBarComponents/Sections/SectionsFunctions';
+export {
+	default as CheckBox,
+	CheckBoxFunctions,
+	CheckBoxUI,
+	CheckBoxStyles
+} from './components/SideBar/SideBarComponents/CheckBox';
+export {
+	default as Group,
+	GroupFunctions,
+	GroupUI,
+	GroupStyles
+} from './components/SideBar/SideBarComponents/Group';
+export {
+	default as Sections,
+	SectionsFunctions,
+	SectionsUI,
+	SectionsStyles
+} from './components/SideBar/SideBarComponents/Sections';
 
 export {
 	default as DashboardContextProvider,

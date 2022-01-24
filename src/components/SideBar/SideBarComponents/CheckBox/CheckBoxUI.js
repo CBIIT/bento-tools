@@ -1,6 +1,6 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
 import {
+  makeStyles,
   Checkbox,
   ListItem,
   ListItemText,
@@ -10,35 +10,33 @@ import {
   CheckBox as CheckBoxIcon, CheckBoxOutlineBlank as CheckBoxBlankIcon,
 } from '@material-ui/icons';
 
-const styles = {
-  listItemGutters: {
-    padding: '10px 0px 5px 0px',
-  },
-  checkboxRoot: {
-    marginLeft: '3px',
-    height: 12,
-  },
-  panelDetailText: {
-    marginTop: '1.5px',
-    color: '#000000',
-    lineHeight: '120%',
-    fontFamily: 'Nunito',
-    fontSize: '14px',
-  },
-  panelSubjectText: {
-    color: '#000000',
-    fontFamily: 'Nunito',
-    fontSize: '12px',
-    marginRight: '12px',
-  },
-};
 const alignment = 'flex-start';
 
-function CheckBoxView(props) {
+function CheckBoxUI(props) {
   const {
-    classes, checkboxItem, handleToggle, sideBarItem, facetSectionVariables,
-    defaultFacetSectionVariables, backgroundColor, checkColor, lineColor,
+    // Common Props
+    // configProps,
+    // dashboardFunctions,
+    // dashboardContext,
+    ComponentStyles,
+
+    // class functions
+    handleToggle,
+    getCheckBoxColor,
+    getLineColor,
+
+    // Component Props
+    key: index,
+    checkboxItem,
+    sideBarItem,
+    currentSection,
+    facetSectionVariables,
+    defaultFacetSectionVariables,
+    checkColor,
   } = props;
+
+  const useStyles = makeStyles(ComponentStyles);
+  const classes = useStyles();
 
   return (
     <>
@@ -50,7 +48,7 @@ function CheckBoxView(props) {
         onClick={handleToggle(`${checkboxItem.name}$$${sideBarItem.groupName}$$${sideBarItem.datafield}$$${checkboxItem.isChecked}$$${sideBarItem.section}`)}
         className={classes.nested}
         style={{
-          backgroundColor: checkboxItem.isChecked ? backgroundColor : null,
+          backgroundColor: checkboxItem.isChecked ? getCheckBoxColor(index, currentSection) : null,
         }}
         classes={{ selected: classes.selected, gutters: classes.listItemGutters }}
       >
@@ -83,13 +81,13 @@ function CheckBoxView(props) {
             edge="end"
           >
             &nbsp;
-            {`(${checkboxItem.subjects}x)`}
+            {`(${checkboxItem.subjects})`}
           </span>
         </div>
       </ListItem>
       <Divider
         style={{
-          backgroundColor: checkboxItem.isChecked ? '#FFFFFF' : lineColor,
+          backgroundColor: checkboxItem.isChecked ? '#FFFFFF' : getLineColor(index, sideBarItem.checkboxItems.length),
           height: checkboxItem.isChecked ? '2px' : '1px',
         }}
       />
@@ -97,4 +95,4 @@ function CheckBoxView(props) {
   );
 }
 
-export default withStyles(styles)(CheckBoxView);
+export default CheckBoxUI;

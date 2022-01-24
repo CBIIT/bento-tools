@@ -1,20 +1,15 @@
 import React from 'react';
 import {
-  List,
   ExpansionPanel,
   ExpansionPanelDetails,
   ExpansionPanelSummary,
   Divider,
   Backdrop,
   CircularProgress,
-  Icon,
   withStyles,
   makeStyles,
 } from '@material-ui/core';
-import {
-  ArrowDropDown as ArrowDropDownIcon,
-} from '@material-ui/icons';
-import CheckBoxView from '../CheckBoxView';
+import Group from '../Group/GroupController';
 
 const CustomExpansionPanelSummary = withStyles({
   root: {
@@ -35,9 +30,9 @@ const CustomExpansionPanelSummary = withStyles({
 function SectionsUI(props) {
   const {
     // Common Props
-    // configProps,
-    dashboardFunctions,
-    // dashboardContext,
+    configProps,
+    // dashboardFunctions,
+    dashboardContext,
     ComponentStyles,
 
     // Component Props
@@ -46,18 +41,6 @@ function SectionsUI(props) {
     defaultFacetSectionVariables,
     sectionExpanded,
     handleSectionChange,
-    groupsExpanded,
-    handleGroupsChange,
-    getGroupNameColor,
-    handleGroupReset,
-    resetIconFilter,
-    resetIconSize,
-    getSortButtonColor,
-    sortLabels,
-    handleToggle,
-    getCheckBoxColor,
-    getLineColor,
-    showSelectedChecbox,
     isSidebarLoading,
     tabDataLoading,
   } = props;
@@ -79,6 +62,7 @@ function SectionsUI(props) {
                 ? facetSectionVariables[currentSection.sectionName].height ? facetSectionVariables[currentSection.sectionName].height : '' : defaultFacetSectionVariables.height,
             }}
           />
+          {/* Sections */}
           <ExpansionPanel
             expanded={sectionExpanded.includes(currentSection.sectionName)}
             onChange={handleSectionChange(currentSection.sectionName)}
@@ -101,112 +85,11 @@ function SectionsUI(props) {
             </CustomExpansionPanelSummary>
 
             <ExpansionPanelDetails classes={{ root: classes.expansionPanelDetailsRoot }}>
-              <List component="div" disablePadding dense>
-                {currentSection.items.map((sideBarItem) => (
-                  <>
-                    <ExpansionPanel
-                      square
-                      expanded={groupsExpanded.includes(sideBarItem.groupName)}
-                      onChange={handleGroupsChange(sideBarItem.groupName)}
-                      classes={{
-                        root: classes.expansionPanelsideBarItem,
-                      }}
-                    >
-                      <CustomExpansionPanelSummary
-                        expandIcon={(
-                          <ArrowDropDownIcon
-                            classes={{ root: classes.dropDownIconSubSection }}
-                            style={{ fontSize: 26 }}
-                          />
-    )}
-                        aria-controls={sideBarItem.groupName}
-                        id={sideBarItem.groupName}
-                        className={classes.customExpansionPanelSummaryRoot}
-                      >
-                        {/* <ListItemText primary={sideBarItem.groupName} /> */}
-                        <div
-                          id={sideBarItem.groupName}
-                          style={{ color: getGroupNameColor(sideBarItem, currentSection) }}
-                          className={classes.subSectionSummaryText}
-                        >
-                          {sideBarItem.groupName}
-                        </div>
-
-                      </CustomExpansionPanelSummary>
-
-                      <ExpansionPanelDetails
-                        classes={{ root: classes.expansionPanelDetailsRoot }}
-                      >
-                        <List component="div" disablePadding dense>
-                          <div
-                            className={classes.sortGroup}
-                          >
-                            <span
-                              className={classes.sortGroupIcon}
-                            >
-                              <Icon
-                                onClick={handleGroupReset(
-                                  sideBarItem.datafield, sideBarItem.groupName,
-                                )}
-                                style={{ fontSize: 15 }}
-                              >
-                                <img
-                                  src={resetIconFilter.src}
-                                  height={resetIconSize}
-                                  width={resetIconSize}
-                                  alt={resetIconFilter.alt}
-                                />
-                              </Icon>
-                            </span>
-                            <span
-                              className={classes.sortGroupItem}
-                              style={{ color: getSortButtonColor(sideBarItem, 'alphabet') }}
-                              onClick={() => {
-                                dashboardFunctions.sortSection(sideBarItem.groupName, 'alphabet');
-                              }}
-                            >
-                              {sortLabels.sortAlphabetically}
-                            </span>
-                            <span
-                              className={classes.sortGroupItemCounts}
-                              style={{ color: getSortButtonColor(sideBarItem, 'count') }}
-                              onClick={() => {
-                                dashboardFunctions.sortSection(sideBarItem.groupName, 'count');
-                              }}
-                            >
-                              {sortLabels.sortByCount}
-                            </span>
-                          </div>
-                          {
-                                sideBarItem.checkboxItems.map(
-                                  (item, index) => (
-                                    <CheckBoxView
-                                      key={index}
-                                      checkboxItem={item}
-                                      sideBarItem={sideBarItem}
-                                      currentSection={currentSection}
-                                      handleToggle={handleToggle}
-                                      facetSectionVariables={facetSectionVariables}
-                                      defaultFacetSectionVariables={defaultFacetSectionVariables}
-                                      backgroundColor={getCheckBoxColor(index, currentSection)}
-                                      checkColor={getGroupNameColor(sideBarItem, currentSection)}
-                                      lineColor={
-                                          getLineColor(index, sideBarItem.checkboxItems.length)
-                                        }
-                                    />
-                                  ),
-                                )
-              }
-                        </List>
-                      </ExpansionPanelDetails>
-                    </ExpansionPanel>
-                    <div className={classes.selectedCheckboxDisplay}>
-                      { !groupsExpanded.includes(sideBarItem.groupName)
-                          && showSelectedChecbox(sideBarItem, currentSection)}
-                    </div>
-                  </>
-                ))}
-              </List>
+              <Group
+                configProps={configProps}
+                dashboardContext={dashboardContext}
+                currentSection={currentSection}
+              />
             </ExpansionPanelDetails>
           </ExpansionPanel>
           <Backdrop className={classes.backdrop} open={isSidebarLoading || tabDataLoading}>

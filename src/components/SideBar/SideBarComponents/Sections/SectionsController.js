@@ -3,9 +3,9 @@ import { useDispatch, connect } from 'react-redux';
 import {
   makeStyles,
 } from '@material-ui/core';
-import DEFAULT_SIDEBAR_SECTION_FUNCTIONS from './Sections/SectionsFunctions';
-import DEFAULT_SIDEBAR_SECTION_UI from './Sections/SectionsUI';
-import DEFAULT_SIDEBAR_SECTION_STYLES from './Sections/SectionsStyles';
+import DEFAULT_SIDEBAR_SECTION_FUNCTIONS from './SectionsFunctions';
+import DEFAULT_SIDEBAR_SECTION_UI from './SectionsUI';
+import DEFAULT_SIDEBAR_SECTION_STYLES from './SectionsStyles';
 
 const SectionsController = (props) => {
   const {
@@ -31,10 +31,8 @@ const SectionsController = (props) => {
   Object.assign(ComponentProps, reduxStateValues);
 
   // Extra Items that we can not do in class
-  const useStyles = makeStyles(ComponentStyles);
-  const classes = useStyles();
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   return (
     <ComponentFunctions
@@ -45,8 +43,6 @@ const SectionsController = (props) => {
       dashboardContext={dashboardContext}
       {...ComponentProps}
       // Extra Props Component specific
-      dispatch={dispatch}
-      classes={classes}
     />
   );
 };
