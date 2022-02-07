@@ -57,3 +57,4 @@ export { default as LinkBar } from './components/LinkBar';
 export { default as ToolTip } from './components/toolTips';
 export { default as TextBar } from './components/textBar';
 export { default as BarChart } from './components/BarCharts';
+export { default as JBrowseComponent } from './components/JBrowseComponent';
