@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { HashRouter, NavLink } from 'react-router-dom';
 import {
@@ -7,7 +8,7 @@ import cn from '../../../utils/classNameConcat';
 
 const CustomDropdownMenu = ({
   classes, handleClick, dropDownElements,
-  extraLinksFlag, extraLinks,
+  externalLinksFlag, linkText, externalLinks,
 }) => (
   <Paper className={classes.paper}>
     <div id="aboutDropDown">
@@ -28,10 +29,9 @@ const CustomDropdownMenu = ({
           </NavLink>
         </HashRouter>
       ))}
-
       {
-        extraLinksFlag ? (
-          extraLinks.map((link) => (
+        externalLinksFlag && externalLinks[linkText] ? (
+          externalLinks[linkText].map((link) => (
             <a
               href={link.link}
               rel="noreferrer"
@@ -46,7 +46,6 @@ const CustomDropdownMenu = ({
           ))
         ) : null
       }
-
     </div>
   </Paper>
 );
