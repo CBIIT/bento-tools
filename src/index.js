@@ -1,3 +1,4 @@
+export { default as ReduxDataDictionary} from './components/DataDictionaryComponent/DataDictionary/ReduxDataDictionary';
 export { default as Header } from './components/headers';
 export { default as Footer } from './components/footer';
 export { default as CustomDataTable } from './components/datatables/MUIDataTable';
@@ -24,15 +25,16 @@ export { default as AboutHeader } from './components/about/aboutHeaderView';
 export { default as AboutBody } from './components/about/aboutBodyView';
 export { default as XoomInOut } from './components/about/xoomInOutView';
 export { debounceSearchRender, DebounceTableSearch } from './components/datatables/plug-ins/DebounceSearchRender';
-export { prepareLinks, Anchor } from './utils/anchor'; 
+export { prepareLinks, Anchor } from './utils/anchor';
 export { default as cn } from './utils/classNameConcat';
-export { default as createSvgIcon} from './utils/createSvgIcon';
-export { 
-	COLORS_LEVEL_1, 
-	COLORS_LEVEL_2, 
-	unselectFilters, 
-	getStatDataFromDashboardData, 
-	getSunburstDataFromDashboardData, 
+export { default as createSvgIcon } from './utils/createSvgIcon';
+export { submission, ddgraph, versionInfo } from './components/DataDictionaryComponent/reducers';
+export {
+	COLORS_LEVEL_1,
+	COLORS_LEVEL_2,
+	unselectFilters,
+	getStatDataFromDashboardData,
+	getSunburstDataFromDashboardData,
 	getDonutDataFromDashboardData,
 	filterData,
 	getFilters,
