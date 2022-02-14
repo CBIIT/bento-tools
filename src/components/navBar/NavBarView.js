@@ -14,7 +14,7 @@ const drawerWidth = 240;
 
 const NavBar = ({
   classes, isSidebarOpened, navBarData, navBarCartData, navBarstyling, numberOfCases, 
-  extraLinksFlag, extraLinks, components = {},
+  externalLinksFlag, externalLinks, components = {},
 }) => {
   // Similar to componentDidMount and componentDidUpdate:
   // Empty second argument of react useEffect will avoid the infinte loop that
@@ -39,7 +39,7 @@ const NavBar = ({
 
         {/* End Sidebar button */}
         <div id="navbar" className={classes.buttonContainer}>
-          {navBarData.slice(0, 6).map((navButton) => (
+          {navBarData.slice(0, 7).map((navButton) => (
             navButton.type === 'dropdown'
               ? (
                 <DropdownMenu
@@ -48,8 +48,8 @@ const NavBar = ({
                   linkText={navButton.labelText}
                   dropDownElements={navButton.dropDownLinks.slice(0, 9)}
                   navBarstyling={navBarstyling}
-                  extraLinksFlag={extraLinksFlag}
-                  extraLinks={extraLinks}
+                  externalLinksFlag={externalLinksFlag}
+                  externalLinks={externalLinks}
                 />
               )
               : (
