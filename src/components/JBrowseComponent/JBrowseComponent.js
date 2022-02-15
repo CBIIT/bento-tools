@@ -6,10 +6,9 @@ import {
   JBrowseLinearGenomeView,
   ThemeProvider,
 } from '@jbrowse/react-linear-genome-view';
-import defaultAssembly from './config/assembly';
 import configuration from './config/configuration';
 import tracks from './config/tracks';
-import JBrowseMenu from './component/MuiMenu'; 
+import JBrowseMenu from './component/MuiMenu';
 
 const createTheme = (theme) => createJBrowseTheme(theme);
 
@@ -18,20 +17,22 @@ const JBrowseView = ({viewState}) => (
 )
 
 const JBrowseComponent = ({
+  classes,
   assembly,
+  defaultSession,
   tracks,
   location,
   configuration,
   aggregateTextSearchAdapters,
   theme,
   assemblies,
-  classes,
 }) => {
   const [viewState, setViewState] = useState({
-    assembly,
+    assembly: assemblies[0],
     tracks,
     location: location,
     configuration,
+    defaultSession,
     aggregateTextSearchAdapters,
   });
 
@@ -46,7 +47,7 @@ const JBrowseComponent = ({
     <>
       <div className={classes.menu}>
         { assemblies && (<JBrowseMenu
-          assemblies={assemblies}
+          items={assemblies}
           selectHandler={(item, e) => setReferenceSequence(item, e)}
         />) }
       </div>
@@ -64,7 +65,6 @@ const styles = (theme) => ({
 })
 
 JBrowseComponent.defaultProps = {
-  assembly: defaultAssembly,
   location: '10:29,838,737..29,838,819',
   configuration: configuration,
   tracks: tracks,

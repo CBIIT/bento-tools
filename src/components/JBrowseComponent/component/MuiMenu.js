@@ -1,5 +1,7 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import {
+  withStyles,
+} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -51,7 +53,7 @@ const MuiMenuItem = withStyles(() => ({
 
 const JBrowseMenu = ({
     classes,
-    assemblies,
+    items,
     selectHandler,
 }) => {
   const [anchorElement, setAnchorElement] = React.useState(null);
@@ -89,7 +91,7 @@ const JBrowseMenu = ({
         open={Boolean(anchorElement)}
         onClose={closeHandler}
       >
-        {assemblies.map((assembly) =>  menuItem(assembly))}
+        {items.map((item) =>  menuItem(item))}
       </MuiMenu>
     </div>
   )
@@ -126,10 +128,10 @@ const styles = (theme) => ({
       color: '#dc762f',
       fontSize: '12px',
       fontWeight: '700',
-      paddingLeft: '55px',
+      paddingLeft: '0',
     },
     menuItemButton: {
-      
+      width: '100%',
     },
   });
 
