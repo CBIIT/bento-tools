@@ -30,15 +30,21 @@ class Track {
     }
 }
 
-/*** dafault session configuraton props*/
-class Displays {
-    constructor(type, configuration){
+/*** dafault session configuraton props 
+ * maxDisplayedBpPerPx - set file size limit to the view (display "FORCE LOAD" button)
+ * height - sets height of the view
+ * type - display type - LinearPileupDisplay, LinearReferenceSequenceDisplay
+*/
+class Display {
+    constructor(type, height, maxDisplayedBpPerPx, configuration) {
         this.type = type;
+        this.height = height;
+        this.maxDisplayedBpPerPx = maxDisplayedBpPerPx;
         this.configuration = configuration;
     }
 }
 
-class defaultViewTrack {
+class ViewTrack {
     constructor(type, configuration, displays){
         this.type = type;
         this.configuration = configuration;
@@ -51,6 +57,13 @@ class View {
         this.id = id;
         this.type = type;
         this.tracks = tracks;
+    }
+}
+
+class Session {
+    constructor(name, view){
+        this.name = name;
+        this.view = view;
     }
 }
 
@@ -68,8 +81,9 @@ module.exports = {
     Index,
     Adapter,
     Track,
-    Displays,
+    Display,
     View,
-    defaultViewTrack,
+    ViewTrack,
+    Session,
     Region,
 }
