@@ -11,7 +11,6 @@ import {
 } from '@jbrowse/react-linear-genome-view';
 import configuration from './config/configuration';
 import tracks from './config/tracks';
-import defaultSession from './config/session';
 import JBrowseMenu from './component/MuiMenu';
 import { ViewTrack, Display, Session, View } from './JBrowseProperties';
 
