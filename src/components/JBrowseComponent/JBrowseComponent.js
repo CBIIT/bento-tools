@@ -125,16 +125,17 @@ const JBrowseComponent = ({
   };
 
   return (
-    <>
-      <div className={classes.menu}>
-        {assemblies && (<JBrowseMenu
-          items={assemblies}
-          selectHandler={(item, e) => setReferenceSequence(item, e)}
-          text={text}
-          customStyle={customStyle}
-        />)}
-      </div>
-
+    <> 
+      {assemblies && (
+        <div className={classes.menu}>
+          <JBrowseMenu
+            items={assemblies}
+            selectHandler={(item, e) => setReferenceSequence(item, e)}
+            text={text}
+            customStyle={customStyle}
+          />
+        </div>)
+      }
       <ThemeProvider theme={createTheme(theme)}>
         <JBrowseView
           viewState={viewState}
@@ -158,7 +159,6 @@ JBrowseComponent.defaultProps = {
   location: '10:29,838,737..29,838,819',
   configuration: configuration,
   tracks: tracks,
-  defaultSession: defaultSession,
   text: 'Reference Sequence',
   customStyle: {},
 }
