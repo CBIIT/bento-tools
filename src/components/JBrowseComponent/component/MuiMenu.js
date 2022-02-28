@@ -124,7 +124,6 @@ const styles = (theme) => ({
     return Object.assign(defaultProps, props.customStyle.displayBtn);
   },
   dropDownText: (props) => {
-    console.log(props);
     const defaultProps = {
     lineHeight: '1.05',
     fontSize: '12px',
