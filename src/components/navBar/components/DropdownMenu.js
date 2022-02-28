@@ -6,7 +6,8 @@ import ExpandMoreRoundedIcon from '@material-ui/icons/ExpandMoreRounded';
 import DropdownItemsMenu from './DropdownItemsMenu';
 
 const DropdownMenu = ({
-  classes, handleButtonClickEvent, linkText, clickedEl, dropDownElements, navBarstyling,
+  classes, handleButtonClickEvent, linkText, clickedEl, dropDownElements,
+  navBarstyling, externalLinksFlag, externalLinks,
 }) => {
   const [displayDropDownMenu, setDisplayDropDownMenu] = React.useState(false);
 
@@ -43,7 +44,7 @@ const DropdownMenu = ({
         </span>
         {navBarstyling.dropDownIcon.displayIcon === true ? <ExpandMoreRoundedIcon className={classes.dropDownicon} /> : ''}
       </Button>
-      {displayDropDownMenu ? <DropdownItemsMenu navBarstyling={navBarstyling} handleClick={dropdownMenuClickEvent} dropDownElements={dropDownElements} /> : ''}
+      {displayDropDownMenu ? <DropdownItemsMenu navBarstyling={navBarstyling} handleClick={dropdownMenuClickEvent} dropDownElements={dropDownElements} externalLinksFlag={externalLinksFlag} linkText={linkText} externalLinks={externalLinks} /> : ''}
     </div>
   );
 };
