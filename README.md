@@ -1,6 +1,6 @@
 # Bento UI Building Blocks
 
-Bento UI Building Blocks is a NPM library in an attempt to reuse the shared UI components across NCI data commons frameworks.
+Bento UI Building Blocks is an NPM library in ana attempt to reuse the shared ui components in NCI data commons frameworks.
 
 ## Installation
 

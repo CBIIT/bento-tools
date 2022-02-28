@@ -14,11 +14,7 @@ import users from '../stubs/users.json';
 import footerData from '../stubs/footer.json';
 import dataSunburst from '../stubs/sunbust.json';
 import dataDonut from '../stubs/donut.json';
-import AutoComplete from '../stubs/autocomplete';
-
-import {
-  data as barChartData, palette, argument, value,
-} from '../stubs/barChart';
+import {data as barChartData, palette, argument, value} from '../stubs/barChart';
 import Header from '../components/headers';
 import Footer from '../components/footer';
 import StatsBar from '../components/statsBar';
@@ -70,7 +66,6 @@ const nihLogoImg = {
 storiesOf('Header', module)
   .add('Header default', () => <Header alt="hello" homeLink="https://www.google.com" />)
   .add('Header with custom Logo', () => <Header logo={nihLogo} homeLink="https://www.google.com" />)
-  .add('Header with  Search TypeAhead', () => <Header logo={nihLogo} nihLogoImg={nihLogoImg} SearchComponent={AutoComplete} />)
   .add('Easter Header with custom easter', () => <Header easter={easter2000} />)
   .add('Easter Header with custom logo and eas', () => <Header logo={nihLogo} easter={easter2000} />)
   .add('ICDC Header', () => <Header logo={nihLogo} easter={easter2000} nihLogoImg={nihLogoImg} />);
@@ -135,7 +130,7 @@ storiesOf('PieCharts', module).add('CustomActiveDonut', () => {
 });
 
 storiesOf('BarChart', module).add('BarChart', () => {
-  //* * tooltip content */
+  //** tooltip content */
   const tooltipContent = ({ argument, value, point }) => {
     const color = point.series.getColor();
     return (
@@ -171,7 +166,7 @@ storiesOf('BarChart', module).add('BarChart', () => {
       argument={argument}
       value={value}
     />
-  );
+  )
 });
 
 storiesOf('LinkBar', module).add('LinkBar', () => <LinkBar />);

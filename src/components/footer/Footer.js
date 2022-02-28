@@ -204,7 +204,7 @@ const Footer = ({ classes, data }) => (
                   { linkSection.title }
                 </div>
               </li>
-              { linkSection.items.slice(0, 5).map((footerRowSectionItem) => (
+              { linkSection.items.slice(0, 4).map((footerRowSectionItem) => (
                 <li>
                   {footerRowSectionItem.text
                 && (

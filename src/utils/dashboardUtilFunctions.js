@@ -535,7 +535,6 @@ export function customCheckBox(data, facetSearchData1, caseCountField = 'subject
       datafield: mapping.datafield,
       show: mapping.show,
       section: mapping.section,
-      tooltip: mapping.tooltip,
     }))
   );
 }
@@ -632,7 +631,6 @@ export function setSelectedFilterValues(checkboxData, Filters) {
         datafield: filterGroup.datafield,
         show: filterGroup.show,
         section: filterGroup.section,
-        tooltip: filterGroup.tooltip,
       };
     }
     return filterGroup;

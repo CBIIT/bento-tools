@@ -7,9 +7,6 @@ const styles = {
   grow: {
     flexGrow: 3,
   },
-  searchComp: {
-    marginRight: '45px',
-  },
   headerBar: (props) => {
     const defaultProps = {
       color: '#8A95A7',
@@ -56,9 +53,7 @@ const styles = {
 };
 
 const Header = ({ classes, ...props }) => {
-  const {
-    logo, alt, homeLink, SearchComponent,
-  } = props;
+  const { logo, alt, homeLink } = props;
   return (
     <div id="header" className={classes.headerBar}>
       <div className={classes.nihLogoContainer}>
@@ -72,7 +67,6 @@ const Header = ({ classes, ...props }) => {
       </div>
       <div className={classes.icdcLogoContainer}>
         <div className={classes.grow} />
-        <div className={classes.searchComp}><SearchComponent /></div>
       </div>
     </div>
   );
@@ -83,7 +77,6 @@ Header.defaultProps = {
   alt: 'NCI CTDC Logo - Clinical Trials Data Commons',
   homeLink: '/',
   customStyle: {},
-  SearchComponent: () => <></>,
 };
 
 const StyledHeader = injectSheet(styles)(Header);
