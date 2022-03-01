@@ -14,7 +14,7 @@ import DropdownMenu from './components/DropdownMenu';
 const drawerWidth = 240;
 
 const NavBar = ({
-  classes, isSidebarOpened, navBarData, navBarCartData, navBarstyling, numberOfCases, components = {}, LoginComponent,
+  classes, isSidebarOpened, navBarData, navBarCartData, navBarstyling, numberOfCases, components = {},externalLinksFlag, externalLinks, LoginComponent,
 }) => {
   // Similar to componentDidMount and componentDidUpdate:
   // Empty second argument of react useEffect will avoid the infinte loop that
