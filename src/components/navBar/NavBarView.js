@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 import React from 'react';
 import { HashRouter, NavLink } from 'react-router-dom';
 import {
@@ -13,7 +14,7 @@ import DropdownMenu from './components/DropdownMenu';
 const drawerWidth = 240;
 
 const NavBar = ({
-  classes, isSidebarOpened, navBarData, navBarCartData, navBarstyling, numberOfCases, components = {},
+  classes, isSidebarOpened, navBarData, navBarCartData, navBarstyling, numberOfCases, components = {}, LoginComponent,
 }) => {
   // Similar to componentDidMount and componentDidUpdate:
   // Empty second argument of react useEffect will avoid the infinte loop that
@@ -68,6 +69,7 @@ const NavBar = ({
         </div>
         {/* Start of Theme Switching Icon and logic */}
         <div className={classes.myCasesPosition}>
+          <LoginComponent />
           <Button id="button_navbar_mycases" disableRipple weight="medium" className={classes.logotype} classes={{ root: classes.buttonRootNoRightPadding }}>
             <HashRouter>
               <NavLink
@@ -228,6 +230,7 @@ const styles = () => ({
 NavBar.defaultProps = {
   classes: {},
   navBarstyling: {},
+  LoginComponent: () => <></>,
 };
 
 const StyledNavBar = withStyles(styles)(NavBar);
