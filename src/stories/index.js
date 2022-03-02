@@ -15,6 +15,7 @@ import footerData from '../stubs/footer.json';
 import dataSunburst from '../stubs/sunbust.json';
 import dataDonut from '../stubs/donut.json';
 import AutoComplete from '../stubs/autocomplete';
+import LoginButton from '../stubs/loginButton';
 
 import {
   data as barChartData, palette, argument, value,
@@ -184,7 +185,9 @@ storiesOf('ToolTip', module).add('ToolTip', () => (
     </ToolTip>
   </div>
 ));
-storiesOf('NavBar', module).add('NavBar', () => <NavBar navBarData={navBarData} navBarCartData={navBarCartData} navBarstyling={navBarstyling} numberOfCases={numberOfCases} />);
+storiesOf('NavBar', module).add('NavBar', () => <NavBar navBarData={navBarData} navBarCartData={navBarCartData} navBarstyling={navBarstyling} numberOfCases={numberOfCases} />)
+  .add('Nav with  Search TypeAhead', () => <NavBar navBarData={navBarData} navBarCartData={navBarCartData} navBarstyling={navBarstyling} numberOfCases={numberOfCases} LoginComponent={LoginButton} />);
+
 storiesOf('StatsBar', module)
   .add('Bento StatsBar', () => <StatsBar data={statsData} globalStatsData={globalStatsData} statsStyling={statsStyling} />)
   .add('ICDC StatsBar', () => <StatsBar data={icdcStatsData} globalStatsData={icdcGlobalStatsData} statsStyling={icdcStatsStyling} />);
