@@ -117,9 +117,11 @@ export function getColumns(
                   ]
                 }
                 maxFileSize={column.documentDownloadProps.maxFileSize}
+                toolTipTextUnauthenticated={column.documentDownloadProps.toolTipTextUnauthenticated}
                 toolTipTextFileDownload={column.documentDownloadProps.toolTipTextFileDownload}
                 toolTipTextFilePreview={column.documentDownloadProps.toolTipTextFilePreview}
                 toolTipTextFileViewer={column.documentDownloadProps.toolTipTextFileViewer}
+                iconUnauthenticated={column.documentDownloadProps.iconUnauthenticated}
                 iconFileDownload={column.documentDownloadProps.iconFileDownload}
                 iconFilePreview={column.documentDownloadProps.iconFilePreview}
                 iconFileViewer={column.documentDownloadProps.iconFileViewer}
