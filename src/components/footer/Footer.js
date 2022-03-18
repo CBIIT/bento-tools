@@ -194,14 +194,25 @@ const Footer = ({ classes, data }) => (
         >
           {data.footerLogoHyperlink
             ? (
-              <RouteLinks to={data.footerLogoHyperlink} className={classes.nciLogo}>
-                <div className={classes.footerLogoText}>
-                  {data.footerLogoText}
-                </div>
-                <div>
-                  {data.footerLogoSubText}
-                </div>
-              </RouteLinks>
+              data.footerLogoText
+                ? (
+                  <RouteLinks to={data.footerLogoHyperlink} className={classes.nciLogo}>
+                    <div className={classes.footerLogoText}>
+                      {data.footerLogoText}
+                    </div>
+                    <div>
+                      {data.footerLogoSubText}
+                    </div>
+                  </RouteLinks>
+                ) : (
+                  <RouteLinks to={data.footerLogoHyperlink} className={classes.nciLogo}>
+                    <img
+                      src={data.footerLogoImage}
+                      alt={data.footerLogoAltText}
+                      id="footer_logo_image"
+                    />
+                  </RouteLinks>
+                )
             ) : (
               <img
                 src={data.footerLogoImage}
