@@ -99,6 +99,7 @@ const styles = {
     marginTop: '16px',
     '@media (max-width: 900px)': {
       margin: '16px',
+      marginTop: '45px',
     },
   },
   turningNIH: {
@@ -162,10 +163,24 @@ const styles = {
   marginRight40: {
     marginRight: '40px',
   },
+  footerLogoText: {
+    fontFamily: 'Montserrat',
+    fontWeight: 'bold',
+    fontSize: '25px',
+    letterSpacing: '-0.5px',
+  },
+  footerLogoSubText: {
+    fontFamily: 'Montserrat',
+    fontWeight: 'bold',
+    fontSize: '16px',
+    marginBottom: '5px',
+    letterSpacing: '-0.5px',
+  },
   nciLogo: {
     '@media (min-width: 960px)': {
       width: 'calc((100vw)/4)',
     },
+    marginBottom: '10px',
   },
 };
 
@@ -180,11 +195,12 @@ const Footer = ({ classes, data }) => (
           {data.footerLogoHyperlink
             ? (
               <RouteLinks to={data.footerLogoHyperlink} className={classes.nciLogo}>
-                <img
-                  src={data.footerLogoImage}
-                  alt={data.footerLogoAltText}
-                  id="footer_logo_image"
-                />
+                <div className={classes.footerLogoText}>
+                  {data.footerLogoText}
+                </div>
+                <div>
+                  {data.footerLogoSubText}
+                </div>
               </RouteLinks>
             ) : (
               <img
