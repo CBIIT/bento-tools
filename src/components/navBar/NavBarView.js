@@ -39,12 +39,13 @@ const NavBar = ({
 
         {/* End Sidebar button */}
         <div id="navbar" className={classes.buttonContainer}>
-          {navBarData.slice(0, 7).map((navButton) => (
+          {navBarData.slice(0, 7).map((navButton, index) => (
             navButton.type === 'dropdown'
               ? (
                 <DropdownMenu
                   handleButtonClickEvent={handleButtonClickEvent}
                   clickedEl={clickedEl}
+                  index={index}
                   linkText={navButton.labelText}
                   dropDownElements={navButton.dropDownLinks.slice(0, 9)}
                   navBarstyling={navBarstyling}
