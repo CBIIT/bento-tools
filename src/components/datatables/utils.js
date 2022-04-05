@@ -85,7 +85,7 @@ function buildCSV(columns, data, options) {
         }"${
           row.data
             .filter((_, index) => columns[index].download)
-            .map((columnData) => {console.log('columns data', columnData); return escapeDangerousCSVCharacters(replaceDoubleQuoteInString(replacePoundSignSeparator(columnData)))})
+            .map((columnData) => escapeDangerousCSVCharacters(replaceDoubleQuoteInString(replacePoundSignSeparator(columnData))))
             .join(`"${options.downloadOptions.separator}"`)
         }"\r\n`,
         '',
