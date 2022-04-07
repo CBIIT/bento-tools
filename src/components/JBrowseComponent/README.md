@@ -9,7 +9,7 @@ Use the package manager [npm](https://www.npmjs.com/) to install Bento component
 ```bash
 npm install bento-components
 ```
-## Referance implementation - ICDC
+## Reference implementation - ICDC
 Referance implementation of this component can be found here. 
 - Custodian file: https://github.com/CBIIT/bento-icdc-frontend/blob/main/src/bento/JBrowseData.js
 - Reference folder structure: https://github.com/CBIIT/bento-icdc-frontend/tree/main/src/pages/JbrowseDetail
