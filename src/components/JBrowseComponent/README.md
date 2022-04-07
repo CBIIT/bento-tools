@@ -1,8 +1,8 @@
-# Bento UI Building Blocks
+# JBrowse - Bento
 
-Bento UI Building Blocks is a NPM library in an attempt to reuse the shared UI components across NCI data commons frameworks.
+Here developers can find sample implementation and configration of JBrowse component from Bento. Under the hood this component is using [@jbrowse/react-linear-genome-view](https://www.npmjs.com/package/@jbrowse/react-linear-genome-view) library. 
 
-## Installation
+## Installation of Bento components.
 
 Use the package manager [npm](https://www.npmjs.com/) to install Bento UI Building Blocks.
 
@@ -11,6 +11,27 @@ npm install bento-components
 ```
 
 ## Usage
+
+JBrowse component needs to have 1 custodian file with number of graphql queries. Please make sure your project does have those queries setup. 
+
+```bash
+
+├── src
+|   ├── ...
+|   ├── bento
+|   |   ├── ... 
+|   │   └── JBrowseData.js            # JBrowse's custodian configration file.
+|   |
+|   └── pages
+|       ├── ... 
+|       └── JbrowseDetail
+|           ├── JbrowseController.js  # JBrowse's controller.
+|           └── JbrowseDetailView.js  # JBrowse's view, import "JBrowseComponent" here.
+|
+└── .gitignore
+```
+
+
 
 ```react
 //Header
