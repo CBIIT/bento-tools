@@ -574,6 +574,7 @@ class MUIDataTable extends React.Component {
         searchable: true,
         download: true,
         viewColumns: true,
+        icon: column.icon,
       };
 
       const options = { ...column.options };
