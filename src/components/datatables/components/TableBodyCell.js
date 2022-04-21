@@ -5,7 +5,12 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(
   (theme) => ({
-    root: {},
+    root: {
+    },
+    icon: {
+      borderLeft: '1px solid #CFCFCC',
+      borderRight: '1px solid #CFCFCC'
+    },
     cellHide: {
       display: 'none',
     },
@@ -159,6 +164,7 @@ function TableBodyCell(props) {
       className={classNames(
         {
           [classes.root]: true,
+          [classes.icon]: options.icon,
           [classes.stackedParent]:
             options.responsive === 'vertical'
             || options.responsive === 'stacked'
