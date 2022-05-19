@@ -32,6 +32,8 @@ const renderActiveShape = (props) => {
     // eslint-disable-next-line no-unused-vars
     titleLocation, titleAlignment, titleText, totalCount, showTotalCount,
   } = props;
+  const isCapital = String(payload.name).toUpperCase() === String(payload.name);
+  const overflowLength = isCapital ? 20 : 30;
   // const sin = Math.sin(-RADIAN * midAngle);
   // const cos = Math.cos(-RADIAN * midAngle);
   // const sx = cx + (outerRadius + 2) * cos;
@@ -50,7 +52,7 @@ const renderActiveShape = (props) => {
   return (
     <g>
       <text x={lableX} y={lableY} dy={0} textAnchor={(titleAlignment === 'center') ? 'middle' : null} fill={textColor} fontSize={fontSize || '12px'} fontWeight={fontWeight || '500'} fontFamily={fontFamily || 'Nunito'} cursor="text">
-        {String(payload.name).length > 30 ? `${String(payload.name).substr(0, 30)}...` : payload.name}
+        {String(payload.name).length > overflowLength ? `${String(payload.name).substr(0, overflowLength)}...` : payload.name}
         <title>{payload.name}</title>
       </text>
       <text x={cx} y={cy} dy={0} textAnchor="middle" fill={textColor} fontSize="12px" fontWeight="bold" fontFamily="Nunito">{`${faceValue}`}</text>
