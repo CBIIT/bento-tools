@@ -221,7 +221,7 @@ const Footer = ({ classes, data }) => (
               />
             )}
         </div>
-        { data.link_sections.slice(0, 3).map((linkSection) => (
+        { data.link_sections.slice(0, 4).map((linkSection) => (
           <div className={classes.footerRowSection}>
             <ul>
               <li>
