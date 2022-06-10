@@ -59,7 +59,7 @@ function sortCompare(order) {
 
 function buildCSV(columns, data, options) {
   const replaceDoubleQuoteInString = (columnData) => (typeof columnData === 'string' ? columnData.replace(/\"/g, '""') : columnData);
-  const replacePoundSignSeparator = (columnData) => (columnData.includes('#') ? columnData.replaceAll('#', ',') : columnData);
+  const replacePoundSignSeparator = (columnData) => (columnData && columnData.toString().includes('#') ? columnData.replaceAll('#', ',') : columnData);
 
   const buildHead = (columns) => (
     `${columns
@@ -85,7 +85,9 @@ function buildCSV(columns, data, options) {
         }"${
           row.data
             .filter((_, index) => columns[index].download)
-            .map((columnData) => escapeDangerousCSVCharacters(replaceDoubleQuoteInString(replacePoundSignSeparator(columnData))))
+            .map((columnData) => {
+              return escapeDangerousCSVCharacters(replaceDoubleQuoteInString(replacePoundSignSeparator(columnData)));
+            })
             .join(`"${options.downloadOptions.separator}"`)
         }"\r\n`,
         '',
