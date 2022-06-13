@@ -1,6 +1,6 @@
 {
   "name": "bento-components",
-  "version": "0.1.112",
+  "version": "0.1.113",
   "private": false,
   "main": "lib/index.js",
   "module": "es/index.js",
