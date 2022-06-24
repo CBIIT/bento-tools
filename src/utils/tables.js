@@ -3,7 +3,7 @@ import TableFooter from '@material-ui/core/TableFooter';
 import TableRow from '@material-ui/core/TableRow';
 import TablePagination from '@material-ui/core/TablePagination';
 import { HashRouter, Link } from 'react-router-dom';
-import { dateTimeStamp, manipulateLinks, formatBytes } from './helpers';
+import { manipulateLinks, formatBytes } from './helpers';
 
 //  Generate MuiTable's columns.
 export function getColumns(

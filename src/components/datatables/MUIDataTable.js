@@ -579,6 +579,7 @@ class MUIDataTable extends React.Component {
         csvNullValue: column.csvNullValue,
         firstIcon: column.firstIcon,
         lastIcon: column.lastIcon,
+        iconViewColumnsLabel: column.iconViewColumnsLabel,
       };
 
       const options = { ...column.options };

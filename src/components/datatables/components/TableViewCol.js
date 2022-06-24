@@ -99,7 +99,7 @@ class TableViewCol extends React.Component {
                       value={column.name}
                     />
                   )}
-                  label={this.generateLabel(column.label, column.iconLabel)}
+                  label={this.generateLabel(column.label, column.iconViewColumnsLabel)}
                 />
             )
           ))}
