@@ -176,6 +176,8 @@ export function getOptions(table, classes, customFooter, onRowSelectionChange, i
     headerPagination: typeof (table.headerPagination) !== 'undefined' ? table.headerPagination : false,
     footerPagination: typeof (table.footerPagination) !== 'undefined' ? table.footerPagination : true,
     download: typeof (table.download) !== 'undefined' ? table.download : false,
+    legendTooltip: typeof (table.legendTooltip) !== 'undefined' ? table.legendTooltip : false,
+    origin: table.title,
     rowsPerPageOptions: table.rowsPerPageOptions ? table.rowsPerPageOptions : [10, 25, 50, 100],
     sortOrder: {
       name: table.defaultSortField,
@@ -184,7 +186,7 @@ export function getOptions(table, classes, customFooter, onRowSelectionChange, i
     downloadOptions: {
       filename:
         table && table.downloadFileName
-          ? table.downloadFileName.concat(dateTimeStamp()).concat('.csv') : 'Bento_files_download.csv',
+          ? table.downloadFileName : 'Bento_files_download.csv',
       filterOptions: {
         useDisplayedColumnsOnly:
         table.filterOptions
@@ -205,3 +207,52 @@ export function getOptions(table, classes, customFooter, onRowSelectionChange, i
         : null),
   };
 }
+
+const ICDC_DATA_AVAIL_ICONS = [
+  {
+
+    label: 'Case Files',
+
+    icon: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/main/icdc/images/svgs/CaseFiles_.svg',
+  },
+  {
+
+    label: 'Study Files',
+
+    icon: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/master/icdc/images/svgs/StudyFiles_.svg',
+  },
+  {
+
+    label: 'Image Collections',
+
+    icon: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/main/icdc/images/svgs/StudyDataAvail-ImageCollection.svg',
+  },
+  {
+
+    label: 'Publications',
+
+    icon: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/main/icdc/images/svgs/StudyDataAvail-Publications.svg',
+  },
+  {
+
+    label: 'Additional CRDC Nodes',
+
+    icon: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/main/icdc/images/svgs/StudyDataAvail-CRDCnodes.svg',
+  },
+];
+export const generateDataAvailabilityTooltipText = () => (
+  <div style={{ display: 'grid', paddingTop: '0em' }}>
+    <h3 style={{ textAlign: 'center' }}>Data Availability:</h3>
+    {
+        ICDC_DATA_AVAIL_ICONS.map((item) => (
+
+          <div style={{ display: 'flex', gap: '2em', marginBottom: '0.5em' }}>
+            <img src={item.icon} alt={`${item.label} icon`} style={{ width: '3em' }} />
+            {' '}
+            {item.label}
+          </div>
+
+        ))
+      }
+  </div>
+);

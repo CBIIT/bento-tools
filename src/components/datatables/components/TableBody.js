@@ -11,7 +11,9 @@ import TableSelectCell from './TableSelectCell';
 import { getPageValue } from '../utils';
 
 const defaultBodyStyles = (theme) => ({
-  root: {},
+  root: {
+    width: '65em'
+  },
   emptyTitle: {
     textAlign: 'center',
   },
@@ -21,6 +23,9 @@ const defaultBodyStyles = (theme) => ({
         borderBottom: 'none',
       },
     },
+  },
+  bodyCell: {
+    backgroundColor: 'red'
   },
   lastSimpleCell: {
     [theme.breakpoints.down('xs')]: {
@@ -288,8 +293,11 @@ class TableBody extends React.Component {
                               colIndex={columnIndex}
                               columnHeader={columns[columnIndex].label}
                               print={columns[columnIndex].print}
+                              firstIcon={columns[columnIndex].firstIcon}
+                              lastIcon={columns[columnIndex].lastIcon}
                               options={columns[columnIndex].icon ? {...options, icon: true}: options}
                               key={columnIndex}
+                              className={columnIndex === 2 && options.origin === 'STUDIES IN THIS PROGRAM' && classes.root}
                             >
                               {column}
                             </TableBodyCell>
