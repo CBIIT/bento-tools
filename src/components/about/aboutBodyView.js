@@ -19,11 +19,11 @@ const AboutBody = ({ classes, data }) => {
       <div className={classes.container}>
         <Grid container spacing={16} direction="row" className={classes.aboutSection}>
           {data.imageLocation === 'left'
-          && (
-          <Grid item lg={3} md={3} sm={12} xs={12} className={classes.imageSection}>
-            {data.image}
-          </Grid>
-          )}
+            && (
+              <Grid item lg={3} md={3} sm={12} xs={12} className={classes.imageSection}>
+                {data.image}
+              </Grid>
+            )}
           <Grid item lg={9} md={9} sm={12} xs={12} className={classes.contentSection}>
             <span className={classes.text}>
               {data.content ? data.content.map((contentObj) => (
@@ -35,7 +35,7 @@ const AboutBody = ({ classes, data }) => {
                       <ol>
                         { contentObj.listWithNumbers.map((listObj) => (
                           listObj.listWithAlpahbets ? (
-                          // Alphetised sub ordered list
+                            // Alphetised sub ordered list
                             <ol type="a">
                               {/* bolding text if necessary */}
                               { listObj.listWithAlpahbets.map((listObj1) => <li>{listObj1.includes('$$') ? boldText(listObj1) : listObj1}</li>)}
@@ -66,13 +66,14 @@ const AboutBody = ({ classes, data }) => {
                           const target = linkAttrs.find((link) => link.includes('target:'));
                           const url = linkAttrs.find((link) => link.includes('url:'));
                           const type = linkAttrs.find((link) => link.includes('type:')); // 0 : no img
+                          const href = splitedParagraph.match(/\((.*)\)/).pop();
 
                           const link = (
                             <Link
                               title={title}
                               target={target ? target.replace('target:', '') : '_blank'}
                               rel="noreferrer"
-                              href={url ? url.replace('url:', '') : splitedParagraph.match(/\((.*)\)/).pop()}
+                              href={url ? url.replace('url:', '') : (href && href.includes('@') ? `mailto:${href}` : href)}
                               color="inherit"
                               className={classes.link}
                             >
@@ -230,15 +231,15 @@ const AboutBody = ({ classes, data }) => {
             </span>
           </Grid>
           {data.imageLocation === 'right'
-          && (
-          <Grid item lg={3} md={3} sm={12} xs={12} className={classes.imageSection}>
-            {data.image}
-          </Grid>
-          )}
+            && (
+              <Grid item lg={3} md={3} sm={12} xs={12} className={classes.imageSection}>
+                {data.image}
+              </Grid>
+            )}
         </Grid>
       </div>
       {data.secondaryZoomImageTitle
-      && <div className={classes.secondayTitle}>{data.secondaryZoomImageTitle}</div>}
+        && <div className={classes.secondayTitle}>{data.secondaryZoomImageTitle}</div>}
       {data.secondaryImage && <XoomInOut>{data.secondaryImageData}</XoomInOut>}
     </>
   );
