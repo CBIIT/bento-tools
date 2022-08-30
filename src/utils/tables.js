@@ -25,7 +25,7 @@ export function getColumns(
       filter: typeof (column.filter) !== 'undefined' ? column.filter : false,
       customBodyRender: (value, tableMeta) => (
         <div className={classes[`tableCell${index + 1}`]}>
-          { value
+          { value && !column.downloadDocument
             ? (column.internalLink ? (
               <HashRouter>
                 <Link
@@ -125,6 +125,7 @@ export function getColumns(
                 iconFileDownload={column.documentDownloadProps.iconFileDownload}
                 iconFilePreview={column.documentDownloadProps.iconFilePreview}
                 iconFileViewer={column.documentDownloadProps.iconFileViewer}
+                requiredACLs={value}
               />
             </span>
             )
