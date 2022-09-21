@@ -346,7 +346,7 @@ class TableToolbar extends React.Component {
                   title={generateDataAvailabilityTooltipText()}
                   interactive
                   classes={{ tooltip: classes.dalTooltip}}
-                  placement="left"
+                  placement="top"
                 >
                   <IconButton aria-label="help">
                     <img style={{ width: '0.7em', marginBottom: '0.6em' }} src="https://raw.githubusercontent.com/CBIIT/datacommons-assets/main/icdc/images/svgs/Tooltip.SpeechBubble.svg" alt="tooltip" />
