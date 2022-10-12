@@ -14,7 +14,9 @@ import DropdownMenu from './components/DropdownMenu';
 const drawerWidth = 240;
 
 const NavBar = ({
-  classes, isSidebarOpened, navBarData, navBarCartData, navBarstyling, numberOfCases, components = {},externalLinksFlag, externalLinks, LoginComponent,
+  classes, isSidebarOpened, navBarData,
+  navBarCartData, navBarstyling, numberOfCases, components = {},
+  externalLinksFlag, externalLinks, LoginComponent,
 }) => {
   // Similar to componentDidMount and componentDidUpdate:
   // Empty second argument of react useEffect will avoid the infinte loop that
@@ -23,6 +25,38 @@ const NavBar = ({
   function handleButtonClickEvent(eventName) {
     setClickedEl(eventName);
   }
+
+  const { cartLabelType } = navBarCartData;
+
+  const getCartLabel = (labelType) => {
+    switch (labelType) {
+      case 'labelUnderCount':
+        return (
+          <div className={classes.cartCounter2Wrapper}>
+            <div className={classes.cartCounter2}>
+              {numberOfCases}
+            </div>
+            <div className={classes.cartLabel}>
+              Files
+            </div>
+          </div>
+        );
+      default:
+        return (
+          <span className={classes.badge}>
+            <img
+              className={classes.cartIcon}
+              src={navBarCartData.cartIcon}
+              alt={navBarCartData.cartIconAlt}
+            />
+            <span className={classes.cartCounter}>
+              {numberOfCases}
+            </span>
+          </span>
+
+        );
+    }
+  };
 
   const Tooltip = components.Tooltip || MuiTooltip;
 
@@ -87,9 +121,7 @@ const NavBar = ({
                       src={navBarCartData.cartIcon}
                       alt={navBarCartData.cartIconAlt}
                     />
-                    <span className={classes.cartCounter}>
-                      {numberOfCases}
-                    </span>
+                    {getCartLabel(cartLabelType)}
                   </span>
                 </Tooltip>
 
@@ -128,10 +160,10 @@ const styles = () => ({
     marginTop: props.navBarstyling.global.marginTop ? props.navBarstyling.global.marginTop : '100px',
     width: '100vw',
   }),
-  cartIcon: {
-    height: '22px',
+  cartIcon: (props) => ({
+    height: props.navBarstyling.cart.iconSize || '22px',
     margin: '0px 0px 0px 6px',
-  },
+  }),
   labelText: (props) => ({
     textDecoration: 'none',
     color: props.navBarstyling.global.fontColor ? props.navBarstyling.global.fontColor : '#FFFFFF',
@@ -180,6 +212,29 @@ const styles = () => ({
     fontWeight: '600',
     letterSpacing: '0.8px',
     transform: 'scale(1) translate(0%, -50%)',
+  },
+  cartCounter2Wrapper: {
+    marginTop: '-6px',
+    marginLeft: '6px',
+  },
+  cartCounter2: {
+    height: '16px',
+    minWidth: '16px',
+    fontFamily: 'Lato',
+    fontWeight: '600',
+    letterSpacing: '0.8px',
+    textAlign: 'start',
+    fontSize: '12px',
+  },
+  cartLabel: {
+    height: '16px',
+    minWidth: '16px',
+    color: '#24E4BE',
+    fontFamily: 'Raleway',
+    fontWeight: '600',
+    letterSpacing: '0.8px',
+    textAlign: 'start',
+    fontSize: '12px',
   },
   iconButtonRoot: {
     paddingTop: '9px',
