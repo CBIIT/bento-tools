@@ -32,7 +32,7 @@ const NavBar = ({
     switch (labelType) {
       case 'labelUnderCount':
         return (
-          <div>
+          <div className={classes.cartCounter2Wrapper}>
             <div className={classes.cartCounter2}>
               {numberOfCases}
             </div>
@@ -160,10 +160,10 @@ const styles = () => ({
     marginTop: props.navBarstyling.global.marginTop ? props.navBarstyling.global.marginTop : '100px',
     width: '100vw',
   }),
-  cartIcon: {
-    height: '22px',
+  cartIcon: (props) => ({
+    height: props.navBarstyling.cart.iconSize || '22px',
     margin: '0px 0px 0px 6px',
-  },
+  }),
   labelText: (props) => ({
     textDecoration: 'none',
     color: props.navBarstyling.global.fontColor ? props.navBarstyling.global.fontColor : '#FFFFFF',
@@ -213,24 +213,28 @@ const styles = () => ({
     letterSpacing: '0.8px',
     transform: 'scale(1) translate(0%, -50%)',
   },
+  cartCounter2Wrapper: {
+    marginTop: '-6px',
+    marginLeft: '6px',
+  },
   cartCounter2: {
     height: '16px',
     minWidth: '16px',
-    fontFamily: 'inter',
+    fontFamily: 'Lato',
     fontWeight: '600',
     letterSpacing: '0.8px',
-    transform: 'scale(1) translate(0%, -50%)',
     textAlign: 'start',
+    fontSize: '12px',
   },
   cartLabel: {
-    height: '9px',
-    width: '27px',
+    height: '16px',
+    minWidth: '16px',
     color: '#24E4BE',
     fontFamily: 'Raleway',
+    fontWeight: '600',
+    letterSpacing: '0.8px',
+    textAlign: 'start',
     fontSize: '12px',
-    fontWeight: 'bold',
-    letterSpacing: '25px',
-    lineHeight: '13px',
   },
   iconButtonRoot: {
     paddingTop: '9px',
