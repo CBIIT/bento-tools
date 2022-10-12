@@ -198,7 +198,7 @@ const styles = () => ({
     padding: props.navBarstyling.global.padding ? props.navBarstyling.global.padding : '9px 20px 0px 20px',
   }),
   buttonRootNoRightPadding: (props) => ({
-    padding: props.navBarstyling.global.padding ? props.navBarstyling.global.padding : '9px 20px 0px 20px',
+    padding: props.navBarstyling.cart.padding || props.navBarstyling.global.padding || '9px 20px 0px 20px',
   }),
   badge: {
     display: 'inline-flex',
