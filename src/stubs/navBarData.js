@@ -57,10 +57,6 @@ export const navBarData = [
 ];
 
 export const navBarCartData = {
-  // cartLabel: 'My Files',
-  // cartLink: '/fileCentricCart',
-  // cartIcon: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/main/cds/icons/cartIcon.svg',
-  // cartIconAlt: 'cart_logo',
   cartLabel: '',
   cartLink: '/fileCentricCart',
   cartIcon: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/main/cds/icons/navBarCartIcon.svg',
