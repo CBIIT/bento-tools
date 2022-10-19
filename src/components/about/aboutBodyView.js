@@ -1,7 +1,6 @@
 import React from 'react';
 import { Grid, Link, withStyles } from '@material-ui/core';
 import XoomInOut from './xoomInOutView';
-// import externalIcon from '../assets/about/About-ExternalLink.svg';
 import tableExternalIcon from '../assets/about/About-Table-ExternalLink.svg';
 
 const AboutBody = ({ classes, data, externalIconImage }) => {

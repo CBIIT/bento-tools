@@ -230,9 +230,6 @@ const styles = () => ({
     height: '16px',
     minWidth: '16px',
     color: props.navBarstyling.cartLabel && props.navBarstyling.cartLabel.color ? props.navBarstyling.cartLabel.color : '#24E4BE',
-    // color: props.navBarstyling.cartLabel.color ? props.navBarstyling.cartLabel.color : '#24E4BE',
-
-    // color: '#24E4BE',
     fontFamily: 'Raleway',
     fontWeight: '600',
     letterSpacing: '0.8px',
