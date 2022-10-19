@@ -10,7 +10,11 @@ import MUIDatatable from '../components/datatables/MUIDataTable';
 import ProgramSunburst from '../components/PieCharts/ProgramSunburst/ProgramSunburstView';
 import CustomActiveDonut from '../components/PieCharts/CustomActiveDonut/CustomActiveDonutView';
 import XoomInOut from '../components/about/xoomInOutView';
+import AboutHeader from '../components/about/aboutHeaderView';
+import AboutBody from '../components/about/aboutBodyView';
+
 import users from '../stubs/users.json';
+import aboutBodyContent from '../stubs/aboutBodyContent.json';
 import footerData from '../stubs/footer.json';
 import dataSunburst from '../stubs/sunbust.json';
 import dataDonut from '../stubs/donut.json';
@@ -192,7 +196,27 @@ storiesOf('StatsBar', module)
   .add('Bento StatsBar', () => <StatsBar data={statsData} globalStatsData={globalStatsData} statsStyling={statsStyling} />)
   .add('ICDC StatsBar', () => <StatsBar data={icdcStatsData} globalStatsData={icdcGlobalStatsData} statsStyling={icdcStatsStyling} />);
 storiesOf('About', module).add('XoomInOut', () => (
-  <div style={{ marginTop: '100px' }}>
-    <XoomInOut style={{ marginTop: '30px' }}><img src={imgPath} alt="zoominout" style={{ width: '100%' }} /></XoomInOut>
-  </div>
+  <>
+    <AboutHeader title="header" titleColor="#0B4E75" background="white" />
+    <AboutBody
+      data={{
+        image: <></>,
+        imageLocation: 'right',
+        title: aboutBodyContent.title ? aboutBodyContent.title : '',
+        content: aboutBodyContent.content ? aboutBodyContent.content : '',
+        table: aboutBodyContent.table ? aboutBodyContent.table : '',
+        secondaryImage: aboutBodyContent.secondaryZoomImage
+          ? aboutBodyContent.secondaryZoomImage : null,
+        secondaryImageData: <></>,
+        secondaryZoomImageTitle: data.secondaryZoomImageTitle
+          ? aboutBodyContent.secondaryZoomImageTitle : null,
+      }}
+      titleColor="#1280AE"
+      linkColor="#900F89"
+      externalIconImage="https://raw.githubusercontent.com/CBIIT/datacommons-assets/main/common/images/logos/svgs/externalLinkIcon.svg"
+    />
+    <div style={{ marginTop: '100px' }}>
+      <XoomInOut style={{ marginTop: '30px' }}><img src={imgPath} alt="zoominout" style={{ width: '100%' }} /></XoomInOut>
+    </div>
+  </>
 ));
