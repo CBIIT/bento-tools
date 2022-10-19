@@ -9,6 +9,13 @@ export const navBarstyling = {
     fontSize: '18px',
     margin: '0px 0px 0px 0px',
   },
+  cart: {
+    iconSize: '26px',
+    padding: '6px 16px 0px 5px',
+  },
+  cartLabel: {
+    color: '#FFAC20',
+  },
 };
 
 export const navBarData = [
@@ -50,10 +57,11 @@ export const navBarData = [
 ];
 
 export const navBarCartData = {
-  cartLabel: 'MY Files',
+  cartLabel: '',
   cartLink: '/fileCentricCart',
-  cartIcon: 'https://raw.githubusercontent.com/CBIIT/bento-frontend/master/src/assets/icons/Icon-Cart-Navbar.svg',
+  cartIcon: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/main/cds/icons/navBarCartIcon.svg',
   cartIconAlt: 'cart_logo',
+  cartLabelType: 'labelUnderCount',
 };
 
 export const numberOfCases = 0;

@@ -161,7 +161,7 @@ const styles = () => ({
     width: '100vw',
   }),
   cartIcon: (props) => ({
-    height: props.navBarstyling.cart.iconSize || '22px',
+    height: props.navBarstyling.cart && props.navBarstyling.cart.iconSize ? props.navBarstyling.cart.iconSize : '22px',
     margin: '0px 0px 0px 6px',
   }),
   labelText: (props) => ({
@@ -226,16 +226,16 @@ const styles = () => ({
     textAlign: 'start',
     fontSize: '12px',
   },
-  cartLabel: {
+  cartLabel:(props) => ({
     height: '16px',
     minWidth: '16px',
-    color: '#24E4BE',
+    color: props.navBarstyling.cartLabel && props.navBarstyling.cartLabel.color ? props.navBarstyling.cartLabel.color : '#24E4BE',
     fontFamily: 'Raleway',
     fontWeight: '600',
     letterSpacing: '0.8px',
     textAlign: 'start',
     fontSize: '12px',
-  },
+  }),
   iconButtonRoot: {
     paddingTop: '9px',
     paddingLeft: '0px',

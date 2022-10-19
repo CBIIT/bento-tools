@@ -1,10 +1,9 @@
 import React from 'react';
 import { Grid, Link, withStyles } from '@material-ui/core';
 import XoomInOut from './xoomInOutView';
-import externalIcon from '../assets/about/About-ExternalLink.svg';
 import tableExternalIcon from '../assets/about/About-Table-ExternalLink.svg';
 
-const AboutBody = ({ classes, data }) => {
+const AboutBody = ({ classes, data, externalIconImage }) => {
   function boldText(text) {
     const boldedText = text.split('$$').map((splitedText) => {
       if (splitedText != null && (/\*(.*)\*/.test(splitedText))) {
@@ -86,7 +85,8 @@ const AboutBody = ({ classes, data }) => {
                               {link}
                               {type ? '' : (
                                 <img
-                                  src={externalIcon}
+                                  src={externalIconImage}
+                                  // externalIconImage: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/main/common/images/logos/svgs/externalLinkIcon.svg',
                                   alt="outbounnd web site icon"
                                   className={classes.linkIcon}
                                 />
@@ -275,14 +275,14 @@ const styles = () => ({
     fontSize: '16px',
     lineHeight: (props) => (props.data.lineHeight ? props.data.lineHeight : '30px'),
   },
-  title: {
-    color: '#0B3556',
+  title: (props) => ({
+    color: props.titleColor,
     fontWeight: 'bold',
-  },
-  email: {
-    color: '#0296C9',
+  }),
+  email: (props) => ({
+    color: props.linkColor,
     fontWeight: 'bold',
-  },
+  }),
   contentSection: {
     padding: (props) => (props.data.imageLocation === 'right'
       ? '8px 25px 8px 0px !important' : '8px 0px 8px 25px !important'),
@@ -302,12 +302,12 @@ const styles = () => ({
     verticalAlign: 'sub',
     margin: '0px 0px 0px 2px',
   },
-  link: {
-    color: '#0296C9',
+  link: (props) => ({
+    color: props.linkColor,
     '&:hover': {
-      color: '#0296C9',
+      color: props.linkColor,
     },
-  },
+  }),
   tableDiv: {
     marginTop: '0px',
   },
@@ -365,6 +365,9 @@ AboutBody.defaultProps = {
     fontFamily: 'Nunito',
     lineHeight: '30px',
   },
+  linkColor: '#0296C9',
+  titleColor: '#0B3556',
+  externalIconImage: 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/main/common/images/logos/svgs/externalLinkIcon.svg',
 };
 
 export default withStyles(styles)(AboutBody);
