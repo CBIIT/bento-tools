@@ -174,6 +174,7 @@ const styles = () => ({
     textDecoration: 'none',
     color: props.navBarstyling.global.fontColor ? props.navBarstyling.global.fontColor : '#FFFFFF',
     fontFamily: props.navBarstyling.global.fontFamily ? props.navBarstyling.global.fontFamily : 'Nunito',
+    textTransform: props.navBarstyling.global.textTransform ? props.navBarstyling.global.textTransform : 'UPPERCASE',
     fontSize: '13px',
   }),
   activeLabel: (props) => ({
