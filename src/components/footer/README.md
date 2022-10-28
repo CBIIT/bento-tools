@@ -1,13 +1,12 @@
 # Footer Bento
 
-ICDC frontend - Footer component (New Design)
+ICDC frontend - Footer component (New Design) System Information placement is accomodate for the visibility. 
 <img width="1429" alt="Screen Shot 2022-10-28 at 12 22 06 PM" src="https://user-images.githubusercontent.com/8271695/198687445-8a5694cb-90db-4550-abe7-7b8282fe7f18.png">
 
-Bento Footer Component (Old Design)
-<img width="1737" alt="Screen Shot 2022-10-28 at 12 35 02 PM" src="https://user-images.githubusercontent.com/8271695/198687767-1545f1fc-a960-4e46-b6ca-5254d79a7874.png">
+Bento Tools Footer Component
+<img width="2026" alt="Screen Shot 2022-10-28 at 12 58 25 PM" src="https://user-images.githubusercontent.com/8271695/198691846-1af7debd-e61a-4aba-bc6b-6865de1f13a8.png">
 
 ## Global footer Configuration.
-
 ```bash
 {
 	"footerLogoImage": "https://raw.githubusercontent.com/CBIIT/bento-frontend/master/src/assets/footer/FNL_logo.png",
@@ -38,6 +37,21 @@ Bento Footer Component (Old Design)
 				}
 			]
 		},
+        {
+      "title": 'System Info',
+      "items": [
+        {
+          "text": 'Resource',
+          "link": "/resources"
+        },
+        {
+          "text": `FE Version: ${env.REACT_APP_FE_VERSION}`,
+        },
+        {
+          "text": `BE Version: ${env.REACT_APP_BE_VERSION}`,
+        },
+      ],
+    },
 		{
       "title": "Support",
 			"items": [
