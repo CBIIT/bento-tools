@@ -1,5 +1,5 @@
 import React from 'react';
-import { createTheme, Divider, withStyles } from '@material-ui/core';
+import { Divider } from '@material-ui/core';
 import injectSheet from 'react-jss';
 import cn from '../helpers/classNameConcat';
 import RouteLinks from '../helpers/routeLinks';
