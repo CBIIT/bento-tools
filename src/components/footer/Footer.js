@@ -1,4 +1,5 @@
 import React from 'react';
+import { createTheme, Divider, withStyles } from '@material-ui/core';
 import injectSheet from 'react-jss';
 import cn from '../helpers/classNameConcat';
 import RouteLinks from '../helpers/routeLinks';
@@ -158,7 +159,7 @@ const styles = {
   horizontalLine: {
     width: '100%',
     margin: '32px auto 16px auto',
-    borderTop: '1px solid #2E5573',
+    backgroundColor: '#2E5573',
   },
   marginRight40: {
     marginRight: '40px',
@@ -222,105 +223,120 @@ const Footer = ({ classes, data }) => (
             )}
         </div>
         { data.link_sections.slice(0, 4).map((linkSection) => (
-          <div className={classes.footerRowSection}>
-            <ul>
-              <li>
-                <div
-                  className={cn(classes.footerText, classes.listHeader)}
-                >
-                  { linkSection.title }
-                </div>
-              </li>
-              { linkSection.items.slice(0, 5).map((footerRowSectionItem) => (
+          <>
+            <div className={classes.footerRowSection}>
+              <ul>
                 <li>
-                  {footerRowSectionItem.text
-                && (
-                  <RouteLinks to={footerRowSectionItem.link} title={footerRowSectionItem.title}>
+                  <div
+                    className={cn(classes.footerText, classes.listHeader)}
+                  >
+                    { linkSection.title }
+                  </div>
+                </li>
+                { linkSection.items.slice(0, 5).map((footerRowSectionItem) => (
+                  <li>
+                    {(footerRowSectionItem.text && footerRowSectionItem.link)
+                  ? (
+                    <RouteLinks to={footerRowSectionItem.link} title={footerRowSectionItem.title}>
+                      <div className={classes.footerText}>
+                        {footerRowSectionItem.text}
+                      </div>
+                    </RouteLinks>
+                  ) : (
                     <div className={classes.footerText}>
                       {footerRowSectionItem.text}
                     </div>
-                  </RouteLinks>
-                )}
-                  {footerRowSectionItem.icon
-                && (
-                  <RouteLinks to={footerRowSectionItem.link}>
-                    <img
-                      src={footerRowSectionItem.icon}
-                      alt={data.footerLogoAltText}
-                      className={classes.socialIcon}
-                    />
-                  </RouteLinks>
-                )}
-                </li>
-              ))}
-            </ul>
-          </div>
+                  )}
+                    {footerRowSectionItem.icon
+                  && (
+                    <RouteLinks to={footerRowSectionItem.link}>
+                      <img
+                        src={footerRowSectionItem.icon}
+                        alt={data.footerLogoAltText}
+                        className={classes.socialIcon}
+                      />
+                    </RouteLinks>
+                  )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </>
         ))}
       </div>
-      <div>
-        <div className={classes.horizontalLine} />
+      <div className={classes.horizontalLine}>
+        <Divider />
       </div>
       <div className={cn(classes.footerRow, classes.contentJustifyCenter)}>
         <div className={cn(classes.nciLinks, classes.contentJustifyCenter)}>
-          {data.global_footer_links.slice(0, 4).map((nciLink) => (
+          {data.global_footer_links.slice(0, 4).map((nciLink, index) => (
             <div>
               <RouteLinks to={nciLink.link}>
                 {nciLink.text}
               </RouteLinks>
-              <span className={classes.ext}>&nbsp;|&nbsp;</span>
+              { (index < data.global_footer_links.length - 1)
+                && ( <span className={classes.ext}>&nbsp;|&nbsp;</span> ) }
             </div>
           ))}
         </div>
       </div>
-      <div className={cn(classes.footerRow, classes.contentJustifyCenter)}>
-        <div
-          className={cn(
-            classes.extraPadding,
-            classes.nciLinks,
-            classes.contentJustifyCenter,
-          )}
-        >
-          <div>
-            <span className={classes.turningNIH}>
-              {data.footerStaticText}
-            </span>
+      {(data.footerStaticText)
+        && (
+          <div className={cn(classes.footerRow, classes.contentJustifyCenter)}>
+            <div
+              className={cn(
+                classes.extraPadding,
+                classes.nciLinks,
+                classes.contentJustifyCenter,
+              )}
+            >
+              <div>
+                <span className={classes.turningNIH}>
+                  {data.footerStaticText}
+                </span>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        )
+      }
       {/* Quick and dirty for adding version number in footer */}
-      <div className={cn(classes.footerRow, classes.contentJustifyLeft)}>
-        <div
-          className={cn(
-            classes.extraPadding,
-            classes.nciLinks,
-            classes.contentJustifyCenter,
-          )}
-        >
-          <div>
-            <span className={classes.footorVersiontext}>
-              FE Version:&nbsp;
-              {data.version}
-            </span>
+      {(data.version) && (
+        <div className={cn(classes.footerRow, classes.contentJustifyLeft)}>
+          <div
+            className={cn(
+              classes.extraPadding,
+              classes.nciLinks,
+              classes.contentJustifyCenter,
+            )}
+          >
+            <div>
+              <span className={classes.footorVersiontext}>
+                FE Version:&nbsp;
+                {data.version}
+              </span>
+            </div>
           </div>
         </div>
-      </div>
+      )}
       {/* End of Quick and dirty for adding version number in footer */}
       {/* Quick and dirty for adding version number in footer */}
-      <div className={cn(classes.footerRow, classes.contentJustifyLeft)}>
-        <div
-          className={cn(
-            classes.nciLinks,
-            classes.contentJustifyCenter,
-          )}
-        >
-          <div>
-            <span className={classes.footorVersiontext}>
-              BE Version:&nbsp;
-              {data.BEversion}
-            </span>
+      {(data.BEversion) && (
+        <div className={cn(classes.footerRow, classes.contentJustifyLeft)}>
+          <div
+            className={cn(
+              classes.nciLinks,
+              classes.contentJustifyCenter,
+            )}
+          >
+            <div>
+              <span className={classes.footorVersiontext}>
+                BE Version:&nbsp;
+                {data.BEversion}
+              </span>
+            </div>
           </div>
         </div>
-      </div>
+      )}
       {/* End of Quick and dirty for adding version number in footer */}
       {/* Adding file service version number in footer */}
       { data.FileServiceVersion && (
