@@ -185,7 +185,10 @@ const styles = {
   },
 };
 
-const Footer = ({ classes, data }) => (
+const Footer = ({ classes, data }) => {
+  //** set placement of system info display*/
+  const systemInfoList = data.link_sections.filter(item => item.systemInfoInLinkSection);
+  return (
   <div className={classes.footerRoot}>
     <div className={classes.footerComponent}>
       <div className={classes.footerRow}>
@@ -300,7 +303,7 @@ const Footer = ({ classes, data }) => (
         )
       }
       {/* Quick and dirty for adding version number in footer */}
-      {(data.version) && (
+      {(data.version && systemInfoList.length === 0) && (
         <div className={cn(classes.footerRow, classes.contentJustifyLeft)}>
           <div
             className={cn(
@@ -320,7 +323,7 @@ const Footer = ({ classes, data }) => (
       )}
       {/* End of Quick and dirty for adding version number in footer */}
       {/* Quick and dirty for adding version number in footer */}
-      {(data.BEversion) && (
+      {(data.BEversion && systemInfoList.length === 0) && (
         <div className={cn(classes.footerRow, classes.contentJustifyLeft)}>
           <div
             className={cn(
@@ -339,7 +342,7 @@ const Footer = ({ classes, data }) => (
       )}
       {/* End of Quick and dirty for adding version number in footer */}
       {/* Adding file service version number in footer */}
-      { data.FileServiceVersion && (
+      { (data.FileServiceVersion && systemInfoList.length === 0) && (
       <div className={cn(classes.footerRow, classes.contentJustifyLeft)}>
         <div
           className={cn(
@@ -359,7 +362,7 @@ const Footer = ({ classes, data }) => (
       {/* End Adding file service version number in footer */}
     </div>
   </div>
-);
+)};
 
 Footer.defaultProps = {
   background: '#23355B',

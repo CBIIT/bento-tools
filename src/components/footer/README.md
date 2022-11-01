@@ -39,6 +39,7 @@ Bento Tools Footer Component
 		},
         {
       "title": 'System Info',
+      "systemInfoInLinkSection": true,
       "items": [
         {
           "text": 'Resource',
