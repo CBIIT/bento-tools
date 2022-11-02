@@ -135,6 +135,7 @@ storiesOf('PieCharts', module).add('CustomActiveDonut', () => {
       titleLocation={titleLocation}
       titleAlignment={titleAlignment}
       fontFamily={fontFamily}
+      textOverflowLength={10}
     />
   );
 });

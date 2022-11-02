@@ -30,10 +30,10 @@ const renderActiveShape = (props) => {
     cx, cy, innerRadius, outerRadius, startAngle, endAngle,
     fill, payload, value, textColor, fontSize, fontWeight, fontFamily,
     // eslint-disable-next-line no-unused-vars
-    titleLocation, titleAlignment, titleText, totalCount, showTotalCount,
+    titleLocation, titleAlignment, titleText, totalCount, showTotalCount, textOverflowLength
   } = props;
   const isCapital = String(payload.name).toUpperCase() === String(payload.name);
-  const overflowLength = isCapital ? 20 : 30;
+  const overflowLength = isCapital ? textOverflowLength : textOverflowLength + 10;
   // const sin = Math.sin(-RADIAN * midAngle);
   // const cos = Math.cos(-RADIAN * midAngle);
   // const sx = cx + (outerRadius + 2) * cos;
@@ -120,7 +120,7 @@ class CustomActiveDonut extends PureComponent {
     const {
       data: DataObj, textColor, colors, paddingSpace,
       titleLocation, titleAlignment, titleText,
-      fontSize, fontWeight, fontFamily, showTotalCount,
+      fontSize, fontWeight, fontFamily, showTotalCount, textOverflowLength,
     } = this.props;
 
     let totalCount = 0;
@@ -146,6 +146,7 @@ class CustomActiveDonut extends PureComponent {
       fontFamily,
       totalCount,
       showTotalCount,
+      textOverflowLength,
     };
 
     return (
@@ -164,6 +165,7 @@ class CustomActiveDonut extends PureComponent {
             onMouseEnter={this.onPieEnter}
             blendStroke
             paddingAngle={paddingSpace}
+            textOverflowLength={textOverflowLength}
           >
             {data.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={data.length % 2 === 0 ? COLORS_EVEN[index % COLORS_EVEN.length] : COLORS_ODD[index % COLORS_ODD.length]} textColor={textColor} />
@@ -179,6 +181,7 @@ CustomActiveDonut.defaultProps = {
   titleText: 'Cases',
   paddingSpace: 0,
   showTotalCount: false,
+  textOverflowLength: 20,
 };
 
 const Chart = injectSheet(styles)(CustomActiveDonut);
