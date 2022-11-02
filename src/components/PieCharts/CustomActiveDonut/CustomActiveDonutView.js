@@ -30,10 +30,10 @@ const renderActiveShape = (props) => {
     cx, cy, innerRadius, outerRadius, startAngle, endAngle,
     fill, payload, value, textColor, fontSize, fontWeight, fontFamily,
     // eslint-disable-next-line no-unused-vars
-    titleLocation, titleAlignment, titleText, totalCount, showTotalCount,
+    titleLocation, titleAlignment, titleText, totalCount, showTotalCount, textOverflowLength
   } = props;
   const isCapital = String(payload.name).toUpperCase() === String(payload.name);
-  const overflowLength = isCapital ? 20 : 30;
+  const overflowLength = isCapital ? textOverflowLength : textOverflowLength + 10;
   // const sin = Math.sin(-RADIAN * midAngle);
   // const cos = Math.cos(-RADIAN * midAngle);
   // const sx = cx + (outerRadius + 2) * cos;
@@ -179,6 +179,7 @@ CustomActiveDonut.defaultProps = {
   titleText: 'Cases',
   paddingSpace: 0,
   showTotalCount: false,
+  textOverflowLength: 20,
 };
 
 const Chart = injectSheet(styles)(CustomActiveDonut);
