@@ -1,3 +1,6 @@
+/**
+ * TODO - Allow styles to be passed (eg: `classes` prop and className)
+ */
 import React, { useEffect, useState } from 'react';
 import {
   Button,
@@ -20,24 +23,17 @@ import DialogThemeProvider from './OverlayWindowThemeConfig';
 const OverlayWindow = ({
   body,
   header,
-  store,
 }) => {
   const [open, setOpen] = useState(false);
 
-  const setOverLayWindow = (item) => {
-    store.dispatch({ type: 'SET_OVERLAY_WINDOW', payload: item });
-  };
-
   const handleClose = () => {
     setOpen(false);
-    setOverLayWindow(false);
     sessionStorage.setItem('overlayLoad', 'true');
   };
 
   useEffect(() => {
     if (!sessionStorage.length) {
       setOpen(true);
-      setOverLayWindow(true);
     }
   }, [open]);
 
