@@ -12,23 +12,31 @@ npm install bento-components
 
 ## Usage
 
+### Header
+
 ```react
-//Header
+// Header
 import { Header } from 'bento-components';
 
 const ICDCHeader = () => <><Header /></>;
 export default ICDCHeader;
 ```
+
+### Footer
+
 ```react
-//Footer
+// Footer
 import { Footer } from 'bento-components';
 import FooterData from './footer.json'; //path to the json file Sample can be found in Stubs
 
 const ICDCFooter = () => <><Footer data={FooterData} /></>;
 export default ICDCFooter
 ```
+
+### DataTable
+
 ```react
-DataTable
+// DataTable
 For now we customized moving select cell to right
 import { CustomDataTable } from 'bento-components';
 
@@ -46,6 +54,40 @@ const options = {
 };
 <MUIDatatable columns={columns} data={data} options={options} selectCellPostion="right" />
 ```
+
+### OverlayWindow
+
+You can use this component to show a disclaimer to the user in the beginning of their session.
+
+This component accepts two properties:
+
+- `body` - Body markup
+- `header` - Header markup
+
+Here's an example of how a Bento-based project can use this component:
+
+```react
+// OverlayWindow
+import { OverlayWindow } from 'bento-components';
+
+<>
+  <CssBaseline />
+  <HashRouter>
+    <>
+      <Notifications />
+      <InActivityDialog />
+      <Header />
+      <OverlayWindow body="Your body text" header="Your header text" />
+      <NavBar />
+      ...
+    </>
+  </HashRouter>
+  ...
+</>
+```
+
+The `body` and `header` are markup, so you don't have to stick to mere text, like in the example above.
+
 ## Scripts Available
 
 ```
