@@ -116,11 +116,17 @@ const NavBar = ({
                 {/* <Badge badgeContent={numberOfCases} max={99999}> */}
                 <Tooltip title="Files" placement="bottom-end">
                   <span className={classes.badge}>
-                    <img
+                    {/**
+                     * Joon Lee, BENTO-2211 - I suspect that the <img>
+                     * element below causes two cart icons to apear,
+                     * because the getCartLabel() function already
+                     * creates a cart icon
+                     */
+                    /* <img
                       className={classes.cartIcon}
                       src={navBarCartData.cartIcon}
                       alt={navBarCartData.cartIconAlt}
-                    />
+                    /> */}
                     {getCartLabel(cartLabelType)}
                   </span>
                 </Tooltip>
@@ -227,7 +233,7 @@ const styles = () => ({
     textAlign: 'start',
     fontSize: '12px',
   },
-  cartLabel:(props) => ({
+  cartLabel: (props) => ({
     height: '16px',
     minWidth: '16px',
     color: props.navBarstyling.cartLabel && props.navBarstyling.cartLabel.color ? props.navBarstyling.cartLabel.color : '#24E4BE',
