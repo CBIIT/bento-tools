@@ -44,11 +44,6 @@ const NavBar = ({
       default:
         return (
           <span className={classes.badge}>
-            <img
-              className={classes.cartIcon}
-              src={navBarCartData.cartIcon}
-              alt={navBarCartData.cartIconAlt}
-            />
             <span className={classes.cartCounter}>
               {numberOfCases}
             </span>
@@ -227,7 +222,7 @@ const styles = () => ({
     textAlign: 'start',
     fontSize: '12px',
   },
-  cartLabel:(props) => ({
+  cartLabel: (props) => ({
     height: '16px',
     minWidth: '16px',
     color: props.navBarstyling.cartLabel && props.navBarstyling.cartLabel.color ? props.navBarstyling.cartLabel.color : '#24E4BE',
