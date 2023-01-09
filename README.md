@@ -12,23 +12,31 @@ npm install bento-components
 
 ## Usage
 
+### Header
+
 ```react
-//Header
+// Header
 import { Header } from 'bento-components';
 
 const ICDCHeader = () => <><Header /></>;
 export default ICDCHeader;
 ```
+
+### Footer
+
 ```react
-//Footer
+// Footer
 import { Footer } from 'bento-components';
 import FooterData from './footer.json'; //path to the json file Sample can be found in Stubs
 
 const ICDCFooter = () => <><Footer data={FooterData} /></>;
 export default ICDCFooter
 ```
+
+### DataTable
+
 ```react
-DataTable
+// DataTable
 For now we customized moving select cell to right
 import { CustomDataTable } from 'bento-components';
 
@@ -46,6 +54,7 @@ const options = {
 };
 <MUIDatatable columns={columns} data={data} options={options} selectCellPostion="right" />
 ```
+
 ## Scripts Available
 
 ```
