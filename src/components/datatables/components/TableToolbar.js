@@ -33,6 +33,9 @@ export const defaultToolbarStyles = (theme) => ({
   dalTooltip: {
     padding: '0px 12px !important'
   },
+  dalPopper: {
+    left: '-278px !important',
+  },
   fullWidthRoot: {
     backgroundColor: 'white !important',
   },
@@ -295,7 +298,7 @@ class TableToolbar extends React.Component {
         className={options.responsive !== RESPONSIVE_FULL_WIDTH_NAME ? classes.root : classes.fullWidthRoot}
         role="toolbar"
         aria-label="Table Toolbar"
-        classes={{root: classes.tableToolbar}}
+        classes={{ root: classes.tableToolbar }}
       >
         <div className={options.responsive !== RESPONSIVE_FULL_WIDTH_NAME ? classes.left : classes.fullWidthLeft}>
           {showSearch === true ? (
@@ -345,12 +348,16 @@ class TableToolbar extends React.Component {
                 <Tooltip
                   title={generateDataAvailabilityTooltipText()}
                   interactive
-                  classes={{ tooltip: classes.dalTooltip}}
+                  classes={{
+                    tooltip: classes.dalTooltip,
+                    popper: classes.dalPopper,
+                    tooltipPlacementBottom: classes.dalTooltipBottom
+                  }}
                   placement="top"
                 >
                   <IconButton aria-label="help">
                     <img style={{ width: '0.7em', marginBottom: '0.6em' }} src="https://raw.githubusercontent.com/CBIIT/datacommons-assets/main/icdc/images/svgs/Tooltip.SpeechBubble.svg" alt="tooltip" />
-                 </IconButton>
+                  </IconButton>
                 </Tooltip>
               </span>
             )
