@@ -48,43 +48,45 @@ const styles = {
   footerRoot: (props) => ({
     background: props.background,
   }),
-  footerComponent: {
-    lineHeight: '1.42857143',
-    maxWidth: '1800px',
-    margin: '0 auto',
-    '-webkit-font-smoothing': 'antialiased',
-    color: 'white',
-    padding: '24px 45px 45px 45px',
-    '& ul': {
-      listStyle: 'none',
-      margin: '0',
-      padding: '0',
-    },
-
-    '& li': {
-      lineHeight: '2.17',
-    },
-
-    /* Style a button like a link for accessibility */
-    '& button': {
-      background: 'none!important',
-      color: 'inherit',
-      border: 'none',
-      padding: '0!important',
-      font: 'inherit',
-      cursor: 'pointer',
-    },
-
-    '& a, & button': {
+  footerComponent: (props) => (
+    {
+      lineHeight: '1.42857143',
+      maxWidth: '1800px',
+      margin: '0 auto',
+      '-webkit-font-smoothing': 'antialiased',
       color: 'white',
-      textDecoration: 'none',
-
-      '&:hover': {
-        cursor: 'pointer',
-        textDecoration: 'underline',
+      padding: props.styles && props.styles.padding ? props.styles.padding : '24px 45px 45px 45px',
+      '& ul': {
+        listStyle: 'none',
+        margin: '0',
+        padding: '0',
       },
-    },
-  },
+
+      '& li': {
+        lineHeight: '2.17',
+      },
+
+      /* Style a button like a link for accessibility */
+      '& button': {
+        background: 'none!important',
+        color: 'inherit',
+        border: 'none',
+        padding: '0!important',
+        font: 'inherit',
+        cursor: 'pointer',
+      },
+
+      '& a, & button': {
+        color: 'white',
+        textDecoration: 'none',
+
+        '&:hover': {
+          cursor: 'pointer',
+          textDecoration: 'underline',
+        },
+      },
+    }
+  ),
   footerRow: {
     display: 'flex',
     flexDirection: 'column',
@@ -186,71 +188,71 @@ const styles = {
 };
 
 const Footer = ({ classes, data }) => {
-  //** set placement of system info display*/
-  const systemInfoList = data.link_sections.filter(item => item.systemInfoInLinkSection);
+  //* * set placement of system info display*/
+  const systemInfoList = data.link_sections.filter((item) => item.systemInfoInLinkSection);
   return (
-  <div className={classes.footerRoot}>
-    <div className={classes.footerComponent}>
-      <div className={classes.footerRow}>
-        <div className={
+    <div className={classes.footerRoot}>
+      <div className={classes.footerComponent}>
+        <div className={classes.footerRow}>
+          <div className={
             cn(classes.footerRowSection, classes.footerNciColumn, classes.marginRight40)
   }
-        >
-          {data.footerLogoHyperlink
-            ? (
-              data.footerLogoText
-                ? (
-                  <RouteLinks to={data.footerLogoHyperlink} className={classes.nciLogo}>
-                    <div className={classes.footerLogoText}>
-                      {data.footerLogoText}
-                    </div>
-                    <div>
-                      {data.footerLogoSubText}
-                    </div>
-                  </RouteLinks>
-                ) : (
-                  <RouteLinks to={data.footerLogoHyperlink} className={classes.nciLogo}>
-                    <img
-                      src={data.footerLogoImage}
-                      alt={data.footerLogoAltText}
-                      id="footer_logo_image"
-                    />
-                  </RouteLinks>
-                )
-            ) : (
-              <img
-                src={data.footerLogoImage}
-                alt={data.footerLogoAltText}
-                className={classes.nciLogo}
-              />
-            )}
-        </div>
-        { data.link_sections.slice(0, 4).map((linkSection) => (
-          <>
-            <div className={classes.footerRowSection}>
-              <ul>
-                <li>
-                  <div
-                    className={cn(classes.footerText, classes.listHeader)}
-                  >
-                    { linkSection.title }
-                  </div>
-                </li>
-                { linkSection.items.slice(0, 5).map((footerRowSectionItem) => (
-                  <li>
-                    {(footerRowSectionItem.text && footerRowSectionItem.link)
+          >
+            {data.footerLogoHyperlink
+              ? (
+                data.footerLogoText
                   ? (
-                    <RouteLinks to={footerRowSectionItem.link} title={footerRowSectionItem.title}>
-                      <div className={classes.footerText}>
-                        {footerRowSectionItem.text}
+                    <RouteLinks to={data.footerLogoHyperlink} className={classes.nciLogo}>
+                      <div className={classes.footerLogoText}>
+                        {data.footerLogoText}
+                      </div>
+                      <div>
+                        {data.footerLogoSubText}
                       </div>
                     </RouteLinks>
                   ) : (
-                    <div className={classes.footerText}>
-                      {footerRowSectionItem.text}
+                    <RouteLinks to={data.footerLogoHyperlink} className={classes.nciLogo}>
+                      <img
+                        src={data.footerLogoImage}
+                        alt={data.footerLogoAltText}
+                        id="footer_logo_image"
+                      />
+                    </RouteLinks>
+                  )
+              ) : (
+                <img
+                  src={data.footerLogoImage}
+                  alt={data.footerLogoAltText}
+                  className={classes.nciLogo}
+                />
+              )}
+          </div>
+          { data.link_sections.slice(0, 4).map((linkSection) => (
+            <>
+              <div className={classes.footerRowSection}>
+                <ul>
+                  <li>
+                    <div
+                      className={cn(classes.footerText, classes.listHeader)}
+                    >
+                      { linkSection.title }
                     </div>
-                  )}
-                    {footerRowSectionItem.icon
+                  </li>
+                  { linkSection.items.slice(0, 5).map((footerRowSectionItem) => (
+                    <li>
+                      {(footerRowSectionItem.text && footerRowSectionItem.link)
+                        ? (
+                          <RouteLinks to={footerRowSectionItem.link} title={footerRowSectionItem.title}>
+                            <div className={classes.footerText}>
+                              {footerRowSectionItem.text}
+                            </div>
+                          </RouteLinks>
+                        ) : (
+                          <div className={classes.footerText}>
+                            {footerRowSectionItem.text}
+                          </div>
+                        )}
+                      {footerRowSectionItem.icon
                   && (
                     <RouteLinks to={footerRowSectionItem.link}>
                       <img
@@ -260,30 +262,30 @@ const Footer = ({ classes, data }) => {
                       />
                     </RouteLinks>
                   )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </>
-        ))}
-      </div>
-      <div className={classes.horizontalLine}>
-        <Divider />
-      </div>
-      <div className={cn(classes.footerRow, classes.contentJustifyCenter)}>
-        <div className={cn(classes.nciLinks, classes.contentJustifyCenter)}>
-          {data.global_footer_links.slice(0, 4).map((nciLink, index) => (
-            <div>
-              <RouteLinks to={nciLink.link}>
-                {nciLink.text}
-              </RouteLinks>
-              { (index < data.global_footer_links.length - 1)
-                && ( <span className={classes.ext}>&nbsp;|&nbsp;</span> ) }
-            </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </>
           ))}
         </div>
-      </div>
-      {(data.footerStaticText)
+        <div className={classes.horizontalLine}>
+          <Divider />
+        </div>
+        <div className={cn(classes.footerRow, classes.contentJustifyCenter)}>
+          <div className={cn(classes.nciLinks, classes.contentJustifyCenter)}>
+            {data.global_footer_links.slice(0, 4).map((nciLink, index) => (
+              <div>
+                <RouteLinks to={nciLink.link}>
+                  {nciLink.text}
+                </RouteLinks>
+                { (index < data.global_footer_links.length - 1)
+                && (<span className={classes.ext}>&nbsp;|&nbsp;</span>) }
+              </div>
+            ))}
+          </div>
+        </div>
+        {(data.footerStaticText)
         && (
           <div className={cn(classes.footerRow, classes.contentJustifyCenter)}>
             <div
@@ -300,10 +302,9 @@ const Footer = ({ classes, data }) => {
               </div>
             </div>
           </div>
-        )
-      }
-      {/* Quick and dirty for adding version number in footer */}
-      {(data.version && systemInfoList.length === 0) && (
+        )}
+        {/* Quick and dirty for adding version number in footer */}
+        {(data.version && systemInfoList.length === 0) && (
         <div className={cn(classes.footerRow, classes.contentJustifyLeft)}>
           <div
             className={cn(
@@ -320,10 +321,10 @@ const Footer = ({ classes, data }) => {
             </div>
           </div>
         </div>
-      )}
-      {/* End of Quick and dirty for adding version number in footer */}
-      {/* Quick and dirty for adding version number in footer */}
-      {(data.BEversion && systemInfoList.length === 0) && (
+        )}
+        {/* End of Quick and dirty for adding version number in footer */}
+        {/* Quick and dirty for adding version number in footer */}
+        {(data.BEversion && systemInfoList.length === 0) && (
         <div className={cn(classes.footerRow, classes.contentJustifyLeft)}>
           <div
             className={cn(
@@ -339,30 +340,31 @@ const Footer = ({ classes, data }) => {
             </div>
           </div>
         </div>
-      )}
-      {/* End of Quick and dirty for adding version number in footer */}
-      {/* Adding file service version number in footer */}
-      { (data.FileServiceVersion && systemInfoList.length === 0) && (
-      <div className={cn(classes.footerRow, classes.contentJustifyLeft)}>
-        <div
-          className={cn(
-            classes.nciLinks,
-            classes.contentJustifyCenter,
-          )}
-        >
-          <div>
-            <span className={classes.footorVersiontext}>
-              FS Version:&nbsp;
-              {data.FileServiceVersion}
-            </span>
+        )}
+        {/* End of Quick and dirty for adding version number in footer */}
+        {/* Adding file service version number in footer */}
+        { (data.FileServiceVersion && systemInfoList.length === 0) && (
+        <div className={cn(classes.footerRow, classes.contentJustifyLeft)}>
+          <div
+            className={cn(
+              classes.nciLinks,
+              classes.contentJustifyCenter,
+            )}
+          >
+            <div>
+              <span className={classes.footorVersiontext}>
+                FS Version:&nbsp;
+                {data.FileServiceVersion}
+              </span>
+            </div>
           </div>
         </div>
+        )}
+        {/* End Adding file service version number in footer */}
       </div>
-      )}
-      {/* End Adding file service version number in footer */}
     </div>
-  </div>
-)};
+  );
+};
 
 Footer.defaultProps = {
   background: '#23355B',
