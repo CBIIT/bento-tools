@@ -1,8 +1,24 @@
 import React from 'react';
-import { Divider } from '@material-ui/core';
+import { Button, Divider } from '@material-ui/core';
 import injectSheet from 'react-jss';
+import Modal from '@material-ui/core/Modal';
+import ReactMarkdown from 'react-markdown';
 import cn from '../helpers/classNameConcat';
 import RouteLinks from '../helpers/routeLinks';
+
+const footerTextStyle = {
+  color: 'white',
+  marginLeft: 16,
+  marginRight: 16,
+  fontWeight: 400,
+  fontSize: '14px',
+  fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"',
+  lineHeight: '1.71',
+  whiteSpace: 'nowrap',
+  '@media (max-width: 600px)': {
+    fontSize: 12,
+  },
+};
 
 const styles = {
   ext: {
@@ -18,17 +34,40 @@ const styles = {
     },
   },
   footerText: {
-    color: 'white',
-    marginLeft: 16,
-    marginRight: 16,
-    fontWeight: 400,
-    fontSize: '14px',
-    fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"',
-    lineHeight: '1.71',
-    whiteSpace: 'nowrap',
-    '@media (max-width: 600px)': {
-      fontSize: 12,
+    ...footerTextStyle,
+  },
+  container: {
+    top: '20%',
+    left: '30%',
+    boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
+    position: 'absolute',
+    width: '832px',
+    backgroundColor: 'white',
+    borderRadius: '10px',
+    overflow: 'hidden',
+  },
+  modalFooter: {
+    borderTop: '1px solid #E2E2E2',
+    height: '70px',
+    display: 'flex',
+    justifyContent: 'end',
+    alignItems: 'center',
+    paddingRight: '19px',
+  },
+  paper: {
+    height: '443px',
+    overflowY: 'auto',
+    padding: '15px',
+  },
+  modalText: {
+    ...footerTextStyle,
+    '&:hover': {
+      textDecoration: 'underline',
     },
+  },
+  modalFooterBtn: {
+    backgroundColor: '#337AB7',
+    color: '#FFF',
   },
   nciLinks: {
     display: 'flex',
@@ -188,8 +227,21 @@ const styles = {
 };
 
 const Footer = ({ classes, data }) => {
+  const [open, setOpen] = React.useState(false);
+  const [content, setContent] = React.useState('');
   //* * set placement of system info display*/
   const systemInfoList = data.link_sections.filter((item) => item.systemInfoInLinkSection);
+
+  const handleModalOpen = (itemContent) => {
+    itemContent.then((res) => { setContent(res); });
+    console.log('itemContent', itemContent);
+    // setContent(itemContent);
+    setOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setOpen(false);
+  };
   return (
     <div className={classes.footerRoot}>
       <div className={classes.footerComponent}>
@@ -240,9 +292,18 @@ const Footer = ({ classes, data }) => {
                   </li>
                   { linkSection.items.slice(0, 5).map((footerRowSectionItem) => (
                     <li>
-                      {(footerRowSectionItem.text && footerRowSectionItem.link)
+                      {footerRowSectionItem.type === 'modal' ? (
+                        <>
+                          <button type="button" className={classes.modalText} onClick={() => handleModalOpen(footerRowSectionItem.content)}>
+                            {footerRowSectionItem.text}
+                          </button>
+                        </>
+                      ) : (footerRowSectionItem.text && footerRowSectionItem.link)
                         ? (
-                          <RouteLinks to={footerRowSectionItem.link} title={footerRowSectionItem.title}>
+                          <RouteLinks
+                            to={footerRowSectionItem.link}
+                            title={footerRowSectionItem.title}
+                          >
                             <div className={classes.footerText}>
                               {footerRowSectionItem.text}
                             </div>
@@ -362,6 +423,21 @@ const Footer = ({ classes, data }) => {
         )}
         {/* End Adding file service version number in footer */}
       </div>
+      <Modal
+        open={open}
+        onClose={handleModalClose}
+      >
+        <div className={classes.container}>
+          <div className={classes.paper}>
+            <ReactMarkdown>
+              {content}
+            </ReactMarkdown>
+          </div>
+          <div className={classes.modalFooter}>
+            <Button variant="contained" color="primary" className={classes.modalFooterBtn} onClick={handleModalClose}>Accept</Button>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 };
