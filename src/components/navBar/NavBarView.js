@@ -26,7 +26,6 @@ const NavBar = ({
     setClickedEl(eventName);
   }
 
-  const { cartLabelType } = navBarCartData;
 
   const getCartLabel = (labelType) => {
     switch (labelType) {
@@ -101,29 +100,33 @@ const NavBar = ({
         {/* Start of Theme Switching Icon and logic */}
         <div className={classes.myCasesPosition}>
           <LoginComponent />
-          <Button id="button_navbar_mycases" disableRipple weight="medium" className={classes.logotype} classes={{ root: classes.buttonRootNoRightPadding }}>
-            <HashRouter>
-              <NavLink
-                className={classes.cartLabelText}
-                to={navBarCartData.cartLink}
-              >
-                {navBarCartData.cartLabel}
-                {/* <Badge badgeContent={numberOfCases} max={99999}> */}
-                <Tooltip title="Files" placement="bottom-end">
-                  <span className={classes.badge}>
-                    <img
-                      className={classes.cartIcon}
-                      src={navBarCartData.cartIcon}
-                      alt={navBarCartData.cartIconAlt}
-                    />
-                    {getCartLabel(cartLabelType)}
-                  </span>
-                </Tooltip>
+          {
+            navBarCartData && (
+              <Button id="button_navbar_mycases" disableRipple weight="medium" className={classes.logotype} classes={{ root: classes.buttonRootNoRightPadding }}>
+                <HashRouter>
+                  <NavLink
+                    className={classes.cartLabelText}
+                    to={navBarCartData.cartLink}
+                  >
+                    {navBarCartData.cartLabel}
+                    {/* <Badge badgeContent={numberOfCases} max={99999}> */}
+                    <Tooltip title="Files" placement="bottom-end">
+                      <span className={classes.badge}>
+                        <img
+                          className={classes.cartIcon}
+                          src={navBarCartData.cartIcon}
+                          alt={navBarCartData.cartIconAlt}
+                        />
+                        {getCartLabel(navBarCartData.cartLabelType)}
+                      </span>
+                    </Tooltip>
 
-                {/* </Badge> */}
-              </NavLink>
-            </HashRouter>
-          </Button>
+                    {/* </Badge> */}
+                  </NavLink>
+                </HashRouter>
+              </Button>
+            )
+          }
         </div>
 
       </Toolbar>
