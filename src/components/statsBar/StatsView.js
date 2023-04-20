@@ -85,7 +85,7 @@ const styles = () => ({
     width: props.statsStyling.statTitle ? props.statsStyling.statTitle.width ? props.statsStyling.statTitle.width : '90px' : '90px',
     textAlign: 'left',
   }),
-  statCount: (props) => ((props.statsStyling.global && props.statsStyling.global.horizontalStyle)  ? {
+  statCount: (props) => ((props.statsStyling.global && props.statsStyling.global.horizontalStyle) ? {
     display: 'inline-block',
     float: props.statsStyling.statCount ? props.statsStyling.statCount.float ? props.statsStyling.statCount.float : 'left' : 'left',
     color: props.statsStyling.statCount ? props.statsStyling.statCount.color ? props.statsStyling.statCount.color : '#0467BD' : '#0467BD',
@@ -110,14 +110,14 @@ const styles = () => ({
     margin: props.statsStyling.statsGroup ? props.statsStyling.statsGroup.margin ? props.statsStyling.statsGroup.margin : '4px 0px' : '4px 0px',
     padding: props.statsStyling.statsGroup ? props.statsStyling.statsGroup.padding ? props.statsStyling.statsGroup.padding : '4px 40px 10px 60px' : '4px 40px 10px 60px',
     borderRight: props.statsStyling.statsGroup ? props.statsStyling.statsGroup.borderRight ? props.statsStyling.statsGroup.borderRight : '4px solid #0B3556' : '4px solid #0B3556',
-    minWidth: '180px',
-    maxWidth: '185px',
-    "&:first-child": {
+    minWidth: props.statsStyling.statsGroup ? props.statsStyling.statsGroup.minWidth ? props.statsStyling.statsGroup.minWidth : '180px' : '180px',
+    maxWidth: props.statsStyling.statsGroup ? props.statsStyling.statsGroup.maxWidth ? props.statsStyling.statsGroup.maxWidth : '185px' : '185px',
+    '&:first-child': {
       minWidth: '190px',
       maxWidth: '225px',
       padding: '6px 20px 10px 90px',
     },
-    "&:last-child": {
+    '&:last-child': {
       borderRight: 'none',
       minWidth: '205px',
       maxWidth: '225px',
@@ -129,8 +129,8 @@ const styles = () => ({
     float: 'left',
     width: props.statsStyling.statsIcon ? props.statsStyling.statsIcon.width ? props.statsStyling.statsIcon.width : '28px' : '28px',
     height: props.statsStyling.statsIcon ? props.statsStyling.statsIcon.height ? props.statsStyling.statsIcon.height : '28px' : '28px',
-    margin: props.statsStyling.statsIcon ? props.statsStyling.statsIcon.margin ? props.statsStyling.statsIcon.margin : '8px 0px 0px -35px' :'8px 0px 0px -35px',
-  })
+    margin: props.statsStyling.statsIcon ? props.statsStyling.statsIcon.margin ? props.statsStyling.statsIcon.margin : '8px 0px 0px -35px' : '8px 0px 0px -35px',
+  }),
 });
 
 StatsBar.defaultProps = {
