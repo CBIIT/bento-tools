@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core';
 const LinkBar = ({ classes, title, url }) => (
   <>
     <div className={classes.wrapper}>
-      <a className={classes.link} href={url}>{title}</a>
+      <a className={classes.link} href={url} target="_blank" rel="noreferrer">{title}</a>
     </div>
   </>
 );
